@@ -1,26 +1,33 @@
-#include "raylib.h"
+#include "Functions.h"
 
-int main(void)
+const int screenWidth = 1920;
+const int screenHeight = 1000;
+
+
+int main()
 {
-    const int screenWidth = 1920;
-    const int screenHeight = 1000;
+    InitWindow(screenWidth, screenHeight, "GeoGame");
+    SetTargetFPS(240);
 
-    InitWindow(screenWidth, screenHeight, "raylib [textures] example - gif playing");
+    Variables Var;
+    AllTextures textures;
+    Animation animation;
 
-    Texture2D tex = LoadTexture("../src/assets/van.png");
-
-    SetTargetFPS(60);
-
-    while (!WindowShouldClose())
+    while (!WindowShouldClose() && !Var.bools.isGameClosed)
     {
         BeginDrawing();
 
-        ClearBackground(RAYWHITE);
+        ClearBackground(WHITE);
 
-        DrawTexture(tex, 100, 100, WHITE);
+        Menu(&Var.bools.isGameClosed, &Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.ints.countryNumber,
+            &Var.bools.chooseCountry, &Var.ints.BusX, &Var.ints.BusY, &Var.ints.BGX, textures, animation);
 
         EndDrawing();
+
+        system("CLS");
     }
+    unloadAllTextures(textures);
+    //unloadAllAnimations(animation);
 
     CloseWindow();
 }
