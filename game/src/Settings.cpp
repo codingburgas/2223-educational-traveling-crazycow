@@ -1,5 +1,12 @@
 #include "Functions.h"
 
+void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* chooseCountry, AllTextures textures)
+{
+    DrawTexture(textures.settingsIcon, 5, 5, GRAY);
+    OpenSettings(areSettingsOpen, isMenuOpen, chooseCountry, textures);
+    CloseSetting(areSettingsOpen, textures);
+}
+
 void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* chooseCountry, AllTextures textures)
 {
     if (*areSettingsOpen || (IsMouseInRange(0, 40, 0, 40) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT) == true))

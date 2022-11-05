@@ -11,6 +11,7 @@ struct Variables {
         bool isGameClosed = false;
         bool isMenuOpen = true;
         bool chooseCountry = false;
+        bool countryList = false;
     }bools;
 
     struct Integrears {
@@ -32,20 +33,18 @@ struct AllTextures {
     Texture2D background = LoadTexture("../src/assets/Background.gif");
 };
 
-struct Animation {
-    int frames = 10;
-    //Image image = LoadImageAnim("../src/assets/Background.gif", &frames);
-    //Texture2D texture= LoadTextureFromImage(image);
-};
-
 void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* chooseCountry, AllTextures textures);
 void CloseSetting(bool* areSettingsOpen, AllTextures textures);
 
 void BackToMenu(bool* isMenuOpen, bool* chooseCountry, AllTextures textures);
 
 
-void Menu(bool* Close, bool* areSettingsOpen, bool* isMenuOpen, int* countryNumber, bool* chooseCountry, int* BusX, int* BusY,
-    int* BGX, AllTextures textures, Animation animation);
+void Menu(bool* isGameClosed, bool* isMenuOpen, bool* chooseCountry, int* BusX, int* BusY,
+    int* BGX, AllTextures textures);
+
+void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* chooseCountry, AllTextures textures);
+
+void Game(bool* chooseCountry, int* countryNumber, bool* countryList, AllTextures textures);
 
 void CloseGame(bool* Close, AllTextures textures);
 void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures);
@@ -53,11 +52,8 @@ void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures);
 bool IsMouseInRange(int x1, int x2, int y1, int y2);
 
 
-void ChooseCountry(int* countryNumber, AllTextures textures);
+void ChooseCountry(int* countryNumber, bool* countryList, AllTextures textures);
 
 void unloadAllTextures(AllTextures unloadTextures);
-//void unloadAllAnimations(Animation animation);
 
-void DrawMenuBackground(int* BusX, int* Bus, int* BGX, AllTextures textures, Animation animation);
-
-//void DrawAnimation(Animation animation, int x, int y, Color color);
+void DrawMenuBackground(int* BusX, int* Bus, int* BGX, AllTextures textures);

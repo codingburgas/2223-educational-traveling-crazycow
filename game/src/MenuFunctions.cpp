@@ -1,29 +1,19 @@
 #include "Functions.h"
 
-void Menu(bool* Close, bool* areSettingsOpen, bool* isMenuOpen, int* countryNumber, bool* chooseCountry, int* BusX, int* BusY,
-    int* BGX, AllTextures textures, Animation animation)
+void Menu(bool* isGameClosed, bool* isMenuOpen, bool* chooseCountry, int* BusX, int* BusY,
+    int* BGX, AllTextures textures)
 {
     if (*isMenuOpen)
     {
-        DrawMenuBackground(BusX, BusY, BGX, textures, animation);
+        DrawMenuBackground(BusX, BusY, BGX, textures);
         StartGame(isMenuOpen, chooseCountry, textures);
-        CloseGame(Close, textures);
+        CloseGame(isGameClosed, textures);
     }
-
-    if (*chooseCountry)
-    {
-        ChooseCountry(countryNumber, textures);
-    }
-
-    DrawTexture(textures.settingsIcon, 5, 5, GRAY);
-    OpenSettings(areSettingsOpen, isMenuOpen, chooseCountry, textures);
-    CloseSetting(areSettingsOpen, textures);
 }
 
 int counter = 0;
-void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures, Animation animation)
+void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
 {
-    //DrawAnimation(animation, 0, 0, WHITE);
     DrawTexture(textures.background, *BGX, 0, WHITE);
     DrawTexture(textures.background, *BGX + 1919, 0, WHITE);
     DrawTexture(textures.busIcon, *BusX, *BusY, WHITE);

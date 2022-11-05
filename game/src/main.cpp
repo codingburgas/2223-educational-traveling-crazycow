@@ -11,7 +11,6 @@ int main()
 
     Variables Var;
     AllTextures textures;
-    Animation animation;
 
     while (!WindowShouldClose() && !Var.bools.isGameClosed)
     {
@@ -19,15 +18,17 @@ int main()
 
         ClearBackground(WHITE);
 
-        Menu(&Var.bools.isGameClosed, &Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.ints.countryNumber,
-            &Var.bools.chooseCountry, &Var.ints.BusX, &Var.ints.BusY, &Var.ints.BGX, textures, animation);
+        Menu(&Var.bools.isGameClosed, &Var.bools.isMenuOpen, &Var.bools.chooseCountry, &Var.ints.BusX, &Var.ints.BusY, &Var.ints.BGX, textures);
+
+        Game(&Var.bools.chooseCountry, &Var.ints.countryNumber, &Var.bools.countryList, textures);
+
+        Settings(&Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.bools.chooseCountry, textures);
 
         EndDrawing();
 
         system("CLS");
     }
     unloadAllTextures(textures);
-    //unloadAllAnimations(animation);
 
     CloseWindow();
 }
