@@ -22,19 +22,19 @@ struct Variables {
 };
 
 struct AllTextures {
-    Texture2D settingsBox = LoadTexture("../Images/SettingsBox.png");
-    Texture2D closeSettingsIcon = LoadTexture("../Images/CloseSettingsIcon.png");
-    Texture2D taskBox = LoadTexture("../Images/TaskBox.png");
-    Texture2D settingsIcon = LoadTexture("../Images/SettingIcon.png");
-    Texture2D busIcon = LoadTexture("../Images/BusIcon.png");
-    Texture2D startBlock = LoadTexture("../Images/StartBlock.png");
-    Texture2D europeMap = LoadTexture("../Images/EuropeMap.png");
-    Texture2D background = LoadTexture("../Images/Background.gif");
+    Texture2D settingsBox = LoadTexture("../src/assets/SettingsBox.png");
+    Texture2D closeSettingsIcon = LoadTexture("../src/assets/CloseSettingsIcon.png");
+    Texture2D taskBox = LoadTexture("../src/assets/TaskBox.png");
+    Texture2D settingsIcon = LoadTexture("../src/assets/SettingIcon.png");
+    Texture2D busIcon = LoadTexture("../src/assets/BusIcon.png");
+    Texture2D startBlock = LoadTexture("../src/assets/StartBlock.png");
+    Texture2D europeMap = LoadTexture("../src/assets/EuropeMap.png");
+    Texture2D background = LoadTexture("../src/assets/Background.gif");
 };
 
 struct Animation {
     int frames = 10;
-    //Image image = LoadImageAnim("../Images/Background.gif", &frames);
+    //Image image = LoadImageAnim("../src/assets/Background.gif", &frames);
     //Texture2D texture= LoadTextureFromImage(image);
 };
 
@@ -53,7 +53,7 @@ void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures);
 bool IsMouseInRange(int x1, int x2, int y1, int y2);
 
 
-int ChooseStartCountry(int* countryNumber, AllTextures textures);
+void ChooseCountry(int* countryNumber, AllTextures textures);
 
 void unloadAllTextures(AllTextures unloadTextures);
 //void unloadAllAnimations(Animation animation);

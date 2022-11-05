@@ -3,16 +3,16 @@
 void Menu(bool* Close, bool* areSettingsOpen, bool* isMenuOpen, int* countryNumber, bool* chooseCountry, int* BusX, int* BusY,
     int* BGX, AllTextures textures, Animation animation)
 {
-    DrawMenuBackground(BusX, BusY, BGX, textures, animation);
     if (*isMenuOpen)
     {
+        DrawMenuBackground(BusX, BusY, BGX, textures, animation);
         StartGame(isMenuOpen, chooseCountry, textures);
         CloseGame(Close, textures);
     }
 
     if (*chooseCountry)
     {
-        ChooseStartCountry(countryNumber, textures);
+        ChooseCountry(countryNumber, textures);
     }
 
     DrawTexture(textures.settingsIcon, 5, 5, GRAY);
@@ -54,11 +54,11 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures, An
 
 void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures)
 {
-    DrawTexture(textures.startBlock, 660, 400, WHITE);
-    DrawText("START", 730, 410, 110, LIME);
-    if (IsMouseInRange(660, 660 + 511, 400, 400 + 116))
+    DrawTexture(textures.startBlock, 676, 280, WHITE);
+    DrawText("START", 676 + 80, 316, 96, BLACK);
+    if (IsMouseInRange(676, 676 + 480, 280, 280 + 149))
     {
-        DrawText("START", 730, 403, 110, GREEN);
+        DrawText("START", 676 + 80, 310, 96, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) == true)
         {
             *isMenuOpen = false;
@@ -69,11 +69,11 @@ void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures)
 
 void CloseGame(bool* isGameClosed, AllTextures textures)
 {
-    DrawTexture(textures.startBlock, 660, 600, WHITE);
-    DrawText("EXIT", 780, 610, 110, LIME);
-    if (IsMouseInRange(660, 660 + 511, 600, 600 + 116))
+    DrawTexture(textures.startBlock, 676, 500, WHITE);
+    DrawText("EXIT", 676 + 130, 536, 96, BLACK);
+    if (IsMouseInRange(676, 676 + 480, 500, 500 + 149))
     {
-        DrawText("EXIT", 780, 603, 110, GREEN);
+        DrawText("EXIT", 676 + 130, 530, 96, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) == true)
         {
             *isGameClosed = true;
