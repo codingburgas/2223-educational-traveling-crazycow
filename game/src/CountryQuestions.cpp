@@ -17,16 +17,16 @@ void OpenBulgaria(int* money, int* trueQuestionCounter, int* questionsNumberCoun
 	};
 
 	const char* answers[10][4] = {
-		{"Vidin", "Tutrakan", "Silistra", "Bregovo"},
-		{"Rodopi", "Rila", "Pirin", "  Balkans"},
-		{"Sofia Valley", "Pernik Valley", "Kazanlak Valley", "Sliven Valley"},
-		{"Vihren peak", "Botev Peak", "Musala Peak", "Black Peak"},
-		{"South", "Central", "Northwest", "Southwestern"},
-		{"Southwestern", "Northwest", "North", "Northeast"},
-		{"28", "30", "27", "25"},
-		{"Varna", "Sofia", "Sozopol", "Plovdiv"},
-		{"Romania", "Greece", "Turkey", "Serbia"},
-		{"St. Ivan", "Belene Island", "St. Anastasia", "Snake Island"}
+		{"      Vidin", "   Tutrakan", "    Silistra", "    Bregovo"},
+		{"    Rodopi", "      Rila", "     Pirin", "    Balkans"},
+		{"  Sofia Valley", " Pernik Valley", "Kazanlak Valley", " Sliven Valley"},
+		{"  Vihren peak", "  Botev Peak", "  Musala Peak", "  Black Peak"},
+		{"     South", "    Central", "   Northwest", " Southwestern"},
+		{" Southwestern", "   Northwest", "     North", "   Northeast"},
+		{"       28", "       30", "       27", "       25"},
+		{"    Varna", "     Sofia", "    Sozopol", "    Plovdiv"},
+		{"   Romania", "    Greece", "    Turkey", "    Serbia"},
+		{"   St. Ivan", " Belene Island", " St. Anastasia", " Snake Island"}
 	};
 
 	int answersPos[10] = { 4, 2, 3, 1, 3, 1, 1, 4, 3, 2 };
