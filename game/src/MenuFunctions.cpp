@@ -1,13 +1,13 @@
 #include "Functions.h"
 
-void Menu(bool* isGameClosed, bool* isMenuOpen, bool* chooseCountry, int* BusX, int* BusY,
-    int* BGX, AllTextures textures)
+void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* BusY,
+    int* BGX, AllTextures textures, Font font)
 {
     if (*isMenuOpen)
     {
         DrawMenuBackground(BusX, BusY, BGX, textures);
-        StartGame(isMenuOpen, chooseCountry, textures);
-        CloseGame(isGameClosed, textures);
+        StartGame(isMenuOpen, openMap, textures, font);
+        CloseGame(isGameClosed, textures, font);
     }
 }
 
@@ -15,7 +15,7 @@ int counter = 0;
 void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
 {
     DrawTexture(textures.background, *BGX, 0, WHITE);
-    DrawTexture(textures.background, *BGX + 1919, 0, WHITE);
+    DrawTexture(textures.background, *BGX + 1920, 0, WHITE);
     DrawTexture(textures.busIcon, *BusX, *BusY, WHITE);
 
     *BGX -= 5;
@@ -42,14 +42,19 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
     }
 }
 
-void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures)
+void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 676, 280, WHITE);
-    DrawText("START", 676 + 80, 316, 96, BLACK);
+    Vector2 pos;
+    pos.x = 814;
+    pos.y = 316;
+    DrawTextEx(font, "Start", pos, 96, 4, BLACK);
     if (IsMouseInRange(676, 676 + 480, 280, 280 + 149))
     {
-        DrawText("START", 676 + 80, 310, 96, BLACK);
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) == true)
+        pos.x = 816;
+        pos.y = 310;
+        DrawTextEx(font, "Start", pos, 96, 4, BLACK);
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             *isMenuOpen = false;
             *chooseCountry = true;
@@ -57,14 +62,19 @@ void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures)
     }
 }
 
-void CloseGame(bool* isGameClosed, AllTextures textures)
+void CloseGame(bool* isGameClosed, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 676, 500, WHITE);
-    DrawText("EXIT", 676 + 130, 536, 96, BLACK);
+    Vector2 pos;
+    pos.x = 844;
+    pos.y = 536;
+    DrawTextEx(font, "Exit", pos, 96, 4, BLACK);
     if (IsMouseInRange(676, 676 + 480, 500, 500 + 149))
     {
-        DrawText("EXIT", 676 + 130, 530, 96, BLACK);
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) == true)
+        pos.x = 846;
+        pos.y = 530;
+        DrawTextEx(font, "Exit", pos, 96, 4, BLACK);
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             *isGameClosed = true;
         }
