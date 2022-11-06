@@ -134,7 +134,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameFunctions.cpp" />
+    <ClCompile Include="GameInCountryFunctions.cpp" />
+    <ClCompile Include="GameInMapFunctions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuFunctions.cpp" />
     <ClCompile Include="OtherFunctions.cpp" />

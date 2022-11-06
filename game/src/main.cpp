@@ -6,6 +6,8 @@ const int screenHeight = 1000;
 
 int main()
 {
+    srand(time(0));
+
     InitWindow(screenWidth, screenHeight, "GeoGame");
     SetExitKey(KEY_BACKSPACE);
     SetTargetFPS(240);
@@ -21,11 +23,15 @@ int main()
 
         ClearBackground(WHITE);
 
-        Menu(&Var.bools.isGameClosed, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.ints.BusX, &Var.ints.BusY, &Var.ints.BGX, textures, font);
+        Menu(&Var.bools.isGameClosed, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.ints.BusX, &Var.ints.BusY, &Var.ints.BGX,
+             &Var.ints.countryNumber, textures, font);
 
-        Game(&Var.bools.openMap, &Var.ints.countryNumber, &Var.ints.countryHover, &Var.bools.countryList, &Var.ints.mapLocation, textures, font);
+        Game(&Var.bools.openMap, &Var.ints.countryNumber, &Var.ints.countryHover, &Var.bools.countryList, &Var.ints.mapLocation,
+             &Var.bools.areSettingsOpen, &Var.ints.money, &Var.ints.trueQuestionCounter, &Var.ints.questionsNumberCounter,
+             &Var.ints.randomQuestion, &Var.bools.isMenuOpen, &Var.bools.isQuizOpened, &Var.bools.isAnswered, textures, font);
 
-        Settings(&Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.bools.openMap, textures, font);
+        Settings(&Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.ints.countryNumber, &Var.ints.questionsNumberCounter,
+                 &Var.bools.isQuizOpened, &Var.ints.randomQuestion, &Var.bools.isAnswered, textures, font);
 
         EndDrawing();
 

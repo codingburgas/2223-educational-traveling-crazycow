@@ -1,12 +1,12 @@
 #include "Functions.h"
 
 void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* BusY,
-    int* BGX, AllTextures textures, Font font)
+    int* BGX, int* countryNumber, AllTextures textures, Font font)
 {
     if (*isMenuOpen)
     {
         DrawMenuBackground(BusX, BusY, BGX, textures);
-        StartGame(isMenuOpen, openMap, textures, font);
+        StartGame(isMenuOpen, openMap, countryNumber, textures, font);
         CloseGame(isGameClosed, textures, font);
     }
 }
@@ -42,7 +42,7 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
     }
 }
 
-void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures, Font font)
+void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 676, 280, WHITE);
     Vector2 pos;
@@ -56,8 +56,9 @@ void StartGame(bool* isMenuOpen, bool* chooseCountry, AllTextures textures, Font
         DrawTextEx(font, "Start", pos, 96, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
+            *countryNumber = 0;
             *isMenuOpen = false;
-            *chooseCountry = true;
+            *openMap = true;
         }
     }
 }
