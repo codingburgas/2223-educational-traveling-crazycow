@@ -18,20 +18,20 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
     DrawTexture(textures.background, *BGX + 1920, 0, WHITE);
     DrawTexture(textures.busIcon, *BusX, *BusY, WHITE);
 
-    *BGX -= 5;
+    *BGX -= 3;
     if (*BGX <= -1920)
     {
         *BGX = 0;
     }
 
-    *BusX += 8;
+    *BusX += 3;
     if (*BusX >= 1920)
     {
-        *BusX = -600;
+        *BusX = -650;
     }
 
     counter++;
-    if (counter == 12)
+    if (counter == 35)
     {
         *BusY += 3;
         counter = 0;

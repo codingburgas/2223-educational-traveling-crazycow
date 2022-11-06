@@ -37,8 +37,6 @@ int main()
         DrawFPS(10, 960);
 
         EndDrawing();
-
-        system("CLS");
     }
     UnloadAllTextures(textures);
     UnloadFont(font);
