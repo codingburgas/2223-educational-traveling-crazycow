@@ -12,12 +12,15 @@ void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryLis
 
     if (*openMap)
     {
-        OpenTheMap(mapLocation, countryHover, countryList, textures);
+        OpenTheMap(mapLocation, countryHover, countryList, areSettingsOpen, textures);
         OpenCountries(countryNumber, countryHover, mapLocation, countryList, areSettingsOpen, textures, font);
     }
+
+    DrawTextEx(font, TextFormat("%02i", *money), VecPos(1830, 55), 32, 4, GRAY);
+    DrawTexture(textures.wheatIcon, 1920 - 36, 55, WHITE);
 }
 
-void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, AllTextures textures)
+void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* areSettingsOpen, AllTextures textures)
 {
     switch (*countryHover)
     {
@@ -62,12 +65,15 @@ void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, AllTextu
     }
 
     DrawTexture(textures.rightArrow, 0, 60, WHITE);
-    if (IsMouseInRange(0, 50, 60, 60 + 50))
+    if (!*areSettingsOpen)
     {
-        DrawTexture(textures.rightArrow, 0, 60, RAYWHITE);
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        if (IsMouseInRange(0, 50, 60, 60 + 50))
         {
-            *countryList = true;
+            DrawTexture(textures.rightArrow, 0, 60, RAYWHITE);
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+            {
+                *countryList = true;
+            }
         }
     }
 }

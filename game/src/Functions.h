@@ -46,6 +46,9 @@ struct AllTextures {
     Texture2D leftArrow = LoadTexture("../src/assets/LeftArrow.png");
     Texture2D rightArrow = LoadTexture("../src/assets/RightArrow.png");
     Texture2D woodBox = LoadTexture("../src/assets/WoodBox.png");
+    Texture2D quizBox = LoadTexture("../src/assets/QuizBox.png");
+    Texture2D answerBlock = LoadTexture("../src/assets/AnswerBlock.png");
+    Texture2D wheatIcon = LoadTexture("../src/assets/WheatIcon.png");
 
     Texture2D europeMap = LoadTexture("../src/assets/Maps/EuropeMap.png");
     Texture2D europeBulgaria = LoadTexture("../src/assets/Maps/EuropeBulgaria.png");
@@ -59,14 +62,7 @@ struct AllTextures {
     Texture2D europeNorway = LoadTexture("../src/assets/Maps/EuropeNorway.png");
 };
 
-void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-                  bool* isQuizOpened, int* randomQuestion, bool* isAnswered, AllTextures textures, Font font);
-
-void CloseSetting(bool* areSettingsOpen, AllTextures textures);
-
-void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
-                bool* isAnswered, AllTextures textures, Font font);
-
+// Main Functions ----------------------------------------------------------------------------------------------------------------------
 void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* BusY,
     int* BGX, int* countryNumber, AllTextures textures, Font font);
 
@@ -78,40 +74,96 @@ void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryLis
           bool* isAnswered, AllTextures textures,Font font);
 
 
+// Settings Functions ------------------------------------------------------------------------------------------------------------------
+
+void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
+    bool* isQuizOpened, int* randomQuestion, bool* isAnswered, AllTextures textures, Font font);
+
+void CloseSetting(bool* areSettingsOpen, AllTextures textures);
+
+void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
+    bool* isAnswered, AllTextures textures, Font font);
+
+void BackToMap(bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
+    bool* isAnswered, AllTextures textures, Font font);
 
 
-void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures textures, Font font);
-void CloseGame(bool* Close, AllTextures textures, Font font);
-
-bool IsMouseInRange(int x1, int x2, int y1, int y2);
-
-
-void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, AllTextures textures);
-
-void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, AllTextures textures, Font font);
-
-void UnloadAllTextures(AllTextures unloadTextures);
+// Menu Functions ---------------------------------------------------------------------------------------------------------------------
 
 void DrawMenuBackground(int* BusX, int* Bus, int* BGX, AllTextures textures);
 
+void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures textures, Font font);
+
+void CloseGame(bool* Close, AllTextures textures, Font font);
+
+// Game Functions -------------------------------------------------------------------------------------------------------------------
+
+// Functions according to the map - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 void MoveMap(int* mapLocation, AllTextures textures);
+
+void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* areSettingsOpen, AllTextures textures);
 
 void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, AllTextures textures, Font font);
 
 void DrawCountry(Font font, const char* name, float x, float y, float lengthX, float lengthY, int countryNum, int* countryNumber, int* countryHover,
-                 bool* areSettingsOpen);
+    bool* areSettingsOpen);
 
-void BackToMap(bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
-               bool* isAnswered, AllTextures textures, Font font);
+void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, AllTextures textures, Font font);
+
+
+// Functions according to the countries - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
 void OpenCountry(int* countryNumber, int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion,
-                 bool* isQuizOpened, bool* isAnswered, AllTextures textures, Font font);
+    bool* isQuizOpened, bool* isAnswered, AllTextures textures, Font font);
+
+void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int* money, int* trueQuestionCounter,
+    int* questionsNumberCounter, int* randomQuestion, bool* isAnswered, bool* isQuizOpened, AllTextures textures, Font font);
+
+void AnswerPosition(int tPos, const char* question, const char** answers, int* trueQuestionCounter, int* questionsNumberCounter,
+                    int* randomQuestion, bool* isAnswered, AllTextures textures, Font font);
+
+void Answer(int tPos, int tPosVal, int x1, int y1, int x2, int y2, const char** answers, int* trueQuestionCounter,
+    int* questionsNumberCounter, bool* isAnswered, AllTextures textures, Font font);
+
+
+
+// Other Functions ----------------------------------------------------------------------------------------------------------------
+
+bool IsMouseInRange(int x1, int x2, int y1, int y2);
+
+Vector2 VecPos(int x, int y);
+
+void UnloadAllTextures(AllTextures unloadTextures);
+
+
+
+// Country Questions Functions -----------------------------------------------------------------------------------------------------
 
 void OpenBulgaria(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
-                  bool* isAnswered, AllTextures textures, Font font);
+    bool* isAnswered, AllTextures textures, Font font);
 
-void AnswerPosition(int tPos, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isAnswered,
-                    AllTextures textures, Font font);
+void OpenSpain(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+    bool* isAnswered, AllTextures textures, Font font);
 
-void OpenQuiz(const char** questions, int* tPos, int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion,
-              bool* isAnswered, AllTextures textures, Font font);
+void OpenFrance(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+    bool* isAnswered, AllTextures textures, Font font);
+
+void OpenItaly(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+    bool* isAnswered, AllTextures textures, Font font);
+
+void OpenGermany(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+    bool* isAnswered, AllTextures textures, Font font);
+
+void OpenTurkey(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+    bool* isAnswered, AllTextures textures, Font font);
+
+void OpenGreece(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+    bool* isAnswered, AllTextures textures, Font font);
+
+void OpenEngland(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+    bool* isAnswered, AllTextures textures, Font font);
+
+void OpenNorway(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+    bool* isAnswered, AllTextures textures, Font font);

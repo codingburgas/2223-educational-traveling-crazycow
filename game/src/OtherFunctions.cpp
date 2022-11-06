@@ -12,6 +12,14 @@ bool IsMouseInRange(int x1, int x2, int y1, int y2)
     }
 }
 
+Vector2 VecPos(int x, int y)
+{
+    Vector2 pos;
+    pos.x = x;
+    pos.y = y;
+    return pos;
+}
+
 void UnloadAllTextures(AllTextures unloadTextures)
 {
     UnloadTexture(unloadTextures.busIcon);
@@ -24,6 +32,9 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.leftArrow);
     UnloadTexture(unloadTextures.rightArrow);
     UnloadTexture(unloadTextures.woodBox);
+    UnloadTexture(unloadTextures.quizBox);
+    UnloadTexture(unloadTextures.answerBlock);
+    UnloadTexture(unloadTextures.wheatIcon);
 
     UnloadTexture(unloadTextures.europeMap);
     UnloadTexture(unloadTextures.europeBulgaria);
