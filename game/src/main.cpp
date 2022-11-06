@@ -10,7 +10,8 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "GeoGame");
     SetExitKey(KEY_BACKSPACE);
-    SetTargetFPS(240);
+
+    SetTargetFPS(60);
 
     Font font = LoadFont("../src/assets/pixantiqua.png");
 
@@ -32,6 +33,8 @@ int main()
 
         Settings(&Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.ints.countryNumber, &Var.ints.questionsNumberCounter,
                  &Var.bools.isQuizOpened, &Var.ints.randomQuestion, &Var.bools.isAnswered, textures, font);
+
+        DrawFPS(10, 960);
 
         EndDrawing();
 

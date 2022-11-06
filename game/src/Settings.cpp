@@ -22,6 +22,7 @@ void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* c
         DrawTexture(textures.closeSettingsIcon, 450, 50, MAROON);
         BackToMenu(isMenuOpen, openMap, questionsNumberCounter, isQuizOpened, randomQuestion, isAnswered, textures, font);
         BackToMap(openMap, countryNumber, questionsNumberCounter, isQuizOpened, randomQuestion, isAnswered, textures, font);
+        SetFPS(textures, font);
         *areSettingsOpen = true;
     }
 }
@@ -35,6 +36,41 @@ void CloseSetting(bool* areSettingsOpen, AllTextures textures)
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             *areSettingsOpen = false;
+        }
+    }
+}
+
+void SetFPS(AllTextures textures, Font font)
+{
+    DrawTextEx(font, "FPS Limit:", VecPos(40, 80), 30, 4, BLACK);
+    DrawTextEx(font, "60", VecPos(210, 80), 30, 4, BLACK);
+    DrawTextEx(font, "144", VecPos(280, 80), 30, 4, BLACK);
+    DrawTextEx(font, "240", VecPos(360, 80), 30, 4, BLACK);
+
+    if (IsMouseInRange(210, 210 + 50, 80, 80 + 30))
+    {
+        DrawTextEx(font, "60", VecPos(211, 78), 30, 4, BLACK);
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            SetTargetFPS(60);
+        }
+    }
+
+    if (IsMouseInRange(280, 280 + 50, 80, 80 + 30))
+    {
+        DrawTextEx(font, "144", VecPos(281, 78), 30, 4, BLACK);
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            SetTargetFPS(144);
+        }
+    }
+
+    if (IsMouseInRange(360, 360 + 50, 80, 80 + 30))
+    {
+        DrawTextEx(font, "240", VecPos(361, 78), 30, 4, BLACK);
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            SetTargetFPS(240);
         }
     }
 }

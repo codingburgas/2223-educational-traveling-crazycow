@@ -87,6 +87,8 @@ void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bo
 void BackToMap(bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
     bool* isAnswered, AllTextures textures, Font font);
 
+void SetFPS(AllTextures textures, Font font);
+
 
 // Menu Functions ---------------------------------------------------------------------------------------------------------------------
 
