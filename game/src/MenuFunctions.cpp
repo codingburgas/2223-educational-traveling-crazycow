@@ -31,7 +31,7 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
     }
 
     counter++;
-    if (counter == 35)
+    if (counter == 40)
     {
         *BusY += 3;
         counter = 0;

@@ -84,7 +84,7 @@ void CloseSetting(bool* areSettingsOpen, AllTextures textures);
 void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
     bool* isAnswered, AllTextures textures, Font font);
 
-void BackToMap(bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
+void BackToMap(bool* isMenuOpen,bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
     bool* isAnswered, AllTextures textures, Font font);
 
 void SetFPS(AllTextures textures, Font font);

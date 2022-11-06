@@ -16,8 +16,9 @@ void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryLis
         OpenCountries(countryNumber, countryHover, mapLocation, countryList, areSettingsOpen, textures, font);
     }
 
-    DrawTextEx(font, TextFormat("%02i", *money), VecPos(1830, 55), 32, 4, GRAY);
-    DrawTexture(textures.wheatIcon, 1920 - 36, 55, WHITE);
+        DrawTextEx(font, TextFormat("%02i", *money), VecPos(1830, 55), 32, 4, GRAY);
+        DrawTexture(textures.wheatIcon, 1920 - 36, 55, WHITE);
+    
 }
 
 void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* areSettingsOpen, AllTextures textures)

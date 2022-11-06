@@ -21,7 +21,7 @@ void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* c
         DrawTexture(textures.settingsBox, 5, 50, WHITE);
         DrawTexture(textures.closeSettingsIcon, 450, 50, MAROON);
         BackToMenu(isMenuOpen, openMap, questionsNumberCounter, isQuizOpened, randomQuestion, isAnswered, textures, font);
-        BackToMap(openMap, countryNumber, questionsNumberCounter, isQuizOpened, randomQuestion, isAnswered, textures, font);
+        BackToMap(isMenuOpen, openMap, countryNumber, questionsNumberCounter, isQuizOpened, randomQuestion, isAnswered, textures, font);
         SetFPS(textures, font);
         *areSettingsOpen = true;
     }
@@ -99,7 +99,7 @@ void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bo
     }
 }
 
-void BackToMap(bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
+void BackToMap(bool* isMenuOpen,bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
                bool* isAnswered, AllTextures textures, Font font)
 {
     DrawTexture(textures.taskBox, 255, 440, WHITE);
@@ -117,6 +117,7 @@ void BackToMap(bool* openMap, int* countryNumber, int* questionsNumberCounter, b
             *randomQuestion = 0;
             *questionsNumberCounter = 0;
             *isQuizOpened = false;
+            *isMenuOpen = false;
             *openMap = true;
             *countryNumber = 0;
         }
