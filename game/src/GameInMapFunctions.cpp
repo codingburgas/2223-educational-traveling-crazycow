@@ -79,13 +79,13 @@ void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool
         MoveMap(mapLocation, textures);
 
         DrawTexture(textures.woodBox, 0, 0, WHITE);
-        DrawTexture(textures.leftArrow, 800, 0, WHITE);
+        DrawTexture(textures.leftArrow, 805, 0, WHITE);
 
         ChooseCountry(countryNumber, countryHover, areSettingsOpen, textures, font);
 
         if (IsMouseInRange(800, 800 + 50, 0, 50) && !*areSettingsOpen)
         {
-            DrawTexture(textures.leftArrow, 800, 0, RAYWHITE);
+            DrawTexture(textures.leftArrow, 805, 0, RAYWHITE);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 *mapLocation = 0;

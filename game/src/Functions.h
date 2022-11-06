@@ -26,7 +26,7 @@ struct Variables {
         int countryHover = 0;
         int mapLocation = 0;
         int BusX = 0;
-        int BusY = 600;
+        int BusY = 590;
         int BGX = 0;
         int money = 150;
         int trueQuestionCounter = 0;

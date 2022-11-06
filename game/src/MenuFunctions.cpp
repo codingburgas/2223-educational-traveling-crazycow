@@ -24,7 +24,7 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
         *BGX = 0;
     }
 
-    *BusX += 5;
+    *BusX += 8;
     if (*BusX >= 1920)
     {
         *BusX = -600;
@@ -36,9 +36,9 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
         *BusY += 3;
         counter = 0;
     }
-    if (*BusY == 606)
+    if (*BusY == 596)
     {
-        *BusY = 600;
+        *BusY = 590;
     }
 }
 
