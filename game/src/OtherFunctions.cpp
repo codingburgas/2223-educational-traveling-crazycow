@@ -22,7 +22,9 @@ Vector2 VecPos(int x, int y)
 
 void UnloadAllTextures(AllTextures unloadTextures)
 {
-    UnloadTexture(unloadTextures.busIcon);
+    UnloadTexture(unloadTextures.menuCaravanLeft);
+    UnloadTexture(unloadTextures.menuCaravanMiddle);
+    UnloadTexture(unloadTextures.menuCaravanRight);
     UnloadTexture(unloadTextures.closeSettingsIcon);
     UnloadTexture(unloadTextures.settingsBox);
     UnloadTexture(unloadTextures.settingsIcon);

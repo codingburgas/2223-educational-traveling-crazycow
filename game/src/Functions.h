@@ -40,7 +40,9 @@ struct AllTextures {
     Texture2D closeSettingsIcon = LoadTexture("../src/assets/CloseSettingsIcon.png");
     Texture2D taskBox = LoadTexture("../src/assets/TaskBox.png");
     Texture2D settingsIcon = LoadTexture("../src/assets/SettingIcon.png");
-    Texture2D busIcon = LoadTexture("../src/assets/BusIcon.png");
+    Texture2D menuCaravanLeft = LoadTexture("../src/assets/menuCaravan_one.png");
+    Texture2D menuCaravanMiddle = LoadTexture("../src/assets/menuCaravan_two.png");
+    Texture2D menuCaravanRight = LoadTexture("../src/assets/menuCaravan_three.png");
     Texture2D startBlock = LoadTexture("../src/assets/StartBlock.png");
     Texture2D background = LoadTexture("../src/assets/Background.png");
     Texture2D leftArrow = LoadTexture("../src/assets/LeftArrow.png");

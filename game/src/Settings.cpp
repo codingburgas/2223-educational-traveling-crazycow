@@ -61,7 +61,7 @@ void SetFPS(AllTextures textures, Font font)
         DrawTextEx(font, "60", VecPos(281, 78), 30, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
-            SetTargetFPS(144);
+            SetTargetFPS(60);
         }
     }
 

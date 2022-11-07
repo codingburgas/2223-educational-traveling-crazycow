@@ -1,5 +1,7 @@
 #include "Functions.h"
 
+
+
 void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* BusY,
     int* BGX, int* countryNumber, AllTextures textures, Font font)
 {
@@ -12,34 +14,73 @@ void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* B
 }
 
 int counter = 0;
+float frameTime = 0; 
+bool framePosition = false;
+
 void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
 {
     DrawTexture(textures.background, *BGX, 0, WHITE);
     DrawTexture(textures.background, *BGX + 1920, 0, WHITE);
-    DrawTexture(textures.busIcon, *BusX, *BusY, WHITE);
 
-    *BGX -= 3;
+    int currentFPS = GetFPS();
+    int updateVertical;
+    float updateFrameTime = frameTime * 300;
+
+    if (currentFPS > 60)
+    {
+        updateVertical = frameTime + 90;
+    }
+    else if (currentFPS <= 30)
+    {
+        updateVertical = frameTime + 20;
+    }
+    else
+    {
+        updateVertical = frameTime + 40;
+    }
+
+    counter++;
+    if (counter == updateVertical)
+    {
+        *BusY += 3;
+        counter = 0;
+    }
+    
+    if (*BusY == 596)
+    {
+        *BusY = 590;
+        framePosition =!framePosition;
+    }
+
+    if (*BusY > 590)
+    {
+        DrawTexture(textures.menuCaravanMiddle, *BusX, *BusY, WHITE);
+    }
+    else
+    {
+        if (!framePosition)
+        {
+            DrawTexture(textures.menuCaravanLeft, *BusX, *BusY, WHITE);
+        }
+        else
+        {
+            DrawTexture(textures.menuCaravanRight, *BusX, *BusY, WHITE);
+        }
+    }
+
+    *BGX -= updateFrameTime;
     if (*BGX <= -1920)
     {
         *BGX = 0;
     }
 
-    *BusX += 3;
+    *BusX += updateFrameTime;
     if (*BusX >= 1920)
     {
         *BusX = -650;
     }
 
-    counter++;
-    if (counter == 40)
-    {
-        *BusY += 3;
-        counter = 0;
-    }
-    if (*BusY == 596)
-    {
-        *BusY = 590;
-    }
+    frameTime = GetFrameTime();
 }
 
 void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures textures, Font font)
