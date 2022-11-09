@@ -14,7 +14,7 @@ bool IsMouseInRange(int x1, int x2, int y1, int y2)
 
 Vector2 VecPos(int x, int y)
 {
-    Vector2 pos;
+    Vector2 pos = {0,0};
     pos.x = x;
     pos.y = y;
     return pos;

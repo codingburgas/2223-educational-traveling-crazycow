@@ -63,6 +63,7 @@ void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* ar
         break;
     default:
         DrawTexture(textures.europeMap, *mapLocation, 0, WHITE);
+        break;
     }
 
     DrawTexture(textures.rightArrow, 0, 60, WHITE);
@@ -127,21 +128,21 @@ void MoveMap(int* mapLocation, AllTextures textures)
 
 void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, AllTextures textures, Font font)
 {
-    DrawCountry(font, "Bulgaria", 230, 36, 298, 86, 1, countryNumber, countryHover, areSettingsOpen);
-    DrawCountry(font, "Spain", 276, 136, 200, 86, 2, countryNumber, countryHover, areSettingsOpen);
-    DrawCountry(font, "France", 256, 236, 246, 76, 3, countryNumber, countryHover, areSettingsOpen);
-    DrawCountry(font, "Italy", 286, 336, 200, 76, 4, countryNumber, countryHover, areSettingsOpen);
-    DrawCountry(font, "Germany", 220, 436, 320, 86, 5, countryNumber, countryHover, areSettingsOpen);
-    DrawCountry(font, "Turkey", 250, 536, 266, 86, 6, countryNumber, countryHover, areSettingsOpen);
-    DrawCountry(font, "Greece", 250, 630, 264, 76, 7, countryNumber, countryHover, areSettingsOpen);
-    DrawCountry(font, "England", 234, 732, 286, 86, 8, countryNumber, countryHover, areSettingsOpen);
-    DrawCountry(font, "Norway", 236, 826, 290, 86, 9, countryNumber, countryHover, areSettingsOpen);
+    DrawCountry(font, "Bulgaria", 249, 36, 298, 86, 1, countryNumber, countryHover, areSettingsOpen);
+    DrawCountry(font, "Spain", 295, 136, 200, 86, 2, countryNumber, countryHover, areSettingsOpen);
+    DrawCountry(font, "France", 275, 236, 246, 76, 3, countryNumber, countryHover, areSettingsOpen);
+    DrawCountry(font, "Italy", 305, 336, 175, 76, 4, countryNumber, countryHover, areSettingsOpen);
+    DrawCountry(font, "Germany", 239, 436, 320, 86, 5, countryNumber, countryHover, areSettingsOpen);
+    DrawCountry(font, "Turkey", 269, 536, 263, 83, 6, countryNumber, countryHover, areSettingsOpen);
+    DrawCountry(font, "Greece", 269, 630, 256, 70, 7, countryNumber, countryHover, areSettingsOpen);
+    DrawCountry(font, "United Kingdom", 110, 732, 570, 83, 8, countryNumber, countryHover, areSettingsOpen);
+    DrawCountry(font, "Norway", 255, 826, 279, 79, 9, countryNumber, countryHover, areSettingsOpen);
 }
 
 void DrawCountry(Font font, const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, int* countryNumber, int* countryHover,
                  bool* areSettingsOpen)
 {
-    Vector2 pos;
+    Vector2 pos = {0,0};
     pos.x = x;
     pos.y = y;
     DrawTextEx(font, name, pos, 80, 6, BLACK);

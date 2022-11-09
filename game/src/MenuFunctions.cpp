@@ -24,19 +24,19 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
 
     int currentFPS = GetFPS();
     int updateVertical;
-    float updateFrameTime = frameTime * 300;
+    int updateFrameTime = abs(frameTime * 300);
 
     if (currentFPS > 60)
     {
-        updateVertical = frameTime + 90;
+        updateVertical = abs(frameTime + 90);
     }
     else if (currentFPS <= 30)
     {
-        updateVertical = frameTime + 20;
+        updateVertical = abs(frameTime + 20);
     }
     else
     {
-        updateVertical = frameTime + 40;
+        updateVertical = abs(frameTime + 40);
     }
 
     counter++;
@@ -86,9 +86,7 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
 void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 676, 280, WHITE);
-    Vector2 pos;
-    pos.x = 814;
-    pos.y = 316;
+    Vector2 pos = {814,316};
     DrawTextEx(font, "Start", pos, 96, 4, BLACK);
     if (IsMouseInRange(676, 676 + 480, 280, 280 + 149))
     {
@@ -107,9 +105,7 @@ void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures 
 void CloseGame(bool* isGameClosed, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 676, 500, WHITE);
-    Vector2 pos;
-    pos.x = 844;
-    pos.y = 536;
+    Vector2 pos = {844,536};
     DrawTextEx(font, "Exit", pos, 96, 4, BLACK);
     if (IsMouseInRange(676, 676 + 480, 500, 500 + 149))
     {

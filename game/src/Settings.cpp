@@ -42,32 +42,32 @@ void CloseSetting(bool* areSettingsOpen, AllTextures textures)
 
 void SetFPS(AllTextures textures, Font font)
 {
-    DrawTextEx(font, "FPS Limit:", VecPos(40, 80), 30, 4, BLACK);
-    DrawTextEx(font, "30", VecPos(210, 80), 30, 4, BLACK);
-    DrawTextEx(font, "60", VecPos(280, 80), 30, 4, BLACK);
-    DrawTextEx(font, "144", VecPos(360, 80), 30, 4, BLACK);
+    DrawTextEx(font, "FPS Limit:", VecPos(60, 130), 30, 4, BLACK);
+    DrawTextEx(font, "30", VecPos(220, 127), 30, 4, BLACK);
+    DrawTextEx(font, "60", VecPos(290, 130), 30, 4, BLACK);
+    DrawTextEx(font, "144", VecPos(370, 130), 30, 4, BLACK);
 
-    if (IsMouseInRange(210, 210 + 50, 80, 80 + 30))
+    if (IsMouseInRange(220, 220 + 50, 125, 125 + 30))
     {
-        DrawTextEx(font, "30", VecPos(211, 78), 30, 4, BLACK);
+        DrawTextEx(font, "30", VecPos(221, 125), 30, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             SetTargetFPS(30);
         }
     }
 
-    if (IsMouseInRange(280, 280 + 50, 80, 80 + 30))
+    if (IsMouseInRange(290, 290 + 50, 128, 128 + 30))
     {
-        DrawTextEx(font, "60", VecPos(281, 78), 30, 4, BLACK);
+        DrawTextEx(font, "60", VecPos(291, 128), 30, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             SetTargetFPS(60);
         }
     }
 
-    if (IsMouseInRange(360, 360 + 50, 80, 80 + 30))
+    if (IsMouseInRange(370, 370 + 50, 128, 128 + 30))
     {
-        DrawTextEx(font, "144", VecPos(361, 78), 30, 4, BLACK);
+        DrawTextEx(font, "144", VecPos(371, 128), 30, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             SetTargetFPS(144);
@@ -79,9 +79,7 @@ void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bo
                 bool* isAnswered, AllTextures textures, Font font)
 {
     DrawTexture(textures.taskBox, 35, 440, WHITE);
-    Vector2 pos;
-    pos.x = 58;
-    pos.y = 468;
+    Vector2 pos = {58,468};
     DrawTextEx(font, "Back to Menu", pos, 25, 2, BLACK);
     if (IsMouseInRange(35, 35 + 210, 440, 440 + 80))
     {
@@ -103,9 +101,7 @@ void BackToMap(bool* isMenuOpen,bool* openMap, int* countryNumber, int* question
                bool* isAnswered, AllTextures textures, Font font)
 {
     DrawTexture(textures.taskBox, 255, 440, WHITE);
-    Vector2 pos;
-    pos.x = 287;
-    pos.y = 468;
+    Vector2 pos = {287,468};
     DrawTextEx(font, "Back to Map", pos, 25, 2, BLACK);
     if (IsMouseInRange(255, 255 + 210, 440, 440 + 80))
     {

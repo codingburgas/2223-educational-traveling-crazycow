@@ -66,17 +66,17 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 	{
 		DrawTextEx(font, "Result", VecPos(760, 230), 140, 10, BLACK);
 
-		DrawTextEx(font, TextFormat("You answered correctly    -    %02i/5", *trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
+		DrawTextEx(font, TextFormat("     You answered correctly   -   %2i/5", *trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
 
 		if (*trueQuestionCounter != 0)
 		{
-			DrawTextEx(font, TextFormat("From this Quiz you gain    -    %02i ", *trueQuestionCounter * 20), VecPos(540, 500), 40, 4, BLACK);
-			DrawTexture(textures.wheatIcon, 1240, 500, WHITE);
+			DrawTextEx(font, TextFormat("     From this Quiz you gain   -   %2i ", *trueQuestionCounter * 20), VecPos(540, 500), 40, 4, BLACK);
+			DrawTexture(textures.wheatIcon, 1300, 500, WHITE);
 		}
 		else
 		{
-			DrawTextEx(font, "From this Quiz you gain    -    0 ", VecPos(540, 500), 40, 4, BLACK);
-			DrawTexture(textures.wheatIcon, 1240, 500, WHITE);
+			DrawTextEx(font, "     From this Quiz you gain    -    0 ", VecPos(540, 500), 40, 4, BLACK);
+			DrawTexture(textures.wheatIcon, 1300, 500, WHITE);
 		}
 		
 
