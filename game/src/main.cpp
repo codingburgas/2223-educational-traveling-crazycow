@@ -6,7 +6,7 @@ const int screenHeight = 1000;
 
 int main()
 {
-    srand(time(0));
+    srand(time(NULL));
 
     InitWindow(screenWidth, screenHeight, "GeoGame");
     SetExitKey(KEY_BACKSPACE);

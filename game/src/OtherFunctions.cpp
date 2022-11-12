@@ -48,4 +48,7 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.europeGreece);
     UnloadTexture(unloadTextures.europeEngland);
     UnloadTexture(unloadTextures.europeNorway);
+    
+    UnloadTexture(unloadTextures.quizBackgroundBulgaria);
+    UnloadTexture(unloadTextures.quizBackgroundFrance);
 }

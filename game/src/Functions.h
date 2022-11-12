@@ -62,6 +62,9 @@ struct AllTextures {
     Texture2D europeGreece = LoadTexture("../src/assets/Maps/EuropeGreece.png");
     Texture2D europeEngland = LoadTexture("../src/assets/Maps/EuropeEngland.png");
     Texture2D europeNorway = LoadTexture("../src/assets/Maps/EuropeNorway.png");
+
+    Texture2D quizBackgroundBulgaria = LoadTexture("../src/assets/Bulgaria.png");
+    Texture2D quizBackgroundFrance = LoadTexture("../src/assets/France.png");
 };
 
 // Main Functions ----------------------------------------------------------------------------------------------------------------------

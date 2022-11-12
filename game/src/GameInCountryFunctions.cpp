@@ -8,12 +8,14 @@ void OpenCountry(int* countryNumber, int* money, int* trueQuestionCounter, int* 
 	switch (*countryNumber)
 	{
 	case 1:
+		DrawTexture(textures.quizBackgroundBulgaria, 0, 0, WHITE);
 		OpenBulgaria(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
 		break;
 	case 2:
 		OpenSpain(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
 		break;
 	case 3:
+		DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
 		OpenFrance(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
 		break;
 	case 4:

@@ -24,23 +24,23 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
 
     int currentFPS = GetFPS();
     int updateVertical;
-    int updateFrameTime = abs(frameTime * 300);
+    int updateFrameTime = frameTime * 300;
 
     if (currentFPS > 60)
     {
-        updateVertical = abs(frameTime + 90);
+        updateVertical = frameTime + 90;
     }
     else if (currentFPS <= 30)
     {
-        updateVertical = abs(frameTime + 20);
+        updateVertical = frameTime + 20;
     }
     else
     {
-        updateVertical = abs(frameTime + 40);
+        updateVertical = frameTime + 40;
     }
 
     counter++;
-    if (counter == updateVertical)
+    if (counter >= updateVertical)
     {
         *BusY += 3;
         counter = 0;
