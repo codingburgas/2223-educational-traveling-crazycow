@@ -103,15 +103,34 @@ void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool
     }
 }
 
+float mapFrameTime = 0;
+
 void MoveMap(int* mapLocation, AllTextures textures)
 {
+    int currentFPS = GetFPS();
+    int mapMove = 0;
+    int updatemapFrameTime = mapFrameTime * 200;
+
+    if (currentFPS > 60)
+    {
+        mapMove = mapFrameTime + 3;
+    }
+    else if (currentFPS <= 30)
+    {
+        mapMove = mapFrameTime + 16;
+    }
+    else
+    {
+        mapMove = mapFrameTime + 8;
+    }
+
     DrawTexture(textures.rightArrow, 1920 - 50, 0, WHITE);
     if (IsMouseInRange(1920 - 50, 1920, 0, 50) || IsKeyDown(KEY_RIGHT))
     {
         DrawTexture(textures.rightArrow, 1920 - 50, 0, RAYWHITE);
-        if (*mapLocation >= 10 && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_RIGHT)))
+        if (*mapLocation >= mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_RIGHT)))
         {
-            *mapLocation -= 10;
+            *mapLocation -= mapMove;
         }
     }
 
@@ -119,11 +138,13 @@ void MoveMap(int* mapLocation, AllTextures textures)
     if (IsMouseInRange(1920 - 100, 1920 - 50, 0, 50) || IsKeyDown(KEY_LEFT))
     {
         DrawTexture(textures.leftArrow, 1920 - 100, 0, RAYWHITE);
-        if (*mapLocation <= 800 - 10 && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_LEFT)))
+        if (*mapLocation <= 800 - mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_LEFT)))
         {
-            *mapLocation += 10;
+            *mapLocation += mapMove;
         }
     }
+
+    mapFrameTime = GetFrameTime();
 }
 
 void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, AllTextures textures, Font font)
