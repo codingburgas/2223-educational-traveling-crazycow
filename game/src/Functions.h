@@ -19,6 +19,7 @@ struct Variables {
         bool countryList = false;
         bool isQuizOpened = false;
         bool isAnswered = true;
+        bool isEscapeReleased = false;
     }bools;
 
     struct LockedCountriesBooleans {
@@ -99,7 +100,7 @@ void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* B
     int* BGX, int* countryNumber, AllTextures textures, Font font);
 
 void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-              bool* isQuizOpened, int* randomQuestion, bool* isAnswered, AllTextures textures, Font font);
+              bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, AllTextures textures, Font font);
 
 void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryList, int* mapLocation, bool* areSettingsOpen,
           int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isMenuOpen, bool* isQuizOpened,
@@ -109,9 +110,9 @@ void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryLis
 // Settings Functions ------------------------------------------------------------------------------------------------------------------
 
 void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-    bool* isQuizOpened, int* randomQuestion, bool* isAnswered, AllTextures textures, Font font);
+    bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, AllTextures textures, Font font);
 
-void CloseSetting(bool* areSettingsOpen, AllTextures textures);
+void CloseSetting(bool* areSettingsOpen, bool* isEscapeReleased, AllTextures textures);
 
 void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
     bool* isAnswered, AllTextures textures, Font font);

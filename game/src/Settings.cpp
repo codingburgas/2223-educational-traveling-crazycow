@@ -1,7 +1,7 @@
 #include "Functions.h"
 
 void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-              bool* isQuizOpened, int* randomQuestion, bool* isAnswered, AllTextures textures, Font font)
+              bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, AllTextures textures, Font font)
 {
     DrawTexture(textures.settingsIcon, 5, 5, WHITE);
     if (IsMouseInRange(5, 45, 5, 45))
@@ -9,12 +9,12 @@ void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* count
         DrawTexture(textures.settingsIcon, 5, 5, GRAY);
     }
     OpenSettings(areSettingsOpen, isMenuOpen, openMap, countryNumber, questionsNumberCounter, isQuizOpened, randomQuestion, isAnswered,
-                textures, font);
-    CloseSetting(areSettingsOpen, textures);
+                 isEscapeReleased, textures, font);
+    CloseSetting(areSettingsOpen, isEscapeReleased, textures);
 }
 
 void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-                  bool* isQuizOpened, int* randomQuestion, bool* isAnswered, AllTextures textures, Font font)
+                  bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, AllTextures textures, Font font)
 {
     if (*areSettingsOpen || (IsMouseInRange(0, 40, 0, 40) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) || IsKeyPressed(KEY_ESCAPE))
     {
@@ -27,15 +27,30 @@ void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* c
     }
 }
 
-void CloseSetting(bool* areSettingsOpen, AllTextures textures)
+void CloseSetting(bool* areSettingsOpen, bool* isEscapeReleased, AllTextures textures)
 {
-    if (*areSettingsOpen && IsMouseInRange(450, 500, 50, 100))
+    if (*areSettingsOpen)
     {
-        DrawTexture(textures.closeSettingsIcon, 450, 50, RED);
-
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        if (IsKeyPressed(KEY_ESCAPE) && *isEscapeReleased)
         {
             *areSettingsOpen = false;
+            *isEscapeReleased = false;
+        }
+
+        if (IsKeyUp(KEY_ESCAPE))
+        {
+            *isEscapeReleased = true;
+        }
+
+        if (IsMouseInRange(450, 500, 50, 100))
+        {
+            DrawTexture(textures.closeSettingsIcon, 450, 50, RED);
+
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+            {
+                *areSettingsOpen = false;
+                *isEscapeReleased = false;
+            }
         }
     }
 }
