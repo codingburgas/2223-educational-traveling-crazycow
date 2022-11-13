@@ -3,6 +3,8 @@
 void OpenBulgaria(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
 	bool* isAnswered, AllTextures textures, Font font)
 {
+	DrawTexture(textures.quizBackgroundBulgaria, 0, 0, WHITE);
+
 	const char* questions[10] = {
 			"    The northernmost city of \n           Bulgaria is:",
 			" The Maritsa River flows from:",
@@ -73,6 +75,8 @@ void OpenSpain(int* money, int* trueQuestionCounter, int* questionsNumberCounter
 void OpenFrance(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
 	bool* isAnswered, AllTextures textures, Font font)
 {
+	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
+
 	const char* questions[10] = {
 				"1",
 				"2",

@@ -29,7 +29,7 @@ int main()
 
         Game(&Var.bools.openMap, &Var.ints.countryNumber, &Var.ints.countryHover, &Var.bools.countryList, &Var.ints.mapLocation,
              &Var.bools.areSettingsOpen, &Var.ints.money, &Var.ints.trueQuestionCounter, &Var.ints.questionsNumberCounter,
-             &Var.ints.randomQuestion, &Var.bools.isMenuOpen, &Var.bools.isQuizOpened, &Var.bools.isAnswered, textures, font);
+             &Var.ints.randomQuestion, &Var.bools.isMenuOpen, &Var.bools.isQuizOpened, &Var.bools.isAnswered, textures, font, &Var.countryBools);
 
         Settings(&Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.ints.countryNumber, &Var.ints.questionsNumberCounter,
                  &Var.bools.isQuizOpened, &Var.ints.randomQuestion, &Var.bools.isAnswered, textures, font);

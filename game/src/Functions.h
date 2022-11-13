@@ -21,6 +21,18 @@ struct Variables {
         bool isAnswered = true;
     }bools;
 
+    struct LockedCountriesBooleans {
+        bool isBulgariaOpen = true;
+        bool isSpainOpen = false;
+        bool isFranceOpen = false;
+        bool isItalyOpen = false;
+        bool isGermanyOpen = false;
+        bool isGreeceOpen = false;
+        bool isTurkeyOpen = false;
+        bool isUnitedKingdomOpen = false;
+        bool isNorwayOpen = false;
+    }countryBools;
+
     struct Integers {
         int countryNumber = 0;
         int countryHover = 0;
@@ -91,7 +103,7 @@ void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* count
 
 void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryList, int* mapLocation, bool* areSettingsOpen,
           int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isMenuOpen, bool* isQuizOpened,
-          bool* isAnswered, AllTextures textures,Font font);
+          bool* isAnswered, AllTextures textures, Font font, Variables :: LockedCountriesBooleans *lockedCountries);
 
 
 // Settings Functions ------------------------------------------------------------------------------------------------------------------
@@ -104,7 +116,7 @@ void CloseSetting(bool* areSettingsOpen, AllTextures textures);
 void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
     bool* isAnswered, AllTextures textures, Font font);
 
-void BackToMap(bool* isMenuOpen,bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
+void BackToMap(bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
     bool* isAnswered, AllTextures textures, Font font);
 
 void SetFPS(AllTextures textures, Font font);
@@ -126,12 +138,14 @@ void MoveMap(int* mapLocation, AllTextures textures);
 
 void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* areSettingsOpen, AllTextures textures);
 
-void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, AllTextures textures, Font font);
+void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, AllTextures textures, Font font,
+                   Variables::LockedCountriesBooleans* lockedCountries);
 
 void DrawCountry(Font font, const char* name, float x, float y, float lengthX, float lengthY, int countryNum, int* countryNumber, int* countryHover,
-    bool* areSettingsOpen);
+    bool* areSettingsOpen, bool* lockedCountry);
 
-void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, AllTextures textures, Font font);
+void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, AllTextures textures, Font font,
+                   Variables::LockedCountriesBooleans* lockedCountries);
 
 
 // Functions according to the countries - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
