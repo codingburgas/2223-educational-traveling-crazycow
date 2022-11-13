@@ -13,7 +13,7 @@ int main()
 
     SetTargetFPS(60);
 
-    Font font = LoadFont("../src/assets/pixantiqua.png");
+    Font font = LoadFont("../src/assets/Others/pixantiqua.png");
 
     Variables Var;
     AllTextures textures;

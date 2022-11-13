@@ -22,21 +22,22 @@ Vector2 VecPos(int x, int y)
 
 void UnloadAllTextures(AllTextures unloadTextures)
 {
-    UnloadTexture(unloadTextures.menuCaravanLeft);
-    UnloadTexture(unloadTextures.menuCaravanMiddle);
-    UnloadTexture(unloadTextures.menuCaravanRight);
-    UnloadTexture(unloadTextures.closeSettingsIcon);
+    
+    // Unload Boxes
+
     UnloadTexture(unloadTextures.settingsBox);
-    UnloadTexture(unloadTextures.settingsIcon);
-    UnloadTexture(unloadTextures.startBlock);
-    UnloadTexture(unloadTextures.taskBox);
-    UnloadTexture(unloadTextures.background);
-    UnloadTexture(unloadTextures.leftArrow);
-    UnloadTexture(unloadTextures.rightArrow);
     UnloadTexture(unloadTextures.woodBox);
     UnloadTexture(unloadTextures.quizBox);
+    UnloadTexture(unloadTextures.taskBox);
+    
+    UnloadTexture(unloadTextures.startBlock);
     UnloadTexture(unloadTextures.answerBlock);
-    UnloadTexture(unloadTextures.wheatIcon);
+    
+    UnloadTexture(unloadTextures.leftArrow);
+    UnloadTexture(unloadTextures.rightArrow);
+    
+
+    // Unload Maps
 
     UnloadTexture(unloadTextures.europeMap);
     UnloadTexture(unloadTextures.europeBulgaria);
@@ -48,7 +49,21 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.europeGreece);
     UnloadTexture(unloadTextures.europeEngland);
     UnloadTexture(unloadTextures.europeNorway);
-    
+
+    // Unload Backgrounds
+
+    UnloadTexture(unloadTextures.background);
+
     UnloadTexture(unloadTextures.quizBackgroundBulgaria);
     UnloadTexture(unloadTextures.quizBackgroundFrance);
+
+    UnloadTexture(unloadTextures.menuCaravanLeft);
+    UnloadTexture(unloadTextures.menuCaravanMiddle);
+    UnloadTexture(unloadTextures.menuCaravanRight);
+
+    // Unload Others
+
+    UnloadTexture(unloadTextures.settingsIcon);
+    UnloadTexture(unloadTextures.closeSettingsIcon);
+    UnloadTexture(unloadTextures.wheatIcon);
 }
