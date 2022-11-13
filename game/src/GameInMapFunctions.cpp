@@ -201,10 +201,10 @@ void DrawCountry(Font font, const char* name, float x, float y, float lengthX, f
     }
     else
     {
-        DrawTexture(textures.chain, 20, y, WHITE);
+        DrawTexture(textures.chain, 5, y + 12, WHITE);
         if (IsMouseInRange(376, 376 + 70, y + 10, y + 90) && !*areSettingsOpen && !*isWarningOpen)
         {
-            DrawTexture(textures.chain, 20, y, LIGHTGRAY);
+            DrawTexture(textures.chain, 5, y + 12, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 *isWarningOpen = true;

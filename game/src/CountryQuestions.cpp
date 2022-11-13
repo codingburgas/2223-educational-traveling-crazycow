@@ -112,6 +112,8 @@ void OpenFrance(int* money, int* trueQuestionCounter, int* questionsNumberCounte
 void OpenItaly(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
 	bool* isAnswered, AllTextures textures, Font font)
 {
+	DrawTexture(textures.quizBackgroundItaly, 0, 0, WHITE);
+
 	const char* questions[10] = {
 				"1",
 				"2",

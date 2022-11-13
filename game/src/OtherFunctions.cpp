@@ -56,6 +56,7 @@ void UnloadAllTextures(AllTextures unloadTextures)
 
     UnloadTexture(unloadTextures.quizBackgroundBulgaria);
     UnloadTexture(unloadTextures.quizBackgroundFrance);
+    UnloadTexture(unloadTextures.quizBackgroundItaly);
 
     UnloadTexture(unloadTextures.menuCaravanLeft);
     UnloadTexture(unloadTextures.menuCaravanMiddle);
