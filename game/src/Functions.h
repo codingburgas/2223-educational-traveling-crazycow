@@ -10,8 +10,10 @@
 
 using namespace std;
 
-struct Variables {
-    struct Booleans {
+struct Variables 
+{
+    struct Booleans 
+    {
         bool areSettingsOpen = false;
         bool isGameClosed = false;
         bool isMenuOpen = true;
@@ -20,9 +22,11 @@ struct Variables {
         bool isQuizOpened = false;
         bool isAnswered = true;
         bool isEscapeReleased = false;
+        bool isWarningOpen = false;
     }bools;
 
-    struct LockedCountriesBooleans {
+    struct LockedCountriesBooleans 
+    {
         bool isBulgariaOpen = true;
         bool isSpainOpen = false;
         bool isFranceOpen = false;
@@ -34,21 +38,23 @@ struct Variables {
         bool isNorwayOpen = false;
     }countryBools;
 
-    struct Integers {
+    struct Integers 
+    {
         int countryNumber = 0;
         int countryHover = 0;
         int mapLocation = 0;
         int BusX = 0;
         int BusY = 590;
         int BGX = 0;
-        int money = 150;
+        int money = 1000;
         int trueQuestionCounter = 0;
         int questionsNumberCounter = 0;
         int randomQuestion = 0;
     }ints;
 };
 
-struct AllTextures {
+struct AllTextures 
+{
 
     // Boxes
 
@@ -93,6 +99,7 @@ struct AllTextures {
     Texture2D settingsIcon = LoadTexture("../src/assets/Others/SettingIcon.png");
     Texture2D closeSettingsIcon = LoadTexture("../src/assets/Others/CloseSettingsIcon.png");
     Texture2D wheatIcon = LoadTexture("../src/assets/Others/WheatIcon.png");
+    Texture2D chain = LoadTexture("../src/assets/Others/chain.png");
 };
 
 // Main Functions ----------------------------------------------------------------------------------------------------------------------
@@ -104,7 +111,7 @@ void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* count
 
 void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryList, int* mapLocation, bool* areSettingsOpen,
           int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isMenuOpen, bool* isQuizOpened,
-          bool* isAnswered, AllTextures textures, Font font, Variables :: LockedCountriesBooleans *lockedCountries);
+          bool* isAnswered, bool* isWarningOpen, AllTextures textures, Font font, Variables :: LockedCountriesBooleans *lockedCountries);
 
 
 // Settings Functions ------------------------------------------------------------------------------------------------------------------
@@ -139,14 +146,16 @@ void MoveMap(int* mapLocation, AllTextures textures);
 
 void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* areSettingsOpen, AllTextures textures);
 
-void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, AllTextures textures, Font font,
+void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, int* money, bool* isWarningOpen, AllTextures textures, Font font,
                    Variables::LockedCountriesBooleans* lockedCountries);
 
-void DrawCountry(Font font, const char* name, float x, float y, float lengthX, float lengthY, int countryNum, int* countryNumber, int* countryHover,
-    bool* areSettingsOpen, bool* lockedCountry);
+void DrawCountry(Font font, const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, int* countryNumber, int* countryHover,
+                 bool* areSettingsOpen, bool* lockedCountry, int* money, bool* isWarningOpen, AllTextures textures);
 
-void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, AllTextures textures, Font font,
-                   Variables::LockedCountriesBooleans* lockedCountries);
+void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, int* money,
+                   bool* isWarningOpen, AllTextures textures, Font font, Variables::LockedCountriesBooleans* lockedCountries);
+
+void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTextures textures, Font font);
 
 
 // Functions according to the countries - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

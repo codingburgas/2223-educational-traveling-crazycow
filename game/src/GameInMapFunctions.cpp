@@ -2,7 +2,7 @@
 
 void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryList, int* mapLocation, bool* areSettingsOpen,
           int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isMenuOpen, bool* isQuizOpened,
-          bool* isAnswered, AllTextures textures, Font font, Variables::LockedCountriesBooleans* lockedCountries)
+          bool* isAnswered, bool* isWarningOpen, AllTextures textures, Font font, Variables::LockedCountriesBooleans* lockedCountries)
 {
     if (*countryNumber != 0 && !*isMenuOpen)
     {
@@ -13,10 +13,10 @@ void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryLis
     if (*openMap)
     {
         OpenTheMap(mapLocation, countryHover, countryList, areSettingsOpen, textures);
-        OpenCountries(countryNumber, countryHover, mapLocation, countryList, areSettingsOpen, textures, font, lockedCountries);
+        OpenCountries(countryNumber, countryHover, mapLocation, countryList, areSettingsOpen, money, isWarningOpen, textures, font, lockedCountries);
     }
 
-        DrawTextEx(font, TextFormat("%02i", *money), VecPos(1830, 55), 32, 4, GRAY);
+        DrawTextEx(font, TextFormat("%2i", *money), VecPos(1830, 55), 32, 4, BLACK);
         DrawTexture(textures.wheatIcon, 1920 - 36, 55, WHITE);
     
 }
@@ -71,7 +71,7 @@ void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* ar
     {
         if (IsMouseInRange(0, 50, 60, 60 + 50))
         {
-            DrawTexture(textures.rightArrow, 0, 60, RAYWHITE);
+            DrawTexture(textures.rightArrow, 0, 60, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 *countryList = true;
@@ -80,8 +80,8 @@ void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* ar
     }
 }
 
-void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, AllTextures textures, Font font,
-                   Variables::LockedCountriesBooleans* lockedCountries)
+void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, int* money,
+                   bool* isWarningOpen, AllTextures textures, Font font, Variables::LockedCountriesBooleans* lockedCountries)
 {
     if (*countryList)
     {
@@ -90,11 +90,11 @@ void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool
         DrawTexture(textures.woodBox, 0, 0, WHITE);
         DrawTexture(textures.leftArrow, 805, 0, WHITE);
 
-        ChooseCountry(countryNumber, countryHover, areSettingsOpen, textures, font, lockedCountries);
+        ChooseCountry(countryNumber, countryHover, areSettingsOpen, money, isWarningOpen, textures, font, lockedCountries);
 
         if (IsMouseInRange(800, 800 + 50, 0, 50) && !*areSettingsOpen)
         {
-            DrawTexture(textures.leftArrow, 805, 0, RAYWHITE);
+            DrawTexture(textures.leftArrow, 805, 0, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 *mapLocation = 0;
@@ -128,7 +128,7 @@ void MoveMap(int* mapLocation, AllTextures textures)
     DrawTexture(textures.rightArrow, 1920 - 50, 0, WHITE);
     if (IsMouseInRange(1920 - 50, 1920, 0, 50) || IsKeyDown(KEY_RIGHT))
     {
-        DrawTexture(textures.rightArrow, 1920 - 50, 0, RAYWHITE);
+        DrawTexture(textures.rightArrow, 1920 - 50, 0, LIGHTGRAY);
         if (*mapLocation >= mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_RIGHT)))
         {
             *mapLocation -= mapMove;
@@ -138,7 +138,7 @@ void MoveMap(int* mapLocation, AllTextures textures)
     DrawTexture(textures.leftArrow, 1920 - 100, 0, WHITE);
     if (IsMouseInRange(1920 - 100, 1920 - 50, 0, 50) || IsKeyDown(KEY_LEFT))
     {
-        DrawTexture(textures.leftArrow, 1920 - 100, 0, RAYWHITE);
+        DrawTexture(textures.leftArrow, 1920 - 100, 0, LIGHTGRAY);
         if (*mapLocation <= 800 - mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_LEFT)))
         {
             *mapLocation += mapMove;
@@ -148,28 +148,48 @@ void MoveMap(int* mapLocation, AllTextures textures)
     mapFrameTime = GetFrameTime();
 }
 
-void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, AllTextures textures, Font font,
+void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, int* money, bool* isWarningOpen, AllTextures textures, Font font,
                    Variables::LockedCountriesBooleans* lockedCountries)
 {
-    DrawCountry(font, "Bulgaria", 249, 36, 298, 86, 1, countryNumber, countryHover, areSettingsOpen, &lockedCountries->isBulgariaOpen);
-    DrawCountry(font, "Spain", 295, 136, 200, 86, 2, countryNumber, countryHover, areSettingsOpen, &lockedCountries->isSpainOpen);
-    DrawCountry(font, "France", 275, 236, 246, 76, 3, countryNumber, countryHover, areSettingsOpen, &lockedCountries->isFranceOpen);
-    DrawCountry(font, "Italy", 305, 336, 175, 76, 4, countryNumber, countryHover, areSettingsOpen, &lockedCountries->isItalyOpen);
-    DrawCountry(font, "Germany", 239, 436, 320, 86, 5, countryNumber, countryHover, areSettingsOpen, &lockedCountries->isGermanyOpen);
-    DrawCountry(font, "Turkey", 269, 536, 263, 83, 6, countryNumber, countryHover, areSettingsOpen, &lockedCountries->isTurkeyOpen);
-    DrawCountry(font, "Greece", 269, 630, 256, 70, 7, countryNumber, countryHover, areSettingsOpen, &lockedCountries->isGreeceOpen);
-    DrawCountry(font, "United Kingdom", 110, 732, 570, 83, 8, countryNumber, countryHover, areSettingsOpen, &lockedCountries->isUnitedKingdomOpen);
-    DrawCountry(font, "Norway", 255, 826, 279, 79, 9, countryNumber, countryHover, areSettingsOpen, &lockedCountries->isNorwayOpen);
+    DrawCountry(font, "Bulgaria", 249, 36, 298, 86, 1, countryNumber, countryHover, areSettingsOpen,
+                &lockedCountries->isBulgariaOpen, money, isWarningOpen, textures);
+
+    DrawCountry(font, "Spain", 295, 136, 200, 86, 2, countryNumber, countryHover, areSettingsOpen,
+                &lockedCountries->isSpainOpen, money, isWarningOpen, textures);
+
+    DrawCountry(font, "France", 275, 236, 246, 76, 3, countryNumber, countryHover, areSettingsOpen,
+                &lockedCountries->isFranceOpen, money, isWarningOpen, textures);
+
+    DrawCountry(font, "Italy", 305, 336, 175, 76, 4, countryNumber, countryHover, areSettingsOpen,
+                &lockedCountries->isItalyOpen, money, isWarningOpen, textures);
+
+    DrawCountry(font, "Germany", 239, 436, 320, 86, 5, countryNumber, countryHover, areSettingsOpen,
+                &lockedCountries->isGermanyOpen, money, isWarningOpen, textures);
+
+    DrawCountry(font, "Turkey", 269, 536, 263, 83, 6, countryNumber, countryHover, areSettingsOpen,
+                &lockedCountries->isTurkeyOpen, money, isWarningOpen, textures);
+
+    DrawCountry(font, "Greece", 269, 630, 256, 70, 7, countryNumber, countryHover, areSettingsOpen,
+                &lockedCountries->isGreeceOpen, money, isWarningOpen, textures);
+
+    DrawCountry(font, "United Kingdom", 110, 732, 570, 83, 8, countryNumber, countryHover, areSettingsOpen,
+                &lockedCountries->isUnitedKingdomOpen, money, isWarningOpen, textures);
+
+    DrawCountry(font, "Norway", 255, 826, 279, 79, 9, countryNumber, countryHover, areSettingsOpen,
+                &lockedCountries->isNorwayOpen, money, isWarningOpen, textures);
 }
 
+bool notEnoughMoney = false;
+bool* saveLockedCountry;
+
 void DrawCountry(Font font, const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, int* countryNumber, int* countryHover,
-                 bool* areSettingsOpen, bool* lockedCountry)
+                 bool* areSettingsOpen, bool* lockedCountry, int* money, bool* isWarningOpen, AllTextures textures)
 {
     DrawTextEx(font, name, VecPos(x, y), 80, 6, BLACK);
 
     if (*lockedCountry)
     {
-        if (IsMouseInRange(x, x + lengthX, y, y + lenghtY) && !*areSettingsOpen)
+        if (IsMouseInRange(x, x + lengthX, y, y + lenghtY) && !*areSettingsOpen && !*isWarningOpen)
         {
             *countryHover = countryNum;
             DrawTextEx(font, name, VecPos(x + 2, y - 4), 80, 6, BLACK);
@@ -181,13 +201,81 @@ void DrawCountry(Font font, const char* name, float x, float y, float lengthX, f
     }
     else
     {
-        DrawRectangle(x, y, 80, 80, WHITE);
-        if (IsMouseInRange(x, x + 80, y, y + 80))
+        DrawTexture(textures.chain, 20, y, WHITE);
+        if (IsMouseInRange(376, 376 + 70, y + 10, y + 90) && !*areSettingsOpen && !*isWarningOpen)
         {
-            DrawRectangle(x, y, 80, 80, GRAY);
+            DrawTexture(textures.chain, 20, y, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
-                *lockedCountry = true;
+                *isWarningOpen = true;
+                saveLockedCountry = lockedCountry;
+                notEnoughMoney = false;
+            }
+        }
+
+        if (*isWarningOpen)
+        {
+            OpenWarning(saveLockedCountry, isWarningOpen, money, textures, font);
+        }
+    }
+}
+
+void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTextures textures, Font font)
+{
+    if (!notEnoughMoney)
+    {
+        DrawTexture(textures.quizBox, 0, 0, WHITE);
+        DrawTextEx(font, "Are you sure?", VecPos(560, 340), 120, 8, BLACK);
+
+        DrawTexture(textures.answerBlock, 540, 520, WHITE);
+        DrawTextEx(font, "Yes", VecPos(540 + 120, 520 + 50), 34, 4, BLACK);
+
+        DrawTexture(textures.answerBlock, 540 + 500, 520, WHITE);
+        DrawTextEx(font, "No", VecPos(540 + 500 + 134, 520 + 50), 34, 4, BLACK);
+
+        if (IsMouseInRange(540, 540 + 300, 520, 520 + 120))
+        {
+            DrawTextEx(font, "Yes", VecPos(540 + 122, 520 + 48), 34, 4, BLACK);
+
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+            {
+                if (*money >= 200)
+                {
+                    *saveLockedCountry = true;
+                    *money -= 200;
+                    *isWarningOpen = false;
+                }
+                else
+                {
+                    notEnoughMoney = true;
+                }
+            }
+        }
+
+        if (IsMouseInRange(540 + 500, 540 + 500 + 300, 520, 520 + 120))
+        {
+            DrawTextEx(font, "No", VecPos(540 + 500 + 136, 520 + 48), 34, 4, BLACK);
+
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+            {
+                *isWarningOpen = false;
+            }
+        }
+    }
+    else
+    {
+        DrawTexture(textures.quizBox, 0, 0, WHITE);
+        DrawTextEx(font, "Not enough", VecPos(680, 300), 100, 8, BLACK);
+        DrawTextEx(font, "money!", VecPos(790, 400), 100, 8, BLACK);
+
+        DrawTexture(textures.answerBlock, 800, 560, WHITE);
+        DrawTextEx(font, "Ok", VecPos(800 + 100, 560 + 30), 60, 6, BLACK);
+        if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
+        {
+            DrawTextEx(font, "Ok", VecPos(800 + 102, 560 + 26), 60, 6, BLACK);
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+            {
+                *isWarningOpen = false;
             }
         }
     }
