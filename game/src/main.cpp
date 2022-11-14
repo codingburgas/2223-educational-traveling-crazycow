@@ -9,6 +9,7 @@ int main()
     srand(time(NULL));
 
     InitWindow(screenWidth, screenHeight, "GeoGame");
+    InitAudioDevice();
     SetExitKey(KEY_BACKSPACE);
 
     SetTargetFPS(60);
@@ -18,22 +19,27 @@ int main()
     Variables Var;
     AllTextures textures;
 
+    PlayMusicStream(textures.menuMusic);
+    SetMusicVolume(textures.menuMusic, Var.nums.musicVolume);
+    SetSoundVolume(textures.clickSound, Var.nums.soundVolume);
+
     while (!WindowShouldClose() && !Var.bools.isGameClosed)
     {
         BeginDrawing();
 
         ClearBackground(WHITE);
 
-        Menu(&Var.bools.isGameClosed, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.ints.BusX, &Var.ints.BusY, &Var.ints.BGX,
-             &Var.ints.countryNumber, textures, font);
+        Menu(&Var.bools.isGameClosed, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.nums.BusX, &Var.nums.BusY, &Var.nums.BGX,
+             &Var.nums.countryNumber, textures, font);
 
-        Game(&Var.bools.openMap, &Var.ints.countryNumber, &Var.ints.countryHover, &Var.bools.countryList, &Var.ints.mapLocation,
-             &Var.bools.areSettingsOpen, &Var.ints.money, &Var.ints.trueQuestionCounter, &Var.ints.questionsNumberCounter,
-             &Var.ints.randomQuestion, &Var.bools.isMenuOpen, &Var.bools.isQuizOpened, &Var.bools.isAnswered, &Var.bools.isWarningOpen,
+        Game(&Var.bools.openMap, &Var.nums.countryNumber, &Var.nums.countryHover, &Var.bools.countryList, &Var.nums.mapLocation,
+             &Var.bools.areSettingsOpen, &Var.nums.money, &Var.nums.trueQuestionCounter, &Var.nums.questionsNumberCounter,
+             &Var.nums.randomQuestion, &Var.bools.isMenuOpen, &Var.bools.isQuizOpened, &Var.bools.isAnswered, &Var.bools.isWarningOpen,
              textures, font, &Var.countryBools);
 
-        Settings(&Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.ints.countryNumber, &Var.ints.questionsNumberCounter,
-                 &Var.bools.isQuizOpened, &Var.ints.randomQuestion, &Var.bools.isAnswered, &Var.bools.isEscapeReleased, textures, font);
+        Settings(&Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.nums.countryNumber, &Var.nums.questionsNumberCounter,
+                 &Var.bools.isQuizOpened, &Var.nums.randomQuestion, &Var.bools.isAnswered, &Var.bools.isEscapeReleased, &Var.nums.musicVolume,
+                 &Var.nums.soundVolume, textures, font);
 
         DrawFPS(10, 960);
 
@@ -42,5 +48,8 @@ int main()
     UnloadAllTextures(textures);
     UnloadFont(font);
 
+    StopMusicStream(textures.menuMusic);
+
+    CloseAudioDevice();
     CloseWindow();
 }

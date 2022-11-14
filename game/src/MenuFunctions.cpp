@@ -1,12 +1,12 @@
 #include "Functions.h"
 
-
-
 void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* BusY,
     int* BGX, int* countryNumber, AllTextures textures, Font font)
 {
     if (*isMenuOpen)
     {
+        UpdateMusicStream(textures.menuMusic);
+
         DrawMenuBackground(BusX, BusY, BGX, textures);
         StartGame(isMenuOpen, openMap, countryNumber, textures, font);
         CloseGame(isGameClosed, textures, font);
@@ -95,6 +95,7 @@ void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures 
         DrawTextEx(font, "Start", pos, 96, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
+            PlaySoundMulti(textures.clickSound);
             *countryNumber = 0;
             *isMenuOpen = false;
             *openMap = true;
@@ -114,6 +115,7 @@ void CloseGame(bool* isGameClosed, AllTextures textures, Font font)
         DrawTextEx(font, "Exit", pos, 96, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
+            PlaySoundMulti(textures.clickSound);
             *isGameClosed = true;
         }
     }

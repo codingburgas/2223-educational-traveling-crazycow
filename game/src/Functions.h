@@ -38,7 +38,7 @@ struct Variables
         bool isNorwayOpen = false;
     }countryBools;
 
-    struct Integers 
+    struct Numbers 
     {
         int countryNumber = 0;
         int countryHover = 0;
@@ -46,11 +46,14 @@ struct Variables
         int BusX = 0;
         int BusY = 590;
         int BGX = 0;
-        int money = 1000;
+        int money = 800;
         int trueQuestionCounter = 0;
         int questionsNumberCounter = 0;
         int randomQuestion = 0;
-    }ints;
+
+        float musicVolume = 0.1;
+        float soundVolume = 0.1;
+    }nums;
 };
 
 struct AllTextures 
@@ -101,6 +104,12 @@ struct AllTextures
     Texture2D closeSettingsIcon = LoadTexture("../src/assets/Others/CloseSettingsIcon.png");
     Texture2D wheatIcon = LoadTexture("../src/assets/Others/WheatIcon.png");
     Texture2D chain = LoadTexture("../src/assets/Others/chain.png");
+
+    // Sounds and Musics
+
+    Sound clickSound = LoadSound("../src/assets/Sounds/ClickSound.mp3");
+
+    Music menuMusic = LoadMusicStream("../src/assets/Sounds/menuMusic.mp3");
 };
 
 // Main Functions ----------------------------------------------------------------------------------------------------------------------
@@ -108,7 +117,8 @@ void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* B
     int* BGX, int* countryNumber, AllTextures textures, Font font);
 
 void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-              bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, AllTextures textures, Font font);
+              bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased,
+              float* musicVolume, float* soundVolume, AllTextures textures, Font font);
 
 void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryList, int* mapLocation, bool* areSettingsOpen,
           int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isMenuOpen, bool* isQuizOpened,
@@ -118,7 +128,8 @@ void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryLis
 // Settings Functions ------------------------------------------------------------------------------------------------------------------
 
 void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-    bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, AllTextures textures, Font font);
+                  bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, float* volume, float* soundVolume,
+                  AllTextures textures, Font font);
 
 void CloseSetting(bool* areSettingsOpen, bool* isEscapeReleased, AllTextures textures);
 
@@ -129,6 +140,10 @@ void BackToMap(bool* isMenuOpen, bool* openMap, int* countryNumber, int* questio
     bool* isAnswered, AllTextures textures, Font font);
 
 void SetFPS(AllTextures textures, Font font);
+
+void ChangeMusicVolume(float* musicVolume, AllTextures textures, Font font);
+
+void ChangeSoundVolume(float* soundVolume, AllTextures textures, Font font);
 
 
 // Menu Functions ---------------------------------------------------------------------------------------------------------------------

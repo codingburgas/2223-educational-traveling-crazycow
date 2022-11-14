@@ -16,7 +16,7 @@ void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryLis
         OpenCountries(countryNumber, countryHover, mapLocation, countryList, areSettingsOpen, money, isWarningOpen, textures, font, lockedCountries);
     }
 
-        DrawTextEx(font, TextFormat("%2i", *money), VecPos(1830, 55), 32, 4, BLACK);
+        DrawTextEx(font, TextFormat("%2i", *money), VecPos(1810, 55), 32, 4, BLACK);
         DrawTexture(textures.wheatIcon, 1920 - 36, 55, WHITE);
     
 }
@@ -74,6 +74,7 @@ void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* ar
             DrawTexture(textures.rightArrow, 0, 60, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
+                PlaySoundMulti(textures.clickSound);
                 *countryList = true;
             }
         }
@@ -97,6 +98,7 @@ void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool
             DrawTexture(textures.leftArrow, 805, 0, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
+                PlaySoundMulti(textures.clickSound);
                 *mapLocation = 0;
                 *countryList = false;
             }
@@ -131,6 +133,10 @@ void MoveMap(int* mapLocation, AllTextures textures)
         DrawTexture(textures.rightArrow, 1920 - 50, 0, LIGHTGRAY);
         if (*mapLocation >= mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_RIGHT)))
         {
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_RIGHT))
+            {
+                PlaySoundMulti(textures.clickSound);
+            }
             *mapLocation -= mapMove;
         }
     }
@@ -141,6 +147,10 @@ void MoveMap(int* mapLocation, AllTextures textures)
         DrawTexture(textures.leftArrow, 1920 - 100, 0, LIGHTGRAY);
         if (*mapLocation <= 800 - mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_LEFT)))
         {
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_LEFT))
+            {
+                PlaySoundMulti(textures.clickSound);
+            }
             *mapLocation += mapMove;
         }
     }
@@ -195,6 +205,7 @@ void DrawCountry(Font font, const char* name, float x, float y, float lengthX, f
             DrawTextEx(font, name, VecPos(x + 2, y - 4), 80, 6, BLACK);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
+                PlaySoundMulti(textures.clickSound);
                 *countryNumber = countryNum;
             }
         }
@@ -207,6 +218,7 @@ void DrawCountry(Font font, const char* name, float x, float y, float lengthX, f
             DrawTexture(textures.chain, 5, y + 12, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
+                PlaySoundMulti(textures.clickSound);
                 *isWarningOpen = true;
                 saveLockedCountry = lockedCountry;
                 notEnoughMoney = false;
@@ -241,12 +253,14 @@ void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTe
             {
                 if (*money >= 200)
                 {
+                    PlaySoundMulti(textures.clickSound);
                     *saveLockedCountry = true;
                     *money -= 200;
                     *isWarningOpen = false;
                 }
                 else
                 {
+                    PlaySoundMulti(textures.clickSound);
                     notEnoughMoney = true;
                 }
             }
@@ -258,6 +272,7 @@ void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTe
 
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
+                PlaySoundMulti(textures.clickSound);
                 *isWarningOpen = false;
             }
         }
@@ -275,6 +290,7 @@ void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTe
             DrawTextEx(font, "Ok", VecPos(800 + 102, 560 + 26), 60, 6, BLACK);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
+                PlaySoundMulti(textures.clickSound);
                 *isWarningOpen = false;
             }
         }

@@ -54,6 +54,7 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 			DrawTextEx(font, "Quiz", VecPos(664, 274), 300, 12, BLACK);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				*isQuizOpened = true;
 				*money -= 10;
 				*questionsNumberCounter = 0;
@@ -87,6 +88,7 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 			DrawTextEx(font, "Done", VecPos(800 + 72, 560 + 26), 60, 6, BLACK);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				*isQuizOpened = false;
 				*money += *trueQuestionCounter * 20;
 				*trueQuestionCounter = 0;
@@ -176,12 +178,14 @@ void Answer(int tPos, int tPosVal, int x1, int y1, int x2, int y2, const char** 
 		{
 			if (tPos == tPosVal)
 			{
+				PlaySoundMulti(textures.clickSound);
 				*questionsNumberCounter += 1;
 				*trueQuestionCounter += 1;
 				*isAnswered = true;
 			}
 			else
 			{
+				PlaySoundMulti(textures.clickSound);
 				*questionsNumberCounter += 1;
 				*isAnswered = true;
 			}
