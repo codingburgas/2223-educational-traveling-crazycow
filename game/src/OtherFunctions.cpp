@@ -22,7 +22,6 @@ Vector2 VecPos(int x, int y)
 
 void UnloadAllTextures(AllTextures unloadTextures)
 {
-    
     // Unload Boxes
 
     UnloadTexture(unloadTextures.settingsBox);
@@ -36,7 +35,6 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.leftArrow);
     UnloadTexture(unloadTextures.rightArrow);
     
-
     // Unload Maps
 
     UnloadTexture(unloadTextures.europeMap);

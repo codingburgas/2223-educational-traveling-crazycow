@@ -36,7 +36,7 @@ struct Variables
         bool isTurkeyOpen = false;
         bool isUnitedKingdomOpen = false;
         bool isNorwayOpen = false;
-    }countryBools;
+    }countryAccessibility;
 
     struct Numbers 
     {
@@ -51,14 +51,13 @@ struct Variables
         int questionsNumberCounter = 0;
         int randomQuestion = 0;
 
-        float musicVolume = 0.1;
-        float soundVolume = 0.1;
+        float musicVolume = 0.05;
+        float soundVolume = 0.15;
     }nums;
 };
 
 struct AllTextures 
 {
-
     // Boxes
 
     Texture2D settingsBox = LoadTexture("../src/assets/Boxes/SettingsBox.png");

@@ -1,7 +1,5 @@
 #include "Functions.h"
 
-vector<int> usedNums;
-
 void OpenCountry(int* countryNumber, int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion,
 				 bool* isQuizOpened, bool* isAnswered, AllTextures textures, Font font)
 {
@@ -42,7 +40,7 @@ void OpenCountry(int* countryNumber, int* money, int* trueQuestionCounter, int* 
 void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int* money, int* trueQuestionCounter,
 			  int* questionsNumberCounter, int* randomQuestion,bool* isAnswered, bool* isQuizOpened, AllTextures textures, Font font)
 {
-
+	static vector<int> usedNums;
 	DrawTexture(textures.quizBox, 0, 0, WHITE);
 	if (!*isQuizOpened)
 	{

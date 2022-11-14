@@ -103,20 +103,21 @@ void SetFPS(AllTextures textures, Font font)
     }
 }
 
-int showMusicVolume = 10;
 void ChangeMusicVolume(float* musicVolume, AllTextures textures, Font font)
 {
+    static int showMusicVolume = 5;
+
     SetMusicVolume(textures.menuMusic, *musicVolume);
 
-    DrawTextEx(font, "Music Volume:", VecPos(60, 180), 30, 4, BLACK);
+    DrawTextEx(font, "Music Volume:", VecPos(60, 230), 30, 4, BLACK);
 
-    DrawTexture(textures.leftArrow, 300, 170, WHITE);
-    DrawTextEx(font, TextFormat("%2i", showMusicVolume), VecPos(360, 180), 30, 4, BLACK);
-    DrawTexture(textures.rightArrow, 420, 170, WHITE);
+    DrawTexture(textures.leftArrow, 300, 220, WHITE);
+    DrawTextEx(font, TextFormat("%2i", showMusicVolume), VecPos(360, 230), 30, 4, BLACK);
+    DrawTexture(textures.rightArrow, 420, 220, WHITE);
 
-    if (IsMouseInRange(300, 300 + 50, 170, 170 + 50))
+    if (IsMouseInRange(300, 300 + 50, 220, 220 + 50))
     {
-        DrawTexture(textures.leftArrow, 300, 170, LIGHTGRAY);
+        DrawTexture(textures.leftArrow, 300, 220, LIGHTGRAY);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             if (*musicVolume >= 0.05)
@@ -134,9 +135,9 @@ void ChangeMusicVolume(float* musicVolume, AllTextures textures, Font font)
         }
     }
 
-    if (IsMouseInRange(420, 420 + 50, 170, 170 + 50))
+    if (IsMouseInRange(420, 420 + 50, 220, 220 + 50))
     {
-        DrawTexture(textures.rightArrow, 420, 170, LIGHTGRAY);
+        DrawTexture(textures.rightArrow, 420, 220, LIGHTGRAY);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && *musicVolume < 1.0)
         {
             PlaySoundMulti(textures.clickSound);
@@ -146,21 +147,21 @@ void ChangeMusicVolume(float* musicVolume, AllTextures textures, Font font)
     }
 }
 
-int showSoundVolume = 10;
-
 void ChangeSoundVolume(float* soundVolume, AllTextures textures, Font font)
 {
+    static int showSoundVolume = 15;
+
     SetSoundVolume(textures.clickSound, *soundVolume);
 
-    DrawTextEx(font, "Sound Volume:", VecPos(60, 280), 30, 4, BLACK);
+    DrawTextEx(font, "Sound Volume:", VecPos(60, 330), 30, 4, BLACK);
 
-    DrawTexture(textures.leftArrow, 300, 270, WHITE);
-    DrawTextEx(font, TextFormat("%2i", showSoundVolume), VecPos(360, 280), 30, 4, BLACK);
-    DrawTexture(textures.rightArrow, 420, 270, WHITE);
+    DrawTexture(textures.leftArrow, 300, 320, WHITE);
+    DrawTextEx(font, TextFormat("%2i", showSoundVolume), VecPos(360, 330), 30, 4, BLACK);
+    DrawTexture(textures.rightArrow, 420, 320, WHITE);
 
-    if (IsMouseInRange(300, 300 + 50, 270, 270 + 50))
+    if (IsMouseInRange(300, 300 + 50, 320, 320 + 50))
     {
-        DrawTexture(textures.leftArrow, 300, 270, LIGHTGRAY);
+        DrawTexture(textures.leftArrow, 300, 320, LIGHTGRAY);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             if (*soundVolume >= 0.05)
@@ -178,9 +179,9 @@ void ChangeSoundVolume(float* soundVolume, AllTextures textures, Font font)
         }
     }
 
-    if (IsMouseInRange(420, 420 + 50, 270, 270 + 50))
+    if (IsMouseInRange(420, 420 + 50, 320, 320 + 50))
     {
-        DrawTexture(textures.rightArrow, 420, 270, LIGHTGRAY);
+        DrawTexture(textures.rightArrow, 420, 320, LIGHTGRAY);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && *soundVolume < 1.0)
         {
             PlaySoundMulti(textures.clickSound);

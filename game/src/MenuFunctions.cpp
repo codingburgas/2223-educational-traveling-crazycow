@@ -13,18 +13,17 @@ void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* B
     }
 }
 
-int counter = 0;
-float frameTime = 0; 
-bool framePosition = false;
-
 void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
-{
-    DrawTexture(textures.background, *BGX, 0, WHITE);
-    DrawTexture(textures.background, *BGX + 1920, 0, WHITE);
-
+{   
     int currentFPS = GetFPS();
+    static int counter = 0;
+    static float frameTime = 0; 
+    static bool framePosition = false;
     int updateVertical;
     int updateFrameTime = frameTime * 200;
+
+    DrawTexture(textures.background, *BGX, 0, WHITE);
+    DrawTexture(textures.background, *BGX + 1920, 0, WHITE);
 
     if (currentFPS > 60)
     {

@@ -106,12 +106,11 @@ void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool
     }
 }
 
-float mapFrameTime = 0;
-
 void MoveMap(int* mapLocation, AllTextures textures)
 {
     int currentFPS = GetFPS();
     int mapMove = 0;
+    static float mapFrameTime = 0;
     int updatemapFrameTime = mapFrameTime * 200;
 
     if (currentFPS > 60)

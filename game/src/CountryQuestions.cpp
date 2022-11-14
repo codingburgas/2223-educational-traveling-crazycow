@@ -78,32 +78,14 @@ void OpenFrance(int* money, int* trueQuestionCounter, int* questionsNumberCounte
 	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
 
 	const char* questions[10] = {
-				"1",
-				"2",
-				"3",
-				"4",
-				"5",
-				"6",
-				"7",
-				"8",
-				"9",
-				"10"
+				
 	};
 
 	const char* answers[10][4] = {
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"}
+		
 	};
 
-	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	int answersPos[10] = { 4, 2, 3, 1, 4, 3, 4, 2, 1, 1 };
 
 	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
 		isQuizOpened, textures, font);
