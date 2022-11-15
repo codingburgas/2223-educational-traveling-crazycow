@@ -1,4 +1,6 @@
-#include "Functions.h"
+#include "Main.h"
+#include "GameInCountry.h"
+#include "OpenCountry.h"
 
 void OpenCountry(int* countryNumber, int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion,
 				 bool* isQuizOpened, bool* isAnswered, AllTextures textures, Font font)

@@ -1,4 +1,4 @@
-#include "Functions.h"
+#include "Main.h"
 
 void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* BusY,
     int* BGX, int* countryNumber, AllTextures textures, Font font)

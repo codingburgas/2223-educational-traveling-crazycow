@@ -1,4 +1,6 @@
-#include "Functions.h"
+#include "Main.h"
+#include "GameInMap.h"
+#include "GameInCountry.h"
 
 void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryList, int* mapLocation, bool* areSettingsOpen,
           int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isMenuOpen, bool* isQuizOpened,

@@ -143,7 +143,11 @@
     <ClCompile Include="Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Functions.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="GameInCountry.h" />
+    <ClInclude Include="GameInMap.h" />
+    <ClInclude Include="OpenCountry.h" />
+    <ClInclude Include="Settings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

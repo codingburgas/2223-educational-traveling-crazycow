@@ -1,4 +1,5 @@
-#include "Functions.h"
+#include "Main.h"
+#include "Settings.h"
 
 void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
               bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, float* musicVolume, float* soundVolume,
