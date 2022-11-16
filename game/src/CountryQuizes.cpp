@@ -57,6 +57,8 @@ void OpenBulgariaQuiz(int* money, int* trueQuestionCounter, int* questionsNumber
 void OpenSpainQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
 	bool* isAnswered, AllTextures textures, Font font)
 {
+	DrawTexture(textures.quizBackgroundSpain, 0, 0, WHITE);
+
 	const char* questions[10] = {
 				"1",
 				"2",

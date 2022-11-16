@@ -95,6 +95,7 @@ struct AllTextures
     Texture2D quizBackgroundBulgaria = LoadTexture("../src/assets/Backgrounds/Bulgaria.png");
     Texture2D quizBackgroundFrance = LoadTexture("../src/assets/Backgrounds/France.png");
     Texture2D quizBackgroundItaly = LoadTexture("../src/assets/Backgrounds/Italy.png");
+    Texture2D quizBackgroundSpain = LoadTexture("../src/assets/Backgrounds/Spain.png");
 
     Texture2D menuCaravanLeft = LoadTexture("../src/assets/Backgrounds/menuCaravan_one.png");
     Texture2D menuCaravanMiddle = LoadTexture("../src/assets/Backgrounds/menuCaravan_two.png");
