@@ -35,7 +35,7 @@ int main()
         Game(&Var.bools.openMap, &Var.nums.countryNumber, &Var.nums.countryHover, &Var.bools.countryList, &Var.nums.mapLocation,
              &Var.bools.areSettingsOpen, &Var.nums.money, &Var.nums.trueQuestionCounter, &Var.nums.questionsNumberCounter,
              &Var.nums.randomQuestion, &Var.bools.isMenuOpen, &Var.bools.isQuizOpened, &Var.bools.isAnswered, &Var.bools.isWarningOpen,
-             textures, font, &Var.countryAccessibility);
+             &Var.bools.openQuiz, &Var.bools.openGame, &Var.bools.isGameOpened, textures, font, &Var.countryAccessibility);
 
         Settings(&Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.nums.countryNumber, &Var.nums.questionsNumberCounter,
                  &Var.bools.isQuizOpened, &Var.nums.randomQuestion, &Var.bools.isAnswered, &Var.bools.isEscapeReleased, &Var.nums.musicVolume,

@@ -23,6 +23,9 @@ struct Variables
         bool isAnswered = true;
         bool isEscapeReleased = false;
         bool isWarningOpen = false;
+        bool openQuiz = true;
+        bool openGame = false;
+        bool isGameOpened = false;
     }bools;
 
     struct LockedCountriesBooleans 
@@ -124,7 +127,8 @@ void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* count
 
 void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryList, int* mapLocation, bool* areSettingsOpen,
           int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isMenuOpen, bool* isQuizOpened,
-          bool* isAnswered, bool* isWarningOpen, AllTextures textures, Font font, Variables :: LockedCountriesBooleans *lockedCountries);
+          bool* isAnswered, bool* isWarningOpen, bool* openQuiz, bool* openGame, bool* isGameOpened,
+          AllTextures textures, Font font, Variables :: LockedCountriesBooleans *lockedCountries);
 
 
 

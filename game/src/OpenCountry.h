@@ -1,37 +1,55 @@
 #pragma once
 #include "Main.h"
 
-void OpenBulgaria(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+void OpenBulgariaQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
     bool* isAnswered, AllTextures textures, Font font);
 
+void OpenBulgariaGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font);
 
-void OpenSpain(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+
+void OpenSpainQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
     bool* isAnswered, AllTextures textures, Font font);
 
+void OpenSpainGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font);
 
-void OpenFrance(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+
+void OpenFranceQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
     bool* isAnswered, AllTextures textures, Font font);
 
+void OpenFranceGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font);
 
-void OpenItaly(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+
+void OpenItalyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
     bool* isAnswered, AllTextures textures, Font font);
 
+void OpenItalyGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font);
 
-void OpenGermany(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+
+void OpenGermanyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
     bool* isAnswered, AllTextures textures, Font font);
 
+void OpenGermanyGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font);
 
-void OpenTurkey(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+
+void OpenTurkeyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
     bool* isAnswered, AllTextures textures, Font font);
 
+void OpenTurkeyGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font);
 
-void OpenGreece(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+
+void OpenGreeceQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
     bool* isAnswered, AllTextures textures, Font font);
 
+void OpenGreeceGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font);
 
-void OpenEngland(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+
+void OpenEnglandQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
     bool* isAnswered, AllTextures textures, Font font);
 
+void OpenEnglandGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font);
 
-void OpenNorway(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened,
+
+void OpenNorwayQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
     bool* isAnswered, AllTextures textures, Font font);
+
+void OpenNorwayGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font);

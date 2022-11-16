@@ -33,7 +33,10 @@
     <ClCompile Include="GameInCountryFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CountryQuestions.cpp">
+    <ClCompile Include="CountryQuizes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CountryGames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

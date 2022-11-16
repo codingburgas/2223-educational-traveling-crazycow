@@ -134,7 +134,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CountryQuestions.cpp" />
+    <ClCompile Include="CountryGames.cpp" />
+    <ClCompile Include="CountryQuizes.cpp" />
     <ClCompile Include="GameInCountryFunctions.cpp" />
     <ClCompile Include="GameInMapFunctions.cpp" />
     <ClCompile Include="main.cpp" />

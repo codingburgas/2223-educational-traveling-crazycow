@@ -3,36 +3,99 @@
 #include "OpenCountry.h"
 
 void OpenCountry(int* countryNumber, int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion,
-				 bool* isQuizOpened, bool* isAnswered, AllTextures textures, Font font)
+				 bool* isQuizOpened, bool* isAnswered, bool* openQuiz, bool* openGame, bool* isGameOpened, AllTextures textures, Font font)
 {
 	switch (*countryNumber)
 	{
 	case 1:
-		OpenBulgaria(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
+		if (*openQuiz)
+		{
+			OpenBulgariaQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+		}
+		if (*openGame)
+		{
+			OpenBulgariaGame(money, isGameOpened, openQuiz, openGame, textures, font);
+		}
 		break;
 	case 2:
-		OpenSpain(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
+		if (*openQuiz)
+		{
+			OpenSpainQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+		}
+		if (*openGame)
+		{
+			OpenSpainGame(money, isGameOpened, openQuiz, openGame, textures, font);
+		}
 		break;
 	case 3:
-		OpenFrance(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
+		if (*openQuiz)
+		{
+			OpenFranceQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+		}
+		if (*openGame)
+		{
+			OpenFranceGame(money, isGameOpened, openQuiz, openGame, textures, font);
+		}
 		break;
 	case 4:
-		OpenItaly(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
+		if (*openQuiz)
+		{
+			OpenItalyQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+		}
+		if (*openGame)
+		{
+			OpenItalyGame(money, isGameOpened, openQuiz, openGame, textures, font);
+		}
 		break;
 	case 5:
-		OpenGermany(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
+		if (*openQuiz)
+		{
+			OpenGermanyQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+		}
+		if (*openGame)
+		{
+			OpenGermanyGame(money, isGameOpened, openQuiz, openGame, textures, font);
+		}
 		break;
 	case 6:
-		OpenTurkey(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
+		if (*openQuiz)
+		{
+			OpenTurkeyQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+		}
+		if (*openGame)
+		{
+			OpenTurkeyGame(money, isGameOpened, openQuiz, openGame, textures, font);
+		}
 		break;
 	case 7:
-		OpenGreece(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
+		if (*openQuiz)
+		{
+			OpenGreeceQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+		}
+		if (*openGame)
+		{
+			OpenGreeceGame(money, isGameOpened, openQuiz, openGame, textures, font);
+		}
 		break;
 	case 8:
-		OpenEngland(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
+		if (*openQuiz)
+		{
+			OpenEnglandQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+		}
+		if (*openGame)
+		{
+			OpenEnglandGame(money, isGameOpened, openQuiz, openGame, textures, font);
+		}
 		break;
 	case 9:
-		OpenNorway(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered, textures, font);
+		if (*openQuiz)
+		{
+			OpenNorwayQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+		}
+		if (*openGame)
+		{
+			OpenNorwayGame(money, isGameOpened, openQuiz, openGame, textures, font);
+		}
 		break;
 	default:
 		*countryNumber = 0;
@@ -188,6 +251,27 @@ void Answer(int tPos, int tPosVal, int x1, int y1, int x2, int y2, const char** 
 				PlaySoundMulti(textures.clickSound);
 				*questionsNumberCounter += 1;
 				*isAnswered = true;
+			}
+		}
+	}
+}
+
+void OpenGame(bool* isGameOpened, int* money, AllTextures textures, Font font)
+{
+	DrawTexture(textures.quizBox, 0, 0, WHITE);
+	if (!*isGameOpened)
+	{
+		DrawTextEx(font, "Game", VecPos(630, 280), 300, 12, BLACK);
+		DrawTextEx(font, "Price - 10", VecPos(826, 620), 40, 6, BLACK);
+		DrawTexture(textures.wheatIcon, 1050, 620, WHITE);
+		if (IsMouseInRange(630, 630 + 690, 300, 300 + 250))
+		{
+			DrawTextEx(font, "Game", VecPos(634, 274), 300, 12, BLACK);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				PlaySoundMulti(textures.clickSound);
+				*isGameOpened = true;
+				*money -= 10;
 			}
 		}
 	}
