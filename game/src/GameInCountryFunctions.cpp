@@ -257,12 +257,12 @@ void OpenGame(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBox, 0, 0, WHITE);
 	if (!game.isGameOpened)
 	{
-		DrawTextEx(font, "Game", VecPos(630, 280), 300, 12, BLACK);
-		DrawTextEx(font, "Price - 10", VecPos(826, 620), 40, 6, BLACK);
-		DrawTexture(textures.wheatIcon, 1050, 620, WHITE);
-		if (IsMouseInRange(630, 630 + 690, 300, 300 + 250))
+		DrawTextEx(font, "Game", VecPos(650, 300), 300, 12, BLACK);
+		DrawTextEx(font, "Price - 10", VecPos(846, 620), 40, 6, BLACK);
+		DrawTexture(textures.wheatIcon, 1070, 620, WHITE);
+		if (IsMouseInRange(650, 650 + 690, 320, 320 + 250))
 		{
-			DrawTextEx(font, "Game", VecPos(634, 274), 300, 12, BLACK);
+			DrawTextEx(font, "Game", VecPos(654, 294), 300, 12, BLACK);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);

@@ -39,12 +39,13 @@ void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 
 	if (!game.isQuizOpened)
 	{
-		DrawRectangle(1300, 400, 100, 100, WHITE);
-		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
+		DrawTexture(textures.gameRight, 1300, 300, WHITE);
+		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
-			DrawRectangle(1300, 400, 100, 100, GRAY);
+			DrawTexture(textures.gameRight, 1304, 300, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -89,11 +90,12 @@ void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
-		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
+		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
-			DrawRectangle(1300, 400, 100, 100, GRAY);
+			DrawTexture(textures.gameRight, 1304, 300, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -138,11 +140,12 @@ void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
-		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
+		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
-			DrawRectangle(1300, 400, 100, 100, GRAY);
+			DrawTexture(textures.gameRight, 1304, 300, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -188,11 +191,12 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
-		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
+		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
-			DrawRectangle(1300, 400, 100, 100, GRAY);
+			DrawTexture(textures.gameRight, 1304, 300, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -236,11 +240,12 @@ void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
-		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
+		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
-			DrawRectangle(1300, 400, 100, 100, GRAY);
+			DrawTexture(textures.gameRight, 1304, 300, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -283,11 +288,12 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
-		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
+		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
-			DrawRectangle(1300, 400, 100, 100, GRAY);
+			DrawTexture(textures.gameRight, 1304, 300, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -330,11 +336,12 @@ void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
-		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
+		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
-			DrawRectangle(1300, 400, 100, 100, GRAY);
+			DrawTexture(textures.gameRight, 1304, 300, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -377,11 +384,12 @@ void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
-		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
+		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
-			DrawRectangle(1300, 400, 100, 100, GRAY);
+			DrawTexture(textures.gameRight, 1304, 300, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -424,11 +432,12 @@ void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
-		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
+		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
-			DrawRectangle(1300, 400, 100, 100, GRAY);
+			DrawTexture(textures.gameRight, 1304, 300, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
+				PlaySoundMulti(textures.clickSound);
 				game.openQuiz = false;
 				game.openGame = true;
 			}
