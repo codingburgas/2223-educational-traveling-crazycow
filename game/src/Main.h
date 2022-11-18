@@ -52,6 +52,7 @@ struct GameS
     int trueQuestionCounter = 0;
     int questionsNumberCounter = 0;
     int randomQuestion = 0;
+    int quizCounter = 0;
 };
 
 struct LockedCountries

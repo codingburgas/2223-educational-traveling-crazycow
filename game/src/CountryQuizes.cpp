@@ -6,6 +6,8 @@ void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundBulgaria, 0, 0, WHITE);
 
+	static int counter = 0;
+
 	const char* questions[10] = {
 			"    The northernmost city of \n           Bulgaria is:",
 			" The Maritsa River flows from:",
@@ -35,7 +37,7 @@ void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 	int answersPos[10] = { 4, 2, 3, 1, 3, 1, 1, 4, 3, 2 };
 
 
-	OpenQuiz(questions, answers, answersPos, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
@@ -56,6 +58,8 @@ void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundSpain, 0, 0, WHITE);
+
+	static int counter = 0;
 
 	const char* questions[10] = {
 				"1",
@@ -85,11 +89,11 @@ void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
-	OpenQuiz(questions, answers, answersPos, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
-		DrawRectangle(1300, 400, 100, 100, WHITE);
+		DrawTexture(textures.gameRight, 1300, 300, WHITE);
 		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
 			DrawTexture(textures.gameRight, 1304, 300, GRAY);
@@ -106,6 +110,8 @@ void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
+
+	static int counter = 0;
 
 	const char* questions[10] = {
 			"1",
@@ -135,11 +141,11 @@ void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
-		DrawRectangle(1300, 400, 100, 100, WHITE);
+		DrawTexture(textures.gameRight, 1300, 300, WHITE);
 		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
 			DrawTexture(textures.gameRight, 1304, 300, GRAY);
@@ -158,6 +164,8 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundItaly, 0, 0, WHITE);
 
+	static int counter = 0;
+
 	const char* questions[10] = {
 				"1",
 				"2",
@@ -186,11 +194,11 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
-		DrawRectangle(1300, 400, 100, 100, WHITE);
+		DrawTexture(textures.gameRight, 1300, 300, WHITE);
 		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
 			DrawTexture(textures.gameRight, 1304, 300, GRAY);
@@ -207,6 +215,8 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 {
+	static int counter = 0;
+
 	const char* questions[10] = {
 				"1",
 				"2",
@@ -235,11 +245,11 @@ void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
-		DrawRectangle(1300, 400, 100, 100, WHITE);
+		DrawTexture(textures.gameRight, 1300, 300, WHITE);
 		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
 			DrawTexture(textures.gameRight, 1304, 300, GRAY);
@@ -255,6 +265,8 @@ void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 {
+	static int counter = 0;
+
 	const char* questions[10] = {
 				"1",
 				"2",
@@ -283,11 +295,11 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
-		DrawRectangle(1300, 400, 100, 100, WHITE);
+		DrawTexture(textures.gameRight, 1300, 300, WHITE);
 		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
 			DrawTexture(textures.gameRight, 1304, 300, GRAY);
@@ -303,6 +315,8 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 {
+	static int counter = 0;
+
 	const char* questions[10] = {
 				"1",
 				"2",
@@ -331,11 +345,11 @@ void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
-		DrawRectangle(1300, 400, 100, 100, WHITE);
+		DrawTexture(textures.gameRight, 1300, 300, WHITE);
 		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
 			DrawTexture(textures.gameRight, 1304, 300, GRAY);
@@ -351,6 +365,8 @@ void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 {
+	static int counter = 0;
+
 	const char* questions[10] = {
 				"1",
 				"2",
@@ -379,11 +395,11 @@ void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
-		DrawRectangle(1300, 400, 100, 100, WHITE);
+		DrawTexture(textures.gameRight, 1300, 300, WHITE);
 		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
 			DrawTexture(textures.gameRight, 1304, 300, GRAY);
@@ -399,6 +415,8 @@ void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 {
+	static int counter = 0;
+
 	const char* questions[10] = {
 				"1",
 				"2",
@@ -427,11 +445,11 @@ void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
-		DrawRectangle(1300, 400, 100, 100, WHITE);
+		DrawTexture(textures.gameRight, 1300, 300, WHITE);
 		if (IsMouseInRange(1300, 1300 + 110, 300, 300 + 300))
 		{
 			DrawTexture(textures.gameRight, 1304, 300, GRAY);
