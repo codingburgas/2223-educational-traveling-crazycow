@@ -215,6 +215,8 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 {
+	DrawTexture(textures.quizBackgroundGermany, 0, 0, WHITE);
+
 	static int counter = 0;
 
 	const char* questions[10] = {
