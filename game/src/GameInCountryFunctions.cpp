@@ -2,112 +2,110 @@
 #include "GameInCountry.h"
 #include "OpenCountry.h"
 
-void OpenCountry(int* countryNumber, int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion,
-				 bool* isQuizOpened, bool* isAnswered, bool* openQuiz, bool* openGame, bool* isGameOpened, AllTextures textures, Font font)
+void OpenCountry(int& countryNumber, GameS& game, AllTextures textures, Font font)
 {
-	switch (*countryNumber)
+	switch (countryNumber)
 	{
 	case 1:
-		if (*openQuiz)
+		if (game.openQuiz)
 		{
-			OpenBulgariaQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+			OpenBulgariaQuiz(game, textures, font);
 		}
-		if (*openGame)
+		if (game.openGame)
 		{
-			OpenBulgariaGame(money, isGameOpened, openQuiz, openGame, textures, font);
+			OpenBulgariaGame(game, textures, font);
 		}
 		break;
 	case 2:
-		if (*openQuiz)
+		if (game.openQuiz)
 		{
-			OpenSpainQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+			OpenSpainQuiz(game, textures, font);
 		}
-		if (*openGame)
+		if (game.openGame)
 		{
-			OpenSpainGame(money, isGameOpened, openQuiz, openGame, textures, font);
+			OpenSpainGame(game, textures, font);
 		}
 		break;
 	case 3:
-		if (*openQuiz)
+		if (game.openQuiz)
 		{
-			OpenFranceQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+			OpenFranceQuiz(game, textures, font);
 		}
-		if (*openGame)
+		if (game.openGame)
 		{
-			OpenFranceGame(money, isGameOpened, openQuiz, openGame, textures, font);
+			OpenFranceGame(game, textures, font);
 		}
 		break;
 	case 4:
-		if (*openQuiz)
+		if (game.openQuiz)
 		{
-			OpenItalyQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+			OpenItalyQuiz(game, textures, font);
 		}
-		if (*openGame)
+		if (game.openGame)
 		{
-			OpenItalyGame(money, isGameOpened, openQuiz, openGame, textures, font);
+			OpenItalyGame(game, textures, font);
 		}
 		break;
 	case 5:
-		if (*openQuiz)
+		if (game.openQuiz)
 		{
-			OpenGermanyQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+			OpenGermanyQuiz(game, textures, font);
 		}
-		if (*openGame)
+		if (game.openGame)
 		{
-			OpenGermanyGame(money, isGameOpened, openQuiz, openGame, textures, font);
+			OpenGermanyGame(game, textures, font);
 		}
 		break;
 	case 6:
-		if (*openQuiz)
+		if (game.openQuiz)
 		{
-			OpenTurkeyQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+			OpenTurkeyQuiz(game, textures, font);
 		}
-		if (*openGame)
+		if (game.openGame)
 		{
-			OpenTurkeyGame(money, isGameOpened, openQuiz, openGame, textures, font);
+			OpenTurkeyGame(game, textures, font);
 		}
 		break;
 	case 7:
-		if (*openQuiz)
+		if (game.openQuiz)
 		{
-			OpenGreeceQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+			OpenGreeceQuiz(game, textures, font);
 		}
-		if (*openGame)
+		if (game.openGame)
 		{
-			OpenGreeceGame(money, isGameOpened, openQuiz, openGame, textures, font);
+			OpenGreeceGame(game, textures, font);
 		}
 		break;
 	case 8:
-		if (*openQuiz)
+		if (game.openQuiz)
 		{
-			OpenEnglandQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+			OpenEnglandQuiz(game, textures, font);
 		}
-		if (*openGame)
+		if (game.openGame)
 		{
-			OpenEnglandGame(money, isGameOpened, openQuiz, openGame, textures, font);
+			OpenEnglandGame(game, textures, font);
 		}
 		break;
 	case 9:
-		if (*openQuiz)
+		if (game.openQuiz)
 		{
-			OpenNorwayQuiz(money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, openQuiz, openGame, isAnswered, textures, font);
+			OpenNorwayQuiz(game, textures, font);
 		}
-		if (*openGame)
+		if (game.openGame)
 		{
-			OpenNorwayGame(money, isGameOpened, openQuiz, openGame, textures, font);
+			OpenNorwayGame(game, textures, font);
 		}
 		break;
 	default:
-		*countryNumber = 0;
+		countryNumber = 0;
 	}
 }
 
-void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int* money, int* trueQuestionCounter,
-			  int* questionsNumberCounter, int* randomQuestion,bool* isAnswered, bool* isQuizOpened, AllTextures textures, Font font)
+void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, GameS& game, AllTextures textures, Font font)
 {
 	static vector<int> usedNums;
 	DrawTexture(textures.quizBox, 0, 0, WHITE);
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawTextEx(font, "Quiz", VecPos(660, 280), 300, 12, BLACK);
 		DrawTextEx(font, "Price - 10", VecPos(826, 620), 40, 6, BLACK);
@@ -118,23 +116,23 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
-				*isQuizOpened = true;
-				*money -= 10;
-				*questionsNumberCounter = 0;
+				game.isQuizOpened = true;
+				game.money -= 10;
+				game.questionsNumberCounter = 0;
 				usedNums.clear();
 			}
 		}
 	}
 
-	if (*questionsNumberCounter == 5 && *isQuizOpened)
+	if (game.questionsNumberCounter == 5 && game.isQuizOpened)
 	{
 		DrawTextEx(font, "Result", VecPos(760, 230), 140, 10, BLACK);
 
-		DrawTextEx(font, TextFormat("     You answered correctly   -   %2i/5", *trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
+		DrawTextEx(font, TextFormat("     You answered correctly   -   %2i/5", game.trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
 
-		if (*trueQuestionCounter != 0)
+		if (game.trueQuestionCounter != 0)
 		{
-			DrawTextEx(font, TextFormat("     From this Quiz you gain   -   %2i ", *trueQuestionCounter * 20), VecPos(540, 500), 40, 4, BLACK);
+			DrawTextEx(font, TextFormat("     From this Quiz you gain   -   %2i ", game.trueQuestionCounter * 20), VecPos(540, 500), 40, 4, BLACK);
 			DrawTexture(textures.wheatIcon, 1300, 500, WHITE);
 		}
 		else
@@ -152,64 +150,63 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
-				*isQuizOpened = false;
-				*money += *trueQuestionCounter * 20;
-				*trueQuestionCounter = 0;
+				game.isQuizOpened = false;
+				game.money += game.trueQuestionCounter * 20;
+				game.trueQuestionCounter = 0;
 			}
 		}
 	}
 
-	if (*questionsNumberCounter < 5 && *isQuizOpened)
+	if (game.questionsNumberCounter < 5 && game.isQuizOpened)
 	{
-		if (*isAnswered)
+		if (game.isAnswered)
 		{
-			*randomQuestion = 1 + (rand() % 10);
-			while (find(usedNums.begin(), usedNums.end(), *randomQuestion) != usedNums.end())
+			game.randomQuestion = 1 + (rand() % 10);
+			while (find(usedNums.begin(), usedNums.end(), game.randomQuestion) != usedNums.end())
 			{
-				*randomQuestion = 1 + (rand() % 10);
+				game.randomQuestion = 1 + (rand() % 10);
 			}
-			usedNums.push_back(*randomQuestion);
-			*isAnswered = false;
+			usedNums.push_back(game.randomQuestion);
+			game.isAnswered = false;
 		}
 
-		switch (*randomQuestion)
+		switch (game.randomQuestion)
 		{
 		case 1:
-			AnswerPosition(tPos[0], questions[0], answers[0], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[0], questions[0], answers[0], game, textures, font);
 			break;
 		case 2:
-			AnswerPosition(tPos[1], questions[1], answers[1], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[1], questions[1], answers[1], game, textures, font);
 			break;
 		case 3:
-			AnswerPosition(tPos[2], questions[2], answers[2], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[2], questions[2], answers[2], game, textures, font);
 			break;
 		case 4:
-			AnswerPosition(tPos[3], questions[3], answers[3], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[3], questions[3], answers[3], game, textures, font);
 			break;
 		case 5:
-			AnswerPosition(tPos[4], questions[4], answers[4], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[4], questions[4], answers[4], game, textures, font);
 			break;
 		case 6:
-			AnswerPosition(tPos[5], questions[5], answers[5], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[5], questions[5], answers[5], game, textures, font);
 			break;
 		case 7:
-			AnswerPosition(tPos[6], questions[6], answers[6], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[6], questions[6], answers[6], game, textures, font);
 			break;
 		case 8:
-			AnswerPosition(tPos[7], questions[7], answers[7], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[7], questions[7], answers[7], game, textures, font);
 			break;
 		case 9:
-			AnswerPosition(tPos[8], questions[8], answers[8], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[8], questions[8], answers[8], game, textures, font);
 			break;
 		case 10:
-			AnswerPosition(tPos[9], questions[9], answers[9], trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered, textures, font);
+			AnswerPosition(tPos[9], questions[9], answers[9], game, textures, font);
 			break;
 		}
 	}
 }
 
-void AnswerPosition(int tPos, const char* question, const char** answers, int* trueQuestionCounter, int* questionsNumberCounter,
-					int* randomQuestion, bool* isAnswered, AllTextures textures, Font font)
+void AnswerPosition(int tPos, const char* question, const char** answers, GameS& game, AllTextures textures, Font font)
 {
 	DrawTextEx(font, question, VecPos(560, 260), 50, 5, BLACK);
 
@@ -225,16 +222,15 @@ void AnswerPosition(int tPos, const char* question, const char** answers, int* t
 	DrawTexture(textures.answerBlock, 540 + 500, 440 + 140, WHITE);
 	DrawTextEx(font, answers[3], VecPos(540 + 500 + 20, 440 + 140 + 50), 34, 4, BLACK);
 
-	Answer(tPos, 1, 540, 440, 300, 120, answers, trueQuestionCounter, questionsNumberCounter, isAnswered, textures, font);
-	Answer(tPos, 2, 540 + 500, 440, 300, 120, answers, trueQuestionCounter, questionsNumberCounter, isAnswered, textures, font);
-	Answer(tPos, 3, 540, 440 + 140, 300, 120, answers, trueQuestionCounter, questionsNumberCounter, isAnswered, textures, font);
-	Answer(tPos, 4, 540 + 500, 440 + 140, 300, 120, answers, trueQuestionCounter, questionsNumberCounter, isAnswered, textures, font);
+	Answer(tPos, 1, 540, 440, answers, game, textures, font);
+	Answer(tPos, 2, 540 + 500, 440, answers, game, textures, font);
+	Answer(tPos, 3, 540, 440 + 140, answers, game, textures, font);
+	Answer(tPos, 4, 540 + 500, 440 + 140, answers, game, textures, font);
 }
 
-void Answer(int tPos, int tPosVal, int x1, int y1, int x2, int y2, const char** answers, int* trueQuestionCounter,
-			int* questionsNumberCounter, bool* isAnswered, AllTextures textures, Font font)
+void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& game, AllTextures textures, Font font)
 {
-	if (IsMouseInRange(x1, x1 + x2, y1, y1 + y2))
+	if (IsMouseInRange(x1, x1 + 300, y1, y1 + 120))
 	{
 		DrawTextEx(font, answers[tPosVal - 1], VecPos(x1 + 22, y1 + 47), 34, 4, BLACK);
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
@@ -242,24 +238,24 @@ void Answer(int tPos, int tPosVal, int x1, int y1, int x2, int y2, const char** 
 			if (tPos == tPosVal)
 			{
 				PlaySoundMulti(textures.clickSound);
-				*questionsNumberCounter += 1;
-				*trueQuestionCounter += 1;
-				*isAnswered = true;
+				game.questionsNumberCounter += 1;
+				game.trueQuestionCounter += 1;
+				game.isAnswered = true;
 			}
 			else
 			{
 				PlaySoundMulti(textures.clickSound);
-				*questionsNumberCounter += 1;
-				*isAnswered = true;
+				game.questionsNumberCounter += 1;
+				game.isAnswered = true;
 			}
 		}
 	}
 }
 
-void OpenGame(bool* isGameOpened, int* money, AllTextures textures, Font font)
+void OpenGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBox, 0, 0, WHITE);
-	if (!*isGameOpened)
+	if (!game.isGameOpened)
 	{
 		DrawTextEx(font, "Game", VecPos(630, 280), 300, 12, BLACK);
 		DrawTextEx(font, "Price - 10", VecPos(826, 620), 40, 6, BLACK);
@@ -270,8 +266,8 @@ void OpenGame(bool* isGameOpened, int* money, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
-				*isGameOpened = true;
-				*money -= 10;
+				game.isGameOpened = true;
+				game.money -= 10;
 			}
 		}
 	}

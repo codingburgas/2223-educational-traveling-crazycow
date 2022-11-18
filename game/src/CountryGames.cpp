@@ -3,13 +3,13 @@
 #include "GameInCountry.h"
 
 
-void OpenBulgariaGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font)
+void OpenBulgariaGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundBulgaria, 0, 0, WHITE);
 
-	OpenGame(isGameOpened, money, textures, font);
+	OpenGame(game, textures, font);
 
-	if (!*isGameOpened)
+	if (!game.isGameOpened)
 	{
 		DrawRectangle(500, 400, 100, 100, WHITE);
 		if (IsMouseInRange(500, 500 + 100, 400, 400 + 100))
@@ -17,18 +17,20 @@ void OpenBulgariaGame(int* money, bool* isGameOpened, bool* openQuiz, bool* open
 			DrawRectangle(500, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = true;
-				*openGame = false;
+				game.openQuiz = true;
+				game.openGame = false;
 			}
 		}
 	}
 }
 
-void OpenSpainGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font)
+void OpenSpainGame(GameS& game, AllTextures textures, Font font)
 {
-	OpenGame(isGameOpened, money, textures, font);
+	DrawTexture(textures.quizBackgroundSpain, 0, 0, WHITE);
 
-	if (!*isGameOpened)
+	OpenGame(game, textures, font);
+
+	if (!game.isGameOpened)
 	{
 		DrawRectangle(500, 400, 100, 100, WHITE);
 		if (IsMouseInRange(500, 500 + 100, 400, 400 + 100))
@@ -36,20 +38,20 @@ void OpenSpainGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGam
 			DrawRectangle(500, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = true;
-				*openGame = false;
+				game.openQuiz = true;
+				game.openGame = false;
 			}
 		}
 	}
 }
 
-void OpenFranceGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font)
+void OpenFranceGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
 
-	OpenGame(isGameOpened, money, textures, font);
+	OpenGame(game, textures, font);
 
-	if (!*isGameOpened)
+	if (!game.isGameOpened)
 	{
 		DrawRectangle(500, 400, 100, 100, WHITE);
 		if (IsMouseInRange(500, 500 + 100, 400, 400 + 100))
@@ -57,20 +59,20 @@ void OpenFranceGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGa
 			DrawRectangle(500, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = true;
-				*openGame = false;
+				game.openQuiz = true;
+				game.openGame = false;
 			}
 		}
 	}
 }
 
-void OpenItalyGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font)
+void OpenItalyGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundItaly, 0, 0, WHITE);
 
-	OpenGame(isGameOpened, money, textures, font);
+	OpenGame(game, textures, font);
 
-	if (!*isGameOpened)
+	if (!game.isGameOpened)
 	{
 		DrawRectangle(500, 400, 100, 100, WHITE);
 		if (IsMouseInRange(500, 500 + 100, 400, 400 + 100))
@@ -78,18 +80,18 @@ void OpenItalyGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGam
 			DrawRectangle(500, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = true;
-				*openGame = false;
+				game.openQuiz = true;
+				game.openGame = false;
 			}
 		}
 	}
 }
 
-void OpenGermanyGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font)
+void OpenGermanyGame(GameS& game, AllTextures textures, Font font)
 {
-	OpenGame(isGameOpened, money, textures, font);
+	OpenGame(game, textures, font);
 
-	if (!*isGameOpened)
+	if (!game.isGameOpened)
 	{
 		DrawRectangle(500, 400, 100, 100, WHITE);
 		if (IsMouseInRange(500, 500 + 100, 400, 400 + 100))
@@ -97,18 +99,18 @@ void OpenGermanyGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openG
 			DrawRectangle(500, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = true;
-				*openGame = false;
+				game.openQuiz = true;
+				game.openGame = false;
 			}
 		}
 	}
 }
 
-void OpenTurkeyGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font)
+void OpenTurkeyGame(GameS& game, AllTextures textures, Font font)
 {
-	OpenGame(isGameOpened, money, textures, font);
+	OpenGame(game, textures, font);
 
-	if (!*isGameOpened)
+	if (!game.isGameOpened)
 	{
 		DrawRectangle(500, 400, 100, 100, WHITE);
 		if (IsMouseInRange(500, 500 + 100, 400, 400 + 100))
@@ -116,18 +118,18 @@ void OpenTurkeyGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGa
 			DrawRectangle(500, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = true;
-				*openGame = false;
+				game.openQuiz = true;
+				game.openGame = false;
 			}
 		}
 	}
 }
 
-void OpenGreeceGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font)
+void OpenGreeceGame(GameS& game, AllTextures textures, Font font)
 {
-	OpenGame(isGameOpened, money, textures, font);
+	OpenGame(game, textures, font);
 
-	if (!*isGameOpened)
+	if (!game.isGameOpened)
 	{
 		DrawRectangle(500, 400, 100, 100, WHITE);
 		if (IsMouseInRange(500, 500 + 100, 400, 400 + 100))
@@ -135,18 +137,18 @@ void OpenGreeceGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGa
 			DrawRectangle(500, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = true;
-				*openGame = false;
+				game.openQuiz = true;
+				game.openGame = false;
 			}
 		}
 	}
 }
 
-void OpenEnglandGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font)
+void OpenEnglandGame(GameS& game, AllTextures textures, Font font)
 {
-	OpenGame(isGameOpened, money, textures, font);
+	OpenGame(game, textures, font);
 
-	if (!*isGameOpened)
+	if (!game.isGameOpened)
 	{
 		DrawRectangle(500, 400, 100, 100, WHITE);
 		if (IsMouseInRange(500, 500 + 100, 400, 400 + 100))
@@ -154,18 +156,18 @@ void OpenEnglandGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openG
 			DrawRectangle(500, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = true;
-				*openGame = false;
+				game.openQuiz = true;
+				game.openGame = false;
 			}
 		}
 	}
 }
 
-void OpenNorwayGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGame, AllTextures textures, Font font)
+void OpenNorwayGame(GameS& game, AllTextures textures, Font font)
 {
-	OpenGame(isGameOpened, money, textures, font);
+	OpenGame(game, textures, font);
 
-	if (!*isGameOpened)
+	if (!game.isGameOpened)
 	{
 		DrawRectangle(500, 400, 100, 100, WHITE);
 		if (IsMouseInRange(500, 500 + 100, 400, 400 + 100))
@@ -173,8 +175,8 @@ void OpenNorwayGame(int* money, bool* isGameOpened, bool* openQuiz, bool* openGa
 			DrawRectangle(500, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = true;
-				*openGame = false;
+				game.openQuiz = true;
+				game.openGame = false;
 			}
 		}
 	}

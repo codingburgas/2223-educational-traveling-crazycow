@@ -2,8 +2,7 @@
 #include "OpenCountry.h"
 #include "GameInCountry.h"
 
-void OpenBulgariaQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
-	bool* isAnswered, AllTextures textures, Font font)
+void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundBulgaria, 0, 0, WHITE);
 
@@ -36,10 +35,9 @@ void OpenBulgariaQuiz(int* money, int* trueQuestionCounter, int* questionsNumber
 	int answersPos[10] = { 4, 2, 3, 1, 3, 1, 1, 4, 3, 2 };
 
 
-	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
-		isQuizOpened, textures, font);
+	OpenQuiz(questions, answers, answersPos, game, textures, font);
 
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
 		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
@@ -47,15 +45,14 @@ void OpenBulgariaQuiz(int* money, int* trueQuestionCounter, int* questionsNumber
 			DrawRectangle(1300, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = false;
-				*openGame = true;
+				game.openQuiz = false;
+				game.openGame = true;
 			}
 		}
 	}
 }
 
-void OpenSpainQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
-	bool* isAnswered, AllTextures textures, Font font)
+void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundSpain, 0, 0, WHITE);
 
@@ -87,10 +84,9 @@ void OpenSpainQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCou
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
-	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
-		isQuizOpened, textures, font);
+	OpenQuiz(questions, answers, answersPos, game, textures, font);
 
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
 		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
@@ -98,15 +94,14 @@ void OpenSpainQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCou
 			DrawRectangle(1300, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = false;
-				*openGame = true;
+				game.openQuiz = false;
+				game.openGame = true;
 			}
 		}
 	}
 }
 
-void OpenFranceQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
-	bool* isAnswered, AllTextures textures, Font font)
+void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
 
@@ -138,10 +133,9 @@ void OpenFranceQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCo
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
-		isQuizOpened, textures, font);
+	OpenQuiz(questions, answers, answersPos, game, textures, font);
 
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
 		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
@@ -149,16 +143,15 @@ void OpenFranceQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCo
 			DrawRectangle(1300, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = false;
-				*openGame = true;
+				game.openQuiz = false;
+				game.openGame = true;
 			}
 		}
 	}
 }
 
 
-void OpenItalyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
-	bool* isAnswered, AllTextures textures, Font font)
+void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundItaly, 0, 0, WHITE);
 
@@ -190,10 +183,9 @@ void OpenItalyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCou
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
-		isQuizOpened, textures, font);
+	OpenQuiz(questions, answers, answersPos, game, textures, font);
 
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
 		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
@@ -201,16 +193,15 @@ void OpenItalyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCou
 			DrawRectangle(1300, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = false;
-				*openGame = true;
+				game.openQuiz = false;
+				game.openGame = true;
 			}
 		}
 	}
 }
 
 
-void OpenGermanyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
-	bool* isAnswered, AllTextures textures, Font font)
+void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 {
 	const char* questions[10] = {
 				"1",
@@ -240,10 +231,9 @@ void OpenGermanyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberC
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
-		isQuizOpened, textures, font);
+	OpenQuiz(questions, answers, answersPos, game, textures, font);
 
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
 		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
@@ -251,15 +241,14 @@ void OpenGermanyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberC
 			DrawRectangle(1300, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = false;
-				*openGame = true;
+				game.openQuiz = false;
+				game.openGame = true;
 			}
 		}
 	}
 }
 
-void OpenTurkeyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
-	bool* isAnswered, AllTextures textures, Font font)
+void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 {
 	const char* questions[10] = {
 				"1",
@@ -289,10 +278,9 @@ void OpenTurkeyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCo
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
-		isQuizOpened, textures, font);
+	OpenQuiz(questions, answers, answersPos, game, textures, font);
 
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
 		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
@@ -300,15 +288,14 @@ void OpenTurkeyQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCo
 			DrawRectangle(1300, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = false;
-				*openGame = true;
+				game.openQuiz = false;
+				game.openGame = true;
 			}
 		}
 	}
 }
 
-void OpenGreeceQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
-	bool* isAnswered, AllTextures textures, Font font)
+void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 {
 	const char* questions[10] = {
 				"1",
@@ -338,10 +325,9 @@ void OpenGreeceQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCo
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
-		isQuizOpened, textures, font);
+	OpenQuiz(questions, answers, answersPos, game, textures, font);
 
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
 		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
@@ -349,15 +335,14 @@ void OpenGreeceQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCo
 			DrawRectangle(1300, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = false;
-				*openGame = true;
+				game.openQuiz = false;
+				game.openGame = true;
 			}
 		}
 	}
 }
 
-void OpenEnglandQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
-	bool* isAnswered, AllTextures textures, Font font)
+void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 {
 	const char* questions[10] = {
 				"1",
@@ -387,10 +372,9 @@ void OpenEnglandQuiz(int* money, int* trueQuestionCounter, int* questionsNumberC
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
-		isQuizOpened, textures, font);
+	OpenQuiz(questions, answers, answersPos, game, textures, font);
 
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
 		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
@@ -398,15 +382,14 @@ void OpenEnglandQuiz(int* money, int* trueQuestionCounter, int* questionsNumberC
 			DrawRectangle(1300, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = false;
-				*openGame = true;
+				game.openQuiz = false;
+				game.openGame = true;
 			}
 		}
 	}
 }
 
-void OpenNorwayQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isQuizOpened, bool* openQuiz, bool* openGame,
-	bool* isAnswered, AllTextures textures, Font font)
+void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 {
 	const char* questions[10] = {
 				"1",
@@ -436,10 +419,9 @@ void OpenNorwayQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCo
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isAnswered,
-		isQuizOpened, textures, font);
+	OpenQuiz(questions, answers, answersPos, game, textures, font);
 
-	if (!*isQuizOpened)
+	if (!game.isQuizOpened)
 	{
 		DrawRectangle(1300, 400, 100, 100, WHITE);
 		if (IsMouseInRange(1300, 1300 + 100, 400, 400 + 100))
@@ -447,8 +429,8 @@ void OpenNorwayQuiz(int* money, int* trueQuestionCounter, int* questionsNumberCo
 			DrawRectangle(1300, 400, 100, 100, GRAY);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				*openQuiz = false;
-				*openGame = true;
+				game.openQuiz = false;
+				game.openGame = true;
 			}
 		}
 	}

@@ -1,19 +1,18 @@
 #include "Main.h"
 
-void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* BusY,
-    int* BGX, int* countryNumber, AllTextures textures, Font font)
+void Menu(SettingsS& settings, MenuS& menu, MapS& map, AllTextures textures, Font font)
 {
-    if (*isMenuOpen)
+    if (menu.isMenuOpen)
     {
         UpdateMusicStream(textures.menuMusic);
 
-        DrawMenuBackground(BusX, BusY, BGX, textures);
-        StartGame(isMenuOpen, openMap, countryNumber, textures, font);
-        CloseGame(isGameClosed, textures, font);
+        DrawMenuBackground(menu, textures);
+        StartGame(menu.isMenuOpen, map, textures, font);
+        CloseGame(menu.isGameClosed, textures, font);
     }
 }
 
-void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
+void DrawMenuBackground(MenuS& menu, AllTextures textures)
 {   
     int currentFPS = GetFPS();
     static int counter = 0;
@@ -22,8 +21,8 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
     int updateVertical;
     int updateFrameTime = frameTime * 200;
 
-    DrawTexture(textures.background, *BGX, 0, WHITE);
-    DrawTexture(textures.background, *BGX + 1920, 0, WHITE);
+    DrawTexture(textures.background, menu.BGX, 0, WHITE);
+    DrawTexture(textures.background, menu.BGX + 1920, 0, WHITE);
 
     if (currentFPS > 60)
     {
@@ -41,48 +40,48 @@ void DrawMenuBackground(int* BusX, int* BusY, int* BGX, AllTextures textures)
     counter++;
     if (counter >= updateVertical)
     {
-        *BusY += 3;
+        menu.BusY += 3;
         counter = 0;
     }
     
-    if (*BusY == 596)
+    if (menu.BusY == 596)
     {
-        *BusY = 590;
+        menu.BusY = 590;
         framePosition =!framePosition;
     }
 
-    if (*BusY > 590)
+    if (menu.BusY > 590)
     {
-        DrawTexture(textures.menuCaravanMiddle, *BusX, *BusY, WHITE);
+        DrawTexture(textures.menuCaravanMiddle, menu.BusX, menu.BusY, WHITE);
     }
     else
     {
         if (!framePosition)
         {
-            DrawTexture(textures.menuCaravanLeft, *BusX, *BusY, WHITE);
+            DrawTexture(textures.menuCaravanLeft, menu.BusX, menu.BusY, WHITE);
         }
         else
         {
-            DrawTexture(textures.menuCaravanRight, *BusX, *BusY, WHITE);
+            DrawTexture(textures.menuCaravanRight, menu.BusX, menu.BusY, WHITE);
         }
     }
 
-    *BGX -= updateFrameTime;
-    if (*BGX <= -1920)
+    menu.BGX -= updateFrameTime;
+    if (menu.BGX <= -1920)
     {
-        *BGX = 0;
+        menu.BGX = 0;
     }
 
-    *BusX += updateFrameTime;
-    if (*BusX >= 1920)
+    menu.BusX += updateFrameTime;
+    if (menu.BusX >= 1920)
     {
-        *BusX = -650;
+        menu.BusX = -650;
     }
 
     frameTime = GetFrameTime();
 }
 
-void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures textures, Font font)
+void StartGame(bool& isMenuOpen, MapS& map, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 676, 280, WHITE);
     Vector2 pos = {814,316};
@@ -95,27 +94,24 @@ void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures 
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
-            *countryNumber = 0;
-            *isMenuOpen = false;
-            *openMap = true;
+            map.countryNumber = 0;
+            map.openMap = true;
+            isMenuOpen = false;
         }
     }
 }
 
-void CloseGame(bool* isGameClosed, AllTextures textures, Font font)
+void CloseGame(bool& isGameClosed, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 676, 500, WHITE);
-    Vector2 pos = {844,536};
-    DrawTextEx(font, "Exit", pos, 96, 4, BLACK);
+    DrawTextEx(font, "Exit", VecPos(844, 536), 96, 4, BLACK);
     if (IsMouseInRange(676, 676 + 480, 500, 500 + 149))
     {
-        pos.x = 846;
-        pos.y = 530;
-        DrawTextEx(font, "Exit", pos, 96, 4, BLACK);
+        DrawTextEx(font, "Exit", VecPos(846, 530), 96, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
-            *isGameClosed = true;
+            isGameClosed = true;
         }
     }
 }

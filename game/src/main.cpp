@@ -16,35 +16,38 @@ int main()
 
     Font font = LoadFont("../src/assets/Others/pixantiqua.png");
 
-    Variables Var;
     AllTextures textures;
 
-    PlayMusicStream(textures.menuMusic);
-    SetMusicVolume(textures.menuMusic, Var.nums.musicVolume);
-    SetSoundVolume(textures.clickSound, Var.nums.soundVolume);
+    SettingsS settings;
+    MenuS menu;
+    MapS map;
+    GameS game;
+    LockedCountries lockedCountries;
 
-    while (!WindowShouldClose() && !Var.bools.isGameClosed)
+
+    PlayMusicStream(textures.menuMusic);
+    SetMusicVolume(textures.menuMusic, settings.musicVolume);
+    SetSoundVolume(textures.clickSound, settings.soundVolume);
+
+    
+
+    while (!WindowShouldClose() && !menu.isGameClosed)
     {
         BeginDrawing();
 
         ClearBackground(WHITE);
 
-        Menu(&Var.bools.isGameClosed, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.nums.BusX, &Var.nums.BusY, &Var.nums.BGX,
-             &Var.nums.countryNumber, textures, font);
+            Menu(settings, menu, map, textures, font);
 
-        Game(&Var.bools.openMap, &Var.nums.countryNumber, &Var.nums.countryHover, &Var.bools.countryList, &Var.nums.mapLocation,
-             &Var.bools.areSettingsOpen, &Var.nums.money, &Var.nums.trueQuestionCounter, &Var.nums.questionsNumberCounter,
-             &Var.nums.randomQuestion, &Var.bools.isMenuOpen, &Var.bools.isQuizOpened, &Var.bools.isAnswered, &Var.bools.isWarningOpen,
-             &Var.bools.openQuiz, &Var.bools.openGame, &Var.bools.isGameOpened, textures, font, &Var.countryAccessibility);
+            Game(settings, menu, map, game, lockedCountries, textures, font);
 
-        Settings(&Var.bools.areSettingsOpen, &Var.bools.isMenuOpen, &Var.bools.openMap, &Var.nums.countryNumber, &Var.nums.questionsNumberCounter,
-                 &Var.bools.isQuizOpened, &Var.nums.randomQuestion, &Var.bools.isAnswered, &Var.bools.isEscapeReleased, &Var.nums.musicVolume,
-                 &Var.nums.soundVolume, textures, font);
-
+            Settings(settings, menu, map, game, textures, font);
+        
         DrawFPS(10, 960);
 
         EndDrawing();
     }
+
     UnloadAllTextures(textures);
     UnloadFont(font);
 

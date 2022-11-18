@@ -10,53 +10,61 @@
 
 using namespace std;
 
-struct Variables 
+struct SettingsS
 {
-    struct Booleans 
-    {
-        bool areSettingsOpen = false;
-        bool isGameClosed = false;
-        bool isMenuOpen = true;
-        bool openMap = false;
-        bool countryList = false;
-        bool isQuizOpened = false;
-        bool isAnswered = true;
-        bool isEscapeReleased = false;
-        bool isWarningOpen = false;
-        bool openQuiz = true;
-        bool openGame = false;
-        bool isGameOpened = false;
-    }bools;
+    bool areSettingsOpen = false;
+    bool isEscapeReleased = false;
 
-    struct LockedCountriesBooleans 
-    {
-        bool isBulgariaOpen = true;
-        bool isSpainOpen = false;
-        bool isFranceOpen = false;
-        bool isItalyOpen = false;
-        bool isGermanyOpen = false;
-        bool isGreeceOpen = false;
-        bool isTurkeyOpen = false;
-        bool isUnitedKingdomOpen = false;
-        bool isNorwayOpen = false;
-    }countryAccessibility;
+    float musicVolume = 0.05;
+    float soundVolume = 0.15;
+};
 
-    struct Numbers 
-    {
-        int countryNumber = 0;
-        int countryHover = 0;
-        int mapLocation = 0;
-        int BusX = 0;
-        int BusY = 590;
-        int BGX = 0;
-        int money = 800;
-        int trueQuestionCounter = 0;
-        int questionsNumberCounter = 0;
-        int randomQuestion = 0;
+struct MenuS
+{
+    bool isMenuOpen = true;
+    bool isGameClosed = false;
 
-        float musicVolume = 0.05;
-        float soundVolume = 0.15;
-    }nums;
+    int BusX = 0;
+    int BusY = 590;
+    int BGX = 0;
+};
+
+struct MapS
+{
+    bool openMap = false;
+    bool countryList = false;
+    bool isWarningOpen = false;
+
+    int countryNumber = 0;
+    int countryHover = 0;
+    int mapLocation = 0;
+};
+
+struct GameS
+{
+    bool isQuizOpened = false;
+    bool isAnswered = true;
+    bool openQuiz = true;
+    bool isGameOpened = false;
+    bool openGame = false;
+
+    int money = 800;
+    int trueQuestionCounter = 0;
+    int questionsNumberCounter = 0;
+    int randomQuestion = 0;
+};
+
+struct LockedCountries
+{
+    bool isBulgariaOpen = true;
+    bool isSpainOpen = false;
+    bool isFranceOpen = false;
+    bool isItalyOpen = false;
+    bool isGermanyOpen = false;
+    bool isGreeceOpen = false;
+    bool isTurkeyOpen = false;
+    bool isUnitedKingdomOpen = false;
+    bool isNorwayOpen = false;
 };
 
 struct AllTextures 
@@ -121,28 +129,22 @@ struct AllTextures
 
 // Main Functions ----------------------------------------------------------------------------------------------------------------------
 
-void Menu(bool* isGameClosed, bool* isMenuOpen, bool* openMap, int* BusX, int* BusY,
-    int* BGX, int* countryNumber, AllTextures textures, Font font);
+void Menu(SettingsS& settings, MenuS& menu, MapS& map, AllTextures textures, Font font);
 
-void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-              bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased,
-              float* musicVolume, float* soundVolume, AllTextures textures, Font font);
+void Settings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font);
 
-void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryList, int* mapLocation, bool* areSettingsOpen,
-          int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isMenuOpen, bool* isQuizOpened,
-          bool* isAnswered, bool* isWarningOpen, bool* openQuiz, bool* openGame, bool* isGameOpened,
-          AllTextures textures, Font font, Variables :: LockedCountriesBooleans *lockedCountries);
+void Game(SettingsS &settings, MenuS &menu, MapS &map, GameS &game, LockedCountries &lockedCountries, AllTextures textures, Font font);
 
 
 
 
 // Menu Functions ---------------------------------------------------------------------------------------------------------------------
 
-void DrawMenuBackground(int* BusX, int* Bus, int* BGX, AllTextures textures);
+void DrawMenuBackground(MenuS& menu, AllTextures textures);
 
-void StartGame(bool* isMenuOpen, bool* openMap, int* countryNumber, AllTextures textures, Font font);
+void StartGame(bool& isMenuOpen, MapS& map, AllTextures textures, Font font);
 
-void CloseGame(bool* Close, AllTextures textures, Font font);
+void CloseGame(bool& Close, AllTextures textures, Font font);
 
 
 

@@ -1,22 +1,20 @@
 #pragma once
 #include "Main.h"
 
-void MoveMap(int* mapLocation, AllTextures textures);
+void MoveMap(int& mapLocation, AllTextures textures);
 
 
-void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* areSettingsOpen, AllTextures textures);
+void OpenTheMap(bool& areSettingsOpen, MapS& map, AllTextures textures);
 
 
-void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, int* money, bool* isWarningOpen, AllTextures textures, Font font,
-    Variables::LockedCountriesBooleans* lockedCountries);
+void ChooseCountry(bool& areSettingsOpen, int& money, MapS& map,AllTextures textures, Font font, LockedCountries& lockedCountries);
 
 
-void DrawCountry(Font font, const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, int* countryNumber, int* countryHover,
-    bool* areSettingsOpen, bool* lockedCountry, int* money, bool* isWarningOpen, AllTextures textures);
+void DrawCountry(const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, MapS& map,
+    bool& areSettingsOpen, int& money, bool& lockedCountry, AllTextures textures, Font font);
 
 
-void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, int* money,
-    bool* isWarningOpen, AllTextures textures, Font font, Variables::LockedCountriesBooleans* lockedCountries);
+void OpenCountries(bool& areSettingsOpen, int& money, MapS& map, AllTextures textures, Font font, LockedCountries& lockedCountries);
 
 
-void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTextures textures, Font font);
+void OpenWarning(bool* saveLockedCountry, bool& isWarningOpen, int& money, AllTextures textures, Font font);

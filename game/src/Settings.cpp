@@ -1,55 +1,50 @@
 #include "Main.h"
 #include "Settings.h"
 
-void Settings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-              bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, float* musicVolume, float* soundVolume,
-              AllTextures textures, Font font)
+void Settings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)
 {
     DrawTexture(textures.settingsIcon, 5, 5, WHITE);
     if (IsMouseInRange(5, 45, 5, 45))
     {
         DrawTexture(textures.settingsIcon, 5, 5, GRAY);
     }
-    OpenSettings(areSettingsOpen, isMenuOpen, openMap, countryNumber, questionsNumberCounter, isQuizOpened, randomQuestion, isAnswered,
-                 isEscapeReleased, musicVolume, soundVolume, textures, font);
-    CloseSetting(areSettingsOpen, isEscapeReleased, textures);
+    OpenSettings(settings, menu, map, game, textures, font);
+    CloseSetting(settings, textures);
 }
 
-void OpenSettings(bool* areSettingsOpen, bool* isMenuOpen, bool* openMap, int* countryNumber, int* questionsNumberCounter,
-                  bool* isQuizOpened, int* randomQuestion, bool* isAnswered, bool* isEscapeReleased, float* musicVolume, float* soundVolume,
-                  AllTextures textures, Font font)
+void OpenSettings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)
 {
-    if (*areSettingsOpen || (IsMouseInRange(0, 40, 0, 40) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) || IsKeyPressed(KEY_ESCAPE))
+    if (settings.areSettingsOpen || (IsMouseInRange(0, 40, 0, 40) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) || IsKeyPressed(KEY_ESCAPE))
     {
-        if (!*areSettingsOpen)
+        if (!settings.areSettingsOpen)
         {
             PlaySoundMulti(textures.clickSound);
         }
         DrawTexture(textures.settingsBox, 5, 50, WHITE);
         DrawTexture(textures.closeSettingsIcon, 450, 50, MAROON);
-        BackToMenu(isMenuOpen, openMap, questionsNumberCounter, isQuizOpened, randomQuestion, isAnswered, textures, font);
-        BackToMap(isMenuOpen, openMap, countryNumber, questionsNumberCounter, isQuizOpened, randomQuestion, isAnswered, textures, font);
+        BackToMenu(menu.isMenuOpen, map.openMap, game, textures, font);
+        BackToMap(menu.isMenuOpen, map, game, textures, font);
         SetFPS(textures, font);
-        ChangeMusicVolume(musicVolume, textures, font);
-        ChangeSoundVolume(soundVolume, textures, font);
-        *areSettingsOpen = true;
+        ChangeMusicVolume(settings.musicVolume, textures, font);
+        ChangeSoundVolume(settings.soundVolume, textures, font);
+        settings.areSettingsOpen = true;
     }
 }
 
-void CloseSetting(bool* areSettingsOpen, bool* isEscapeReleased, AllTextures textures)
+void CloseSetting(SettingsS &settings, AllTextures textures)
 {
-    if (*areSettingsOpen)
+    if (settings.areSettingsOpen)
     {
-        if (IsKeyPressed(KEY_ESCAPE) && *isEscapeReleased)
+        if (IsKeyPressed(KEY_ESCAPE) && settings.isEscapeReleased)
         {
             PlaySoundMulti(textures.clickSound);
-            *areSettingsOpen = false;
-            *isEscapeReleased = false;
+            settings.areSettingsOpen = false;
+            settings.isEscapeReleased = false;
         }
 
         if (IsKeyUp(KEY_ESCAPE))
         {
-            *isEscapeReleased = true;
+            settings.isEscapeReleased = true;
         }
 
         if (IsMouseInRange(450, 500, 50, 100))
@@ -59,8 +54,8 @@ void CloseSetting(bool* areSettingsOpen, bool* isEscapeReleased, AllTextures tex
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                *areSettingsOpen = false;
-                *isEscapeReleased = false;
+                settings.areSettingsOpen = false;
+                settings.isEscapeReleased = false;
             }
         }
     }
@@ -104,11 +99,11 @@ void SetFPS(AllTextures textures, Font font)
     }
 }
 
-void ChangeMusicVolume(float* musicVolume, AllTextures textures, Font font)
+void ChangeMusicVolume(float& musicVolume, AllTextures textures, Font font)
 {
     static int showMusicVolume = 5;
 
-    SetMusicVolume(textures.menuMusic, *musicVolume);
+    SetMusicVolume(textures.menuMusic, musicVolume);
 
     DrawTextEx(font, "Music Volume:", VecPos(60, 230), 30, 4, BLACK);
 
@@ -121,16 +116,16 @@ void ChangeMusicVolume(float* musicVolume, AllTextures textures, Font font)
         DrawTexture(textures.leftArrow, 300, 220, LIGHTGRAY);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
-            if (*musicVolume >= 0.05)
+            if (musicVolume >= 0.05)
             {
                 PlaySoundMulti(textures.clickSound);
-                *musicVolume -= 0.05;
+                musicVolume -= 0.05;
                 showMusicVolume -= 5;
             }
             else
             {
                 PlaySoundMulti(textures.clickSound);
-                *musicVolume = 0;
+                musicVolume = 0;
                 showMusicVolume = 0;
             }
         }
@@ -139,20 +134,20 @@ void ChangeMusicVolume(float* musicVolume, AllTextures textures, Font font)
     if (IsMouseInRange(420, 420 + 50, 220, 220 + 50))
     {
         DrawTexture(textures.rightArrow, 420, 220, LIGHTGRAY);
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && *musicVolume < 1.0)
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && musicVolume < 1.0)
         {
             PlaySoundMulti(textures.clickSound);
-            *musicVolume += 0.05;
+            musicVolume += 0.05;
             showMusicVolume += 5;
         }
     }
 }
 
-void ChangeSoundVolume(float* soundVolume, AllTextures textures, Font font)
+void ChangeSoundVolume(float& soundVolume, AllTextures textures, Font font)
 {
     static int showSoundVolume = 15;
 
-    SetSoundVolume(textures.clickSound, *soundVolume);
+    SetSoundVolume(textures.clickSound, soundVolume);
 
     DrawTextEx(font, "Sound Volume:", VecPos(60, 330), 30, 4, BLACK);
 
@@ -165,16 +160,16 @@ void ChangeSoundVolume(float* soundVolume, AllTextures textures, Font font)
         DrawTexture(textures.leftArrow, 300, 320, LIGHTGRAY);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
-            if (*soundVolume >= 0.05)
+            if (soundVolume >= 0.05)
             {
                 PlaySoundMulti(textures.clickSound);
-                *soundVolume -= 0.05;
+                soundVolume -= 0.05;
                 showSoundVolume -= 5;
             }
             else
             {
                 PlaySoundMulti(textures.clickSound);
-                *soundVolume = 0;
+                soundVolume = 0;
                 showSoundVolume = 0;
             }
         }
@@ -183,17 +178,16 @@ void ChangeSoundVolume(float* soundVolume, AllTextures textures, Font font)
     if (IsMouseInRange(420, 420 + 50, 320, 320 + 50))
     {
         DrawTexture(textures.rightArrow, 420, 320, LIGHTGRAY);
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && *soundVolume < 1.0)
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && soundVolume < 1.0)
         {
             PlaySoundMulti(textures.clickSound);
-            *soundVolume += 0.05;
+            soundVolume += 0.05;
             showSoundVolume += 5;
         }
     }
 }
 
-void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
-                bool* isAnswered, AllTextures textures, Font font)
+void BackToMenu(bool& isMenuOpen, bool& openMap, GameS& game, AllTextures textures, Font font)
 {
     DrawTexture(textures.taskBox, 35, 440, WHITE);
     Vector2 pos = {58,468};
@@ -205,18 +199,17 @@ void BackToMenu(bool* isMenuOpen, bool* openMap, int* questionsNumberCounter, bo
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
-            *isAnswered = true;
-            *randomQuestion = 0;
-            *questionsNumberCounter = 0;
-            *isQuizOpened = false;
-            *isMenuOpen = true;
-            *openMap = false;
+            game.isAnswered = true;
+            game.randomQuestion = 0;
+            game.questionsNumberCounter = 0;
+            game.isQuizOpened = false;
+            isMenuOpen = true;
+            openMap = false;
         }
     }
 }
 
-void BackToMap(bool* isMenuOpen,bool* openMap, int* countryNumber, int* questionsNumberCounter, bool* isQuizOpened, int* randomQuestion,
-               bool* isAnswered, AllTextures textures, Font font)
+void BackToMap(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, Font font)
 {
     DrawTexture(textures.taskBox, 255, 440, WHITE);
     Vector2 pos = {287,468};
@@ -228,13 +221,13 @@ void BackToMap(bool* isMenuOpen,bool* openMap, int* countryNumber, int* question
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
-            *isAnswered = true;
-            *randomQuestion = 0;
-            *questionsNumberCounter = 0;
-            *isQuizOpened = false;
-            *isMenuOpen = false;
-            *openMap = true;
-            *countryNumber = 0;
+            map.openMap = true;
+            map.countryNumber = 0;
+            game.isAnswered = true;
+            game.randomQuestion = 0;
+            game.questionsNumberCounter = 0;
+            game.isQuizOpened = false;
+            isMenuOpen = false;
         }
     }
 }

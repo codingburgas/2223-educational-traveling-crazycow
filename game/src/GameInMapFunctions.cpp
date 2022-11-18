@@ -2,76 +2,73 @@
 #include "GameInMap.h"
 #include "GameInCountry.h"
 
-void Game(bool* openMap, int* countryNumber, int* countryHover, bool* countryList, int* mapLocation, bool* areSettingsOpen,
-          int* money, int* trueQuestionCounter, int* questionsNumberCounter, int* randomQuestion, bool* isMenuOpen, bool* isQuizOpened,
-          bool* isAnswered, bool* isWarningOpen, bool* openQuiz, bool* openGame, bool* isGameOpened,
-          AllTextures textures, Font font, Variables::LockedCountriesBooleans* lockedCountries)
+void Game(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
+
 {
-    if (*countryNumber != 0 && !*isMenuOpen)
+    if (map.countryNumber != 0 && !menu.isMenuOpen)
     {
-        *openMap = false;
-        OpenCountry(countryNumber, money, trueQuestionCounter, questionsNumberCounter, randomQuestion, isQuizOpened, isAnswered,
-                    openQuiz, openGame, isGameOpened, textures, font);
+        map.openMap = false;
+        OpenCountry(map.countryNumber, game, textures, font);
     }
 
-    if (*openMap)
+    if (map.openMap)
     {
-        OpenTheMap(mapLocation, countryHover, countryList, areSettingsOpen, textures);
-        OpenCountries(countryNumber, countryHover, mapLocation, countryList, areSettingsOpen, money, isWarningOpen, textures, font, lockedCountries);
+        OpenTheMap(settings.areSettingsOpen, map, textures);
+        OpenCountries(settings.areSettingsOpen, game.money, map, textures, font, lockedCountries);
     }
 
-        DrawTextEx(font, TextFormat("%2i", *money), VecPos(1810, 55), 32, 4, BLACK);
+        DrawTextEx(font, TextFormat("%2i", game.money), VecPos(1810, 55), 32, 4, BLACK);
         DrawTexture(textures.wheatIcon, 1920 - 36, 55, WHITE);
     
 }
 
-void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* areSettingsOpen, AllTextures textures)
+void OpenTheMap(bool& areSettingsOpen, MapS& map, AllTextures textures)
 {
-    switch (*countryHover)
+    switch (map.countryHover)
     {
     case 1:
-        DrawTexture(textures.europeBulgaria, *mapLocation, 0, WHITE);
-        *countryHover = 0;
+        DrawTexture(textures.europeBulgaria, map.mapLocation, 0, WHITE);
+        map.countryHover = 0;
         break;
     case 2:
-        DrawTexture(textures.europeSpain, *mapLocation, 0, WHITE);
-        *countryHover = 0;
+        DrawTexture(textures.europeSpain, map.mapLocation, 0, WHITE);
+        map.countryHover = 0;
         break;
     case 3:
-        DrawTexture(textures.europeFrance, *mapLocation, 0, WHITE);
-        *countryHover = 0;
+        DrawTexture(textures.europeFrance, map.mapLocation, 0, WHITE);
+        map.countryHover = 0;
         break;
     case 4:
-        DrawTexture(textures.europeItaly, *mapLocation, 0, WHITE);
-        *countryHover = 0;
+        DrawTexture(textures.europeItaly, map.mapLocation, 0, WHITE);
+        map.countryHover = 0;
         break;
     case 5:
-        DrawTexture(textures.europeGermany, *mapLocation, 0, WHITE);
-        *countryHover = 0;
+        DrawTexture(textures.europeGermany, map.mapLocation, 0, WHITE);
+        map.countryHover = 0;
         break;
     case 6:
-        DrawTexture(textures.europeTurkey, *mapLocation, 0, WHITE);
-        *countryHover = 0;
+        DrawTexture(textures.europeTurkey, map.mapLocation, 0, WHITE);
+        map.countryHover = 0;
         break;
     case 7:
-        DrawTexture(textures.europeGreece, *mapLocation, 0, WHITE);
-        *countryHover = 0;
+        DrawTexture(textures.europeGreece, map.mapLocation, 0, WHITE);
+        map.countryHover = 0;
         break;
     case 8:
-        DrawTexture(textures.europeEngland, *mapLocation, 0, WHITE);
-        *countryHover = 0;
+        DrawTexture(textures.europeEngland, map.mapLocation, 0, WHITE);
+        map.countryHover = 0;
         break;
     case 9:
-        DrawTexture(textures.europeNorway, *mapLocation, 0, WHITE);
-        *countryHover = 0;
+        DrawTexture(textures.europeNorway, map.mapLocation, 0, WHITE);
+        map.countryHover = 0;
         break;
     default:
-        DrawTexture(textures.europeMap, *mapLocation, 0, WHITE);
+        DrawTexture(textures.europeMap, map.mapLocation, 0, WHITE);
         break;
     }
 
     DrawTexture(textures.rightArrow, 0, 60, WHITE);
-    if (!*areSettingsOpen)
+    if (!areSettingsOpen)
     {
         if (IsMouseInRange(0, 50, 60, 60 + 50))
         {
@@ -79,38 +76,37 @@ void OpenTheMap(int* mapLocation, int* countryHover, bool* countryList, bool* ar
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                *countryList = true;
+                map.countryList = true;
             }
         }
     }
 }
 
-void OpenCountries(int* countryNumber, int* countryHover, int* mapLocation, bool* countryList, bool* areSettingsOpen, int* money,
-                   bool* isWarningOpen, AllTextures textures, Font font, Variables::LockedCountriesBooleans* lockedCountries)
+void OpenCountries(bool& areSettingsOpen, int& money, MapS& map, AllTextures textures, Font font, LockedCountries& lockedCountries)
 {
-    if (*countryList)
+    if (map.countryList)
     {
-        MoveMap(mapLocation, textures);
+        MoveMap(map.mapLocation, textures);
 
         DrawTexture(textures.woodBox, 0, 0, WHITE);
         DrawTexture(textures.leftArrow, 805, 0, WHITE);
 
-        ChooseCountry(countryNumber, countryHover, areSettingsOpen, money, isWarningOpen, textures, font, lockedCountries);
+        ChooseCountry(areSettingsOpen, money, map, textures, font, lockedCountries);
 
-        if (IsMouseInRange(800, 800 + 50, 0, 50) && !*areSettingsOpen)
+        if (IsMouseInRange(800, 800 + 50, 0, 50) && !areSettingsOpen)
         {
             DrawTexture(textures.leftArrow, 805, 0, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                *mapLocation = 0;
-                *countryList = false;
+                map.mapLocation = 0;
+                map.countryList = false;
             }
         }
     }
 }
 
-void MoveMap(int* mapLocation, AllTextures textures)
+void MoveMap(int& mapLocation, AllTextures textures)
 {
     int currentFPS = GetFPS();
     int mapMove = 0;
@@ -134,13 +130,13 @@ void MoveMap(int* mapLocation, AllTextures textures)
     if (IsMouseInRange(1920 - 50, 1920, 0, 50) || IsKeyDown(KEY_RIGHT))
     {
         DrawTexture(textures.rightArrow, 1920 - 50, 0, LIGHTGRAY);
-        if (*mapLocation >= mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_RIGHT)))
+        if (mapLocation >= mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_RIGHT)))
         {
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_RIGHT))
             {
                 PlaySoundMulti(textures.clickSound);
             }
-            *mapLocation -= mapMove;
+            mapLocation -= mapMove;
         }
     }
 
@@ -148,94 +144,85 @@ void MoveMap(int* mapLocation, AllTextures textures)
     if (IsMouseInRange(1920 - 100, 1920 - 50, 0, 50) || IsKeyDown(KEY_LEFT))
     {
         DrawTexture(textures.leftArrow, 1920 - 100, 0, LIGHTGRAY);
-        if (*mapLocation <= 800 - mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_LEFT)))
+        if (mapLocation <= 800 - mapMove && (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_LEFT)))
         {
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
             }
-            *mapLocation += mapMove;
+            mapLocation += mapMove;
         }
     }
 
     mapFrameTime = GetFrameTime();
 }
 
-void ChooseCountry(int* countryNumber, int* countryHover, bool* areSettingsOpen, int* money, bool* isWarningOpen, AllTextures textures, Font font,
-                   Variables::LockedCountriesBooleans* lockedCountries)
+void ChooseCountry(bool& areSettingsOpen, int& money, MapS& map, AllTextures textures, Font font, LockedCountries& lockedCountries)
 {
-    DrawCountry(font, "Bulgaria", 249, 36, 298, 86, 1, countryNumber, countryHover, areSettingsOpen,
-                &lockedCountries->isBulgariaOpen, money, isWarningOpen, textures);
+    DrawCountry("Bulgaria", 249, 36, 298, 86, 1, map, areSettingsOpen, money, lockedCountries.isBulgariaOpen, textures, font);
 
-    DrawCountry(font, "Spain", 295, 136, 200, 86, 2, countryNumber, countryHover, areSettingsOpen,
-                &lockedCountries->isSpainOpen, money, isWarningOpen, textures);
+    DrawCountry("Spain", 295, 136, 200, 86, 2, map, areSettingsOpen, money, lockedCountries.isSpainOpen, textures, font);
 
-    DrawCountry(font, "France", 275, 236, 246, 76, 3, countryNumber, countryHover, areSettingsOpen,
-                &lockedCountries->isFranceOpen, money, isWarningOpen, textures);
+    DrawCountry("France", 275, 236, 246, 76, 3, map, areSettingsOpen, money, lockedCountries.isFranceOpen, textures, font);
 
-    DrawCountry(font, "Italy", 305, 336, 175, 76, 4, countryNumber, countryHover, areSettingsOpen,
-                &lockedCountries->isItalyOpen, money, isWarningOpen, textures);
+    DrawCountry("Italy", 305, 336, 175, 76, 4, map, areSettingsOpen, money, lockedCountries.isItalyOpen, textures, font);
 
-    DrawCountry(font, "Germany", 239, 436, 320, 86, 5, countryNumber, countryHover, areSettingsOpen,
-                &lockedCountries->isGermanyOpen, money, isWarningOpen, textures);
+    DrawCountry("Germany", 239, 436, 320, 86, 5, map, areSettingsOpen, money, lockedCountries.isGermanyOpen, textures, font);
 
-    DrawCountry(font, "Turkey", 269, 536, 263, 83, 6, countryNumber, countryHover, areSettingsOpen,
-                &lockedCountries->isTurkeyOpen, money, isWarningOpen, textures);
+    DrawCountry("Turkey", 269, 536, 263, 83, 6, map, areSettingsOpen, money, lockedCountries.isTurkeyOpen, textures, font);
 
-    DrawCountry(font, "Greece", 269, 630, 256, 70, 7, countryNumber, countryHover, areSettingsOpen,
-                &lockedCountries->isGreeceOpen, money, isWarningOpen, textures);
+    DrawCountry("Greece", 269, 630, 256, 70, 7, map, areSettingsOpen, money, lockedCountries.isGreeceOpen, textures, font);
 
-    DrawCountry(font, "United Kingdom", 110, 732, 570, 83, 8, countryNumber, countryHover, areSettingsOpen,
-                &lockedCountries->isUnitedKingdomOpen, money, isWarningOpen, textures);
+    DrawCountry("United Kingdom", 110, 732, 570, 83, 8, map, areSettingsOpen, money, lockedCountries.isUnitedKingdomOpen, textures, font);
 
-    DrawCountry(font, "Norway", 255, 826, 279, 79, 9, countryNumber, countryHover, areSettingsOpen,
-                &lockedCountries->isNorwayOpen, money, isWarningOpen, textures);
+    DrawCountry("Norway", 255, 826, 279, 79, 9, map, areSettingsOpen, money, lockedCountries.isNorwayOpen, textures, font);
 }
 
 bool notEnoughMoney = false;
-bool* saveLockedCountry;
 
-void DrawCountry(Font font, const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, int* countryNumber, int* countryHover,
-                 bool* areSettingsOpen, bool* lockedCountry, int* money, bool* isWarningOpen, AllTextures textures)
+void DrawCountry(const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, MapS& map,
+    bool& areSettingsOpen, int& money, bool& lockedCountry, AllTextures textures, Font font)
 {
+    static bool* saveLockedCountry;
+
     DrawTextEx(font, name, VecPos(x, y), 80, 6, BLACK);
 
-    if (*lockedCountry)
+    if (lockedCountry)
     {
-        if (IsMouseInRange(x, x + lengthX, y, y + lenghtY) && !*areSettingsOpen && !*isWarningOpen)
+        if (IsMouseInRange(x, x + lengthX, y, y + lenghtY) && !areSettingsOpen && !map.isWarningOpen)
         {
-            *countryHover = countryNum;
+            map.countryHover = countryNum;
             DrawTextEx(font, name, VecPos(x + 2, y - 4), 80, 6, BLACK);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                *countryNumber = countryNum;
+                map.countryNumber = countryNum;
             }
         }
     }
     else
     {
         DrawTexture(textures.chain, 5, y + 12, WHITE);
-        if (IsMouseInRange(376, 376 + 70, y + 10, y + 90) && !*areSettingsOpen && !*isWarningOpen)
+        if (IsMouseInRange(376, 376 + 70, y + 10, y + 90) && !areSettingsOpen && !map.isWarningOpen)
         {
             DrawTexture(textures.chain, 5, y + 12, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                *isWarningOpen = true;
-                saveLockedCountry = lockedCountry;
+                map.isWarningOpen = true;
+                saveLockedCountry = &lockedCountry;
                 notEnoughMoney = false;
             }
         }
 
-        if (*isWarningOpen)
+        if (map.isWarningOpen)
         {
-            OpenWarning(saveLockedCountry, isWarningOpen, money, textures, font);
+            OpenWarning(saveLockedCountry, map.isWarningOpen, money, textures, font);
         }
     }
 }
 
-void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTextures textures, Font font)
+void OpenWarning(bool* saveLockedCountry, bool& isWarningOpen, int& money, AllTextures textures, Font font)
 {
     if (!notEnoughMoney)
     {
@@ -254,12 +241,12 @@ void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTe
 
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
-                if (*money >= 200)
+                if (money >= 200)
                 {
                     PlaySoundMulti(textures.clickSound);
                     *saveLockedCountry = true;
-                    *money -= 200;
-                    *isWarningOpen = false;
+                    money -= 200;
+                    isWarningOpen = false;
                 }
                 else
                 {
@@ -276,7 +263,7 @@ void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTe
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                *isWarningOpen = false;
+                isWarningOpen = false;
             }
         }
     }
@@ -294,7 +281,7 @@ void OpenWarning(bool* saveLockedCountry, bool* isWarningOpen, int* money, AllTe
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                *isWarningOpen = false;
+                isWarningOpen = false;
             }
         }
     }
