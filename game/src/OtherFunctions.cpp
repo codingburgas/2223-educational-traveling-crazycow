@@ -67,4 +67,6 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.closeSettingsIcon);
     UnloadTexture(unloadTextures.wheatIcon);
     UnloadTexture(unloadTextures.chain);
+    UnloadTexture(unloadTextures.gameRight);
+    UnloadTexture(unloadTextures.gameLeft);
 }

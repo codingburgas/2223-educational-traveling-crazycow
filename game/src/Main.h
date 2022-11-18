@@ -107,6 +107,8 @@ struct AllTextures
     Texture2D closeSettingsIcon = LoadTexture("../src/assets/Others/CloseSettingsIcon.png");
     Texture2D wheatIcon = LoadTexture("../src/assets/Others/WheatIcon.png");
     Texture2D chain = LoadTexture("../src/assets/Others/chain.png");
+    Texture2D gameRight = LoadTexture("../src/assets/Others/gameRight.png");
+    Texture2D gameLeft = LoadTexture("../src/assets/Others/gameLeft.png");
 
     // Sounds and Musics
 
