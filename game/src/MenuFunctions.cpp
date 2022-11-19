@@ -94,11 +94,11 @@ void DrawMenuBackground(MenuS& menu, AllTextures textures)
 
 void StartGame(bool& isMenuOpen, MapS& map, AllTextures textures, Font font)
 {
-    DrawTexture(textures.startBlock, 676, 280, WHITE);
-    DrawTextEx(font, "Start", VecPos(814, 316), 96, 4, BLACK);
-    if (IsMouseInRange(676, 676 + 480, 280, 280 + 149))
+    DrawTexture(textures.startBlock, 696, 230, WHITE);
+    DrawTextEx(font, "Start", VecPos(834, 266), 96, 4, BLACK);
+    if (IsMouseInRange(696, 696 + 480, 230, 230 + 149))
     {
-        DrawTextEx(font, "Start", VecPos(816, 310), 96, 4, BLACK);
+        DrawTextEx(font, "Start", VecPos(836, 260), 96, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
@@ -111,11 +111,11 @@ void StartGame(bool& isMenuOpen, MapS& map, AllTextures textures, Font font)
 
 void CloseGame(bool& isGameClosed, AllTextures textures, Font font)
 {
-    DrawTexture(textures.startBlock, 676, 660, WHITE);
-    DrawTextEx(font, "Exit", VecPos(844, 696), 96, 4, BLACK);
-    if (IsMouseInRange(676, 676 + 480, 660, 660 + 149))
+    DrawTexture(textures.startBlock, 696, 610, WHITE);
+    DrawTextEx(font, "Exit", VecPos(864, 646), 96, 4, BLACK);
+    if (IsMouseInRange(696, 696 + 480, 610, 610 + 149))
     {
-        DrawTextEx(font, "Exit", VecPos(846, 690), 96, 4, BLACK);
+        DrawTextEx(font, "Exit", VecPos(866, 640), 96, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
@@ -126,11 +126,11 @@ void CloseGame(bool& isGameClosed, AllTextures textures, Font font)
 
 void NewGame(bool& newGame, AllTextures textures, Font font)
 {
-    DrawTexture(textures.startBlock, 676, 470, WHITE);
-    DrawTextEx(font, "New Game", VecPos(736, 506), 80, 4, BLACK);
-    if (IsMouseInRange(676, 676 + 480, 470, 470 + 149))
+    DrawTexture(textures.startBlock, 696, 420, WHITE);
+    DrawTextEx(font, "New Game", VecPos(756, 456), 80, 4, BLACK);
+    if (IsMouseInRange(696, 696 + 480, 420, 420 + 149))
     {
-        DrawTextEx(font, "New Game", VecPos(738, 502), 80, 4, BLACK);
+        DrawTextEx(font, "New Game", VecPos(758, 452), 80, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
