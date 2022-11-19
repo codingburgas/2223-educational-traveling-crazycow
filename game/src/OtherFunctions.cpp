@@ -145,6 +145,16 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.menuCaravanMiddle);
     UnloadTexture(unloadTextures.menuCaravanRight);
 
+    //Landmarks
+
+    UnloadTexture(unloadTextures.BulgariaLandmark);
+    UnloadTexture(unloadTextures.FranceLandmark);
+    UnloadTexture(unloadTextures.GermanyLandmark);
+    UnloadTexture(unloadTextures.GreeceLandmark);
+    UnloadTexture(unloadTextures.ItalyLandmark);
+    UnloadTexture(unloadTextures.SpainLandmark);
+    UnloadTexture(unloadTextures.TurkeyLandmark);
+
     // Unload Others
 
     UnloadTexture(unloadTextures.settingsIcon);

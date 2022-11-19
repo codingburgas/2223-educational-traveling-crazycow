@@ -134,6 +134,16 @@ struct AllTextures
     Texture2D menuCaravanMiddle = LoadTexture("../src/assets/Backgrounds/menuCaravan_two.png");
     Texture2D menuCaravanRight = LoadTexture("../src/assets/Backgrounds/menuCaravan_three.png");
 
+    // Landmarks
+
+    Texture2D BulgariaLandmark = LoadTexture("../src/assets/Landmarks/BulgariaLandmark.png");
+    Texture2D FranceLandmark = LoadTexture("../src/assets/Landmarks/FranceLandmark.png");
+    Texture2D GermanyLandmark = LoadTexture("../src/assets/Landmarks/GermanyLandmark.png");
+    Texture2D GreeceLandmark = LoadTexture("../src/assets/Landmarks/GreeceLandmark.png");
+    Texture2D ItalyLandmark = LoadTexture("../src/assets/Landmarks/ItalyLandmark.png");
+    Texture2D SpainLandmark = LoadTexture("../src/assets/Landmarks/SpainLandmark.png");
+    Texture2D TurkeyLandmark = LoadTexture("../src/assets/Landmarks/TurkeyLandmark.png");
+
     // Others
 
     Texture2D settingsIcon = LoadTexture("../src/assets/Others/SettingIcon.png");
