@@ -162,32 +162,32 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundItaly, 0, 0, WHITE);
 
 	const char* questions[10] = {
-				"1",
-				"2",
-				"3",
-				"4",
-				"5",
-				"6",
-				"7",
-				"8",
-				"9",
-				"10"
+				" Which of the following islands \n     doesn't belong to Italy?",
+				"Which is the mountain range that \n    runs on the entire Italy?",
+				" Which is the highest mountain \n        in Italian territory?",
+				"Which mountain range forms the \n     northern border of Italy?",
+				"  Which is the largest lake on \n       the Italian peninsula?",
+				"Which body of water surrounds \n   the Southern part of Italy?",
+				"    Which city is the capital \n              of Italy",
+				"Which river flows through Rome?",
+				"   How many countries does \n           Italy border?",
+				"How many seas surround Italy?"
 	};
 
 	const char* answers[10][4] = {
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"}
+		{"    Corsica", "    Sardinia", "     Sicily", "      Capri"},
+		{"   Strandzha", "  Carpathians", "  Apennines", "Lepontine Alps"},
+		{"    Pordoi", "  Campolongo", "  Marmolada", " Gran Paradiso"},
+		{"     Andes", "      Alps", "   Macaroni", "    Rockies"},
+		{" Lake Macaroni", "  Lake Louis", "  Lake George", "Lake Trasimeno"},
+		{" Pacific Ocean", "Atlantic Ocean", "Mediterranean", "    Red Sea"},
+		{"     Rome", "    Palermo", "    Venice", "     Milan"},
+		{"Euphrates River", "   Tiber River", "   Nile River", "  Indus River"},
+		{"     Four", "      Three", "      Five", "       Six"},
+		{"    Three", "      Two", "       Four", "      One"}
 	};
 
-	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	int answersPos[10] = { 1, 3, 4, 2, 4, 3, 1, 2, 1, 3 };
 
 	OpenQuiz(questions, answers, answersPos, game.quizCounter[3], game, textures, font);
 
