@@ -48,17 +48,27 @@ struct MapS
 struct GameS
 {
     bool isQuizOpened = false;
-    bool isAnswered = true;
     bool openQuiz = true;
+    bool isAnswered = true;
     bool isGameOpened = false;
     bool openGame = false;
     bool isArrowPressed = false;
     bool gameWarning = false;
+    bool gameWin = false;
+    bool gameLoose = false;
 
     int money = 600;
     int trueQuestionCounter = 0;
     int questionsNumberCounter = 0;
     int randomQuestion = 0;
+
+    int armX = 500;
+    int armY = 600;
+
+    int dartX = 500 + 20;
+    int dartY = 600 - 10;
+
+    bool flyingDart = false;
 
     int quizCounter[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 };
