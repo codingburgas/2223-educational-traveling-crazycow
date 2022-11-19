@@ -103,118 +103,145 @@ void OpenCountry(int& countryNumber, GameS& game, AllTextures textures, Font fon
 
 void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int& quizCounter, GameS& game, AllTextures textures, Font font)
 {
-	if (quizCounter < 3)
+	if (!game.gameWarning)
 	{
-		static vector<int> usedNums;
-		DrawTexture(textures.quizBox, 0, 0, WHITE);
-		if (!game.isQuizOpened)
+		if (quizCounter < 3)
 		{
-			DrawTextEx(font, "Quiz", VecPos(660, 280), 300, 12, BLACK);
-			DrawTextEx(font, "Price - 10", VecPos(830, 604), 40, 6, BLACK);
-			DrawTexture(textures.wheatIcon, 1050, 608, WHITE);
-			DrawTextEx(font, TextFormat("Attempts - %2i/3", quizCounter), VecPos(816, 660), 30, 5, BLACK);
-			if (IsMouseInRange(660, 660 + 570, 280, 280 + 280))
+			static vector<int> usedNums;
+			DrawTexture(textures.quizBox, 0, 0, WHITE);
+			if (!game.isQuizOpened)
 			{
-				DrawTextEx(font, "Quiz", VecPos(664, 274), 300, 12, BLACK);
-				if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+				DrawTextEx(font, "Quiz", VecPos(660, 280), 300, 12, BLACK);
+				DrawTextEx(font, "Price - 10", VecPos(830, 604), 40, 6, BLACK);
+				DrawTexture(textures.wheatIcon, 1050, 608, WHITE);
+				DrawTextEx(font, TextFormat("Attempts - %2i/3", quizCounter), VecPos(816, 660), 30, 5, BLACK);
+				if (IsMouseInRange(660, 660 + 570, 280, 280 + 280))
 				{
-					PlaySoundMulti(textures.clickSound);
-					game.isQuizOpened = true;
-					game.money -= 10;
-					game.questionsNumberCounter = 0;
-					usedNums.clear();
+					DrawTextEx(font, "Quiz", VecPos(664, 274), 300, 12, BLACK);
+					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+					{
+						PlaySoundMulti(textures.clickSound);
+						if (game.money >= 10)
+						{
+							game.isQuizOpened = true;
+							game.money -= 10;
+							game.questionsNumberCounter = 0;
+							usedNums.clear();
+						}
+						else
+						{
+							game.gameWarning = true;
+						}
+					}
 				}
 			}
-		}
 
-		if (game.questionsNumberCounter == 5 && game.isQuizOpened)
-		{
-			DrawTextEx(font, "Result", VecPos(760, 230), 140, 10, BLACK);
-
-			DrawTextEx(font, TextFormat("     You answered correctly   -   %2i/5", game.trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
-
-			if (game.trueQuestionCounter != 0)
+			if (game.questionsNumberCounter == 5 && game.isQuizOpened)
 			{
-				DrawTextEx(font, TextFormat("     From this Quiz you gain   -   %2i ", game.trueQuestionCounter * 20), VecPos(540, 500), 40, 4, BLACK);
-				DrawTexture(textures.wheatIcon, 1300, 500, WHITE);
-			}
-			else
-			{
-				DrawTextEx(font, "     From this Quiz you gain    -    0 ", VecPos(540, 500), 40, 4, BLACK);
-				DrawTexture(textures.wheatIcon, 1300, 500, WHITE);
-			}
+				DrawTextEx(font, "Result", VecPos(760, 230), 140, 10, BLACK);
 
+				DrawTextEx(font, TextFormat("     You answered correctly   -   %2i/5", game.trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
 
-			DrawTexture(textures.answerBlock, 800, 560, WHITE);
-			DrawTextEx(font, "Done", VecPos(800 + 70, 560 + 30), 60, 6, BLACK);
-			if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
-			{
-				DrawTextEx(font, "Done", VecPos(800 + 72, 560 + 26), 60, 6, BLACK);
-				if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+				if (game.trueQuestionCounter != 0)
 				{
-					PlaySoundMulti(textures.clickSound);
-					quizCounter++;
-					game.isQuizOpened = false;
-					game.money += game.trueQuestionCounter * 20;
-					game.trueQuestionCounter = 0;
+					DrawTextEx(font, TextFormat("     From this Quiz you gain   -   %2i ", game.trueQuestionCounter * 20), VecPos(540, 500), 40, 4, BLACK);
+					DrawTexture(textures.wheatIcon, 1300, 500, WHITE);
+				}
+				else
+				{
+					DrawTextEx(font, "     From this Quiz you gain    -    0 ", VecPos(540, 500), 40, 4, BLACK);
+					DrawTexture(textures.wheatIcon, 1300, 500, WHITE);
+				}
+
+
+				DrawTexture(textures.answerBlock, 800, 560, WHITE);
+				DrawTextEx(font, "Done", VecPos(800 + 70, 560 + 30), 60, 6, BLACK);
+				if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
+				{
+					DrawTextEx(font, "Done", VecPos(800 + 72, 560 + 26), 60, 6, BLACK);
+					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+					{
+						PlaySoundMulti(textures.clickSound);
+						quizCounter++;
+						game.isQuizOpened = false;
+						game.money += game.trueQuestionCounter * 20;
+						game.trueQuestionCounter = 0;
+					}
 				}
 			}
-		}
 
-		if (game.questionsNumberCounter < 5 && game.isQuizOpened)
-		{
-			if (game.isAnswered)
+			if (game.questionsNumberCounter < 5 && game.isQuizOpened)
 			{
-				game.randomQuestion = 1 + (rand() % 10);
-				while (find(usedNums.begin(), usedNums.end(), game.randomQuestion) != usedNums.end())
+				if (game.isAnswered)
 				{
 					game.randomQuestion = 1 + (rand() % 10);
+					while (find(usedNums.begin(), usedNums.end(), game.randomQuestion) != usedNums.end())
+					{
+						game.randomQuestion = 1 + (rand() % 10);
+					}
+					usedNums.push_back(game.randomQuestion);
+					game.isAnswered = false;
 				}
-				usedNums.push_back(game.randomQuestion);
-				game.isAnswered = false;
-			}
 
-			switch (game.randomQuestion)
-			{
-			case 1:
-				AnswerPosition(tPos[0], questions[0], answers[0], game, textures, font);
-				break;
-			case 2:
-				AnswerPosition(tPos[1], questions[1], answers[1], game, textures, font);
-				break;
-			case 3:
-				AnswerPosition(tPos[2], questions[2], answers[2], game, textures, font);
-				break;
-			case 4:
-				AnswerPosition(tPos[3], questions[3], answers[3], game, textures, font);
-				break;
-			case 5:
-				AnswerPosition(tPos[4], questions[4], answers[4], game, textures, font);
-				break;
-			case 6:
-				AnswerPosition(tPos[5], questions[5], answers[5], game, textures, font);
-				break;
-			case 7:
-				AnswerPosition(tPos[6], questions[6], answers[6], game, textures, font);
-				break;
-			case 8:
-				AnswerPosition(tPos[7], questions[7], answers[7], game, textures, font);
-				break;
-			case 9:
-				AnswerPosition(tPos[8], questions[8], answers[8], game, textures, font);
-				break;
-			case 10:
-				AnswerPosition(tPos[9], questions[9], answers[9], game, textures, font);
-				break;
+				switch (game.randomQuestion)
+				{
+				case 1:
+					AnswerPosition(tPos[0], questions[0], answers[0], game, textures, font);
+					break;
+				case 2:
+					AnswerPosition(tPos[1], questions[1], answers[1], game, textures, font);
+					break;
+				case 3:
+					AnswerPosition(tPos[2], questions[2], answers[2], game, textures, font);
+					break;
+				case 4:
+					AnswerPosition(tPos[3], questions[3], answers[3], game, textures, font);
+					break;
+				case 5:
+					AnswerPosition(tPos[4], questions[4], answers[4], game, textures, font);
+					break;
+				case 6:
+					AnswerPosition(tPos[5], questions[5], answers[5], game, textures, font);
+					break;
+				case 7:
+					AnswerPosition(tPos[6], questions[6], answers[6], game, textures, font);
+					break;
+				case 8:
+					AnswerPosition(tPos[7], questions[7], answers[7], game, textures, font);
+					break;
+				case 9:
+					AnswerPosition(tPos[8], questions[8], answers[8], game, textures, font);
+					break;
+				case 10:
+					AnswerPosition(tPos[9], questions[9], answers[9], game, textures, font);
+					break;
+				}
 			}
+		}
+		else
+		{
+			DrawTextEx(font, "Over", VecPos(660, 280), 300, 12, BLACK);
+			DrawTextEx(font, TextFormat("Attempts - %2i/3", quizCounter), VecPos(816, 660), 30, 5, BLACK);
 		}
 	}
 	else
 	{
-		DrawTextEx(font, "Over", VecPos(660, 280), 300, 12, BLACK);
-		DrawTextEx(font, TextFormat("Attempts - %2i/3", quizCounter), VecPos(816, 660), 30, 5, BLACK);
+		DrawTexture(textures.quizBox, 0, 0, WHITE);
+		DrawTextEx(font, "Not enough", VecPos(680, 300), 100, 8, BLACK);
+		DrawTextEx(font, "money!", VecPos(790, 400), 100, 8, BLACK);
+
+		DrawTexture(textures.answerBlock, 800, 560, WHITE);
+		DrawTextEx(font, "Ok", VecPos(800 + 100, 560 + 30), 60, 6, BLACK);
+		if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
+		{
+			DrawTextEx(font, "Ok", VecPos(800 + 102, 560 + 26), 60, 6, BLACK);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				PlaySoundMulti(textures.clickSound);
+				game.gameWarning = false;
+			}
+		}
 	}
-	
 }
 
 void AnswerPosition(int tPos, const char* question, const char** answers, GameS& game, AllTextures textures, Font font)
@@ -266,19 +293,54 @@ void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& 
 void OpenGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBox, 0, 0, WHITE);
-	if (!game.isGameOpened)
+	if (!game.gameWarning)
 	{
-		DrawTextEx(font, "Game", VecPos(650, 300), 300, 12, BLACK);
-		DrawTextEx(font, "Price - 10", VecPos(846, 620), 40, 6, BLACK);
-		DrawTexture(textures.wheatIcon, 1070, 620, WHITE);
-		if (IsMouseInRange(650, 650 + 690, 320, 320 + 250))
+		if (!game.isGameOpened)
 		{
-			DrawTextEx(font, "Game", VecPos(654, 294), 300, 12, BLACK);
+			DrawTextEx(font, "Game", VecPos(650, 300), 300, 12, BLACK);
+			DrawTextEx(font, "Price - 10", VecPos(846, 620), 40, 6, BLACK);
+			DrawTexture(textures.wheatIcon, 1070, 620, WHITE);
+			if (!game.isArrowPressed)
+			{
+				if (IsMouseInRange(650, 650 + 690, 320, 320 + 250))
+				{
+					DrawTextEx(font, "Game", VecPos(654, 294), 300, 12, BLACK);
+					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+					{
+						PlaySoundMulti(textures.clickSound);
+						if (game.money >= 10)
+						{
+							//game.isGameOpened = true;
+							game.money -= 10;
+						}
+						else
+						{
+							game.gameWarning = true;
+						}
+					}
+				}
+			}
+			else
+			{
+				game.isArrowPressed = false;
+			}
+		}
+	}
+	else
+	{
+		DrawTexture(textures.quizBox, 0, 0, WHITE);
+		DrawTextEx(font, "Not enough", VecPos(680, 300), 100, 8, BLACK);
+		DrawTextEx(font, "money!", VecPos(790, 400), 100, 8, BLACK);
+
+		DrawTexture(textures.answerBlock, 800, 560, WHITE);
+		DrawTextEx(font, "Ok", VecPos(800 + 100, 560 + 30), 60, 6, BLACK);
+		if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
+		{
+			DrawTextEx(font, "Ok", VecPos(800 + 102, 560 + 26), 60, 6, BLACK);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
-				game.isGameOpened = true;
-				game.money -= 10;
+				game.gameWarning = false;
 			}
 		}
 	}

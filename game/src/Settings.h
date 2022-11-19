@@ -7,7 +7,7 @@ void OpenSettings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllT
 void CloseSetting(SettingsS& settings, AllTextures textures);
 
 
-void BackToMenu(bool& isMenuOpen, bool& openMap, GameS& game, AllTextures textures, Font font);
+void BackToMenu(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, Font font);
 
 
 void BackToMap(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, Font font);

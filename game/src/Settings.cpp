@@ -22,7 +22,7 @@ void OpenSettings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllT
         }
         DrawTexture(textures.settingsBox, 5, 50, WHITE);
         DrawTexture(textures.closeSettingsIcon, 450, 50, MAROON);
-        BackToMenu(menu.isMenuOpen, map.openMap, game, textures, font);
+        BackToMenu(menu.isMenuOpen, map, game, textures, font);
         BackToMap(menu.isMenuOpen, map, game, textures, font);
         SetFPS(textures, font);
         ChangeMusicVolume(settings.musicVolume, textures, font);
@@ -187,7 +187,7 @@ void ChangeSoundVolume(float& soundVolume, AllTextures textures, Font font)
     }
 }
 
-void BackToMenu(bool& isMenuOpen, bool& openMap, GameS& game, AllTextures textures, Font font)
+void BackToMenu(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, Font font)
 {
     DrawTexture(textures.taskBox, 35, 440, WHITE);
     Vector2 pos = {58,468};
@@ -199,12 +199,18 @@ void BackToMenu(bool& isMenuOpen, bool& openMap, GameS& game, AllTextures textur
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
+            isMenuOpen = true;
+
             game.isAnswered = true;
+            game.isQuizOpened = false;
+            game.gameWarning = false;
+
+            map.openMap = false;
+            map.countryList = false;
+            map.countryWarning = false;
+
             game.randomQuestion = 0;
             game.questionsNumberCounter = 0;
-            game.isQuizOpened = false;
-            isMenuOpen = true;
-            openMap = false;
         }
     }
 }
@@ -221,13 +227,17 @@ void BackToMap(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, F
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
-            map.openMap = true;
-            map.countryNumber = 0;
+            isMenuOpen = false;
+
             game.isAnswered = true;
+            game.isQuizOpened = false;
+            game.gameWarning = false;
+
+            map.openMap = true;
+
             game.randomQuestion = 0;
             game.questionsNumberCounter = 0;
-            game.isQuizOpened = false;
-            isMenuOpen = false;
+            map.countryNumber = 0;
         }
     }
 }

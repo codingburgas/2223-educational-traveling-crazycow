@@ -189,7 +189,7 @@ void DrawCountry(const char* name, float x, float y, float lengthX, float lenght
 
     if (lockedCountry)
     {
-        if (IsMouseInRange(x, x + lengthX, y, y + lenghtY) && !areSettingsOpen && !map.isWarningOpen)
+        if (IsMouseInRange(x, x + lengthX, y, y + lenghtY) && !areSettingsOpen && !map.countryWarning)
         {
             map.countryHover = countryNum;
             DrawTextEx(font, name, VecPos(x + 2, y - 4), 80, 6, BLACK);
@@ -203,21 +203,21 @@ void DrawCountry(const char* name, float x, float y, float lengthX, float lenght
     else
     {
         DrawTexture(textures.chain, 5, y + 12, WHITE);
-        if (IsMouseInRange(376, 376 + 70, y + 10, y + 90) && !areSettingsOpen && !map.isWarningOpen)
+        if (IsMouseInRange(376, 376 + 70, y + 10, y + 90) && !areSettingsOpen && !map.countryWarning)
         {
             DrawTexture(textures.chain, 5, y + 12, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                map.isWarningOpen = true;
+                map.countryWarning = true;
                 saveLockedCountry = &lockedCountry;
                 notEnoughMoney = false;
             }
         }
 
-        if (map.isWarningOpen)
+        if (map.countryWarning)
         {
-            OpenWarning(saveLockedCountry, map.isWarningOpen, money, textures, font);
+            OpenWarning(saveLockedCountry, map.countryWarning, money, textures, font);
         }
     }
 }

@@ -33,7 +33,7 @@ struct MapS
 {
     bool openMap = false;
     bool countryList = false;
-    bool isWarningOpen = false;
+    bool countryWarning = false;
 
     int countryNumber = 0;
     int countryHover = 0;
@@ -47,12 +47,15 @@ struct GameS
     bool openQuiz = true;
     bool isGameOpened = false;
     bool openGame = false;
+    bool isArrowPressed = false;
+    bool gameWarning = false;
 
-    int money = 800;
+    int money = 20;
     int trueQuestionCounter = 0;
     int questionsNumberCounter = 0;
     int randomQuestion = 0;
-    int quizCounter = 0;
+
+    int quizCounter[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 };
 
 struct LockedCountries

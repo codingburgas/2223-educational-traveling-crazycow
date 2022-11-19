@@ -6,8 +6,6 @@ void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundBulgaria, 0, 0, WHITE);
 
-	static int counter = 0;
-
 	const char* questions[10] = {
 			"    The northernmost city of \n           Bulgaria is:",
 			" The Maritsa River flows from:",
@@ -37,7 +35,7 @@ void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 	int answersPos[10] = { 4, 2, 3, 1, 3, 1, 1, 4, 3, 2 };
 
 
-	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, game.quizCounter[0], game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
@@ -48,6 +46,7 @@ void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
+				game.isArrowPressed = true;
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -58,8 +57,6 @@ void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundSpain, 0, 0, WHITE);
-
-	static int counter = 0;
 
 	const char* questions[10] = {
 				"1",
@@ -89,7 +86,7 @@ void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
-	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, game.quizCounter[1], game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
@@ -111,7 +108,7 @@ void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
 
-	static int counter = 0;
+	
 
 	const char* questions[10] = {
 			"1",
@@ -141,7 +138,7 @@ void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, game.quizCounter[2], game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
@@ -164,7 +161,7 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundItaly, 0, 0, WHITE);
 
-	static int counter = 0;
+	
 
 	const char* questions[10] = {
 				"1",
@@ -194,7 +191,7 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, game.quizCounter[3], game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
@@ -217,7 +214,7 @@ void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundGermany, 0, 0, WHITE);
 
-	static int counter = 0;
+	
 
 	const char* questions[10] = {
 				"1",
@@ -247,7 +244,7 @@ void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, game.quizCounter[4], game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
@@ -267,7 +264,7 @@ void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 {
-	static int counter = 0;
+	
 
 	const char* questions[10] = {
 				"1",
@@ -297,7 +294,7 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, game.quizCounter[5], game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
@@ -317,7 +314,7 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 {
-	static int counter = 0;
+	
 
 	const char* questions[10] = {
 				"1",
@@ -347,7 +344,7 @@ void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, game.quizCounter[6], game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
@@ -367,7 +364,7 @@ void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 {
-	static int counter = 0;
+	
 
 	const char* questions[10] = {
 				"1",
@@ -397,7 +394,7 @@ void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, game.quizCounter[7], game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
@@ -417,7 +414,7 @@ void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 {
-	static int counter = 0;
+	
 
 	const char* questions[10] = {
 				"1",
@@ -447,7 +444,7 @@ void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 
 	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
-	OpenQuiz(questions, answers, answersPos, counter, game, textures, font);
+	OpenQuiz(questions, answers, answersPos, game.quizCounter[8], game, textures, font);
 
 	if (!game.isQuizOpened)
 	{
