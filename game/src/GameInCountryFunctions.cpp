@@ -347,10 +347,10 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& 
 				{
 					DrawTexture(textures.gameBackground, 0, 0, WHITE);
 
-					DrawTexture(landmarks[randomNums[0] - 1], 470, 300, WHITE);
-					DrawTexture(landmarks[randomNums[1] - 1], 740, 300, WHITE);
-					DrawTexture(landmarks[randomNums[2] - 1], 1010, 300, WHITE);
-					DrawTexture(landmarks[randomNums[3] - 1], 1280, 300, WHITE);
+					DrawTexture(landmarks[randomNums[0] - 1], 470, 200, WHITE);
+					DrawTexture(landmarks[randomNums[1] - 1], 740, 200, WHITE);
+					DrawTexture(landmarks[randomNums[2] - 1], 1010, 200, WHITE);
+					DrawTexture(landmarks[randomNums[3] - 1], 1280, 200, WHITE);
 
 					if (!game.flyingDart)
 					{
@@ -404,18 +404,18 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& 
 					{
 						if (IsMissed(randomNums, landmarkPos, game))
 						{
-							DrawTexture(textures.answerBlock, 100, 560, WHITE);
-							DrawTextEx(font, "Ok", VecPos(100 + 100, 560 + 30), 60, 6, BLACK);
-							if (IsMouseInRange(100, 100 + 300, 560, 560 + 120))
+							DrawTexture(textures.answerBlock, 5, 876, WHITE);
+							DrawTextEx(font, "Ok", VecPos(5 + 100, 876 + 30), 60, 6, BLACK);
+							if (IsMouseInRange(5, 5 + 300, 876, 876 + 120))
 							{
-								DrawTextEx(font, "Ok", VecPos(100 + 102, 560 + 26), 60, 6, BLACK);
+								DrawTextEx(font, "Ok", VecPos(5 + 102, 876 + 26), 60, 6, BLACK);
 								if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 								{
 									PlaySoundMulti(textures.clickSound);
 									game.flyingDart = false;
-									game.armX = 500;
-									game.armY = 600;
-									game.dartX = game.armX + 20;
+									game.armX = 900;
+									game.armY = 700;
+									game.dartX = game.armX - 10;
 									game.dartY = game.armY - 10;
 									game.gameWin = true;
 								}
@@ -423,18 +423,18 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& 
 						}
 						else
 						{
-							DrawTexture(textures.answerBlock, 100, 560, WHITE);
-							DrawTextEx(font, "Ok", VecPos(100 + 100, 560 + 30), 60, 6, BLACK);
-							if (IsMouseInRange(100, 100 + 300, 560, 560 + 120))
+							DrawTexture(textures.answerBlock, 5, 876, WHITE);
+							DrawTextEx(font, "Ok", VecPos(5 + 100, 876 + 30), 60, 6, BLACK);
+							if (IsMouseInRange(5, 5 + 300, 876, 876 + 120))
 							{
-								DrawTextEx(font, "Ok", VecPos(100 + 102, 560 + 26), 60, 6, BLACK);
+								DrawTextEx(font, "Ok", VecPos(5 + 102, 876 + 26), 60, 6, BLACK);
 								if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 								{
 									PlaySoundMulti(textures.clickSound);
 									game.flyingDart = false;
-									game.armX = 500;
-									game.armY = 600;
-									game.dartX = game.armX + 20;
+									game.armX = 900;
+									game.armY = 700;
+									game.dartX = game.armX - 10;
 									game.dartY = game.armY - 10;
 									game.gameLoose = true;
 								}

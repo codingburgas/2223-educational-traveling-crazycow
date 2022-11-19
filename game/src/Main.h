@@ -62,11 +62,11 @@ struct GameS
     int questionsNumberCounter = 0;
     int randomQuestion = 0;
 
-    int armX = 500;
-    int armY = 600;
+    int armX = 900;
+    int armY = 700;
 
-    int dartX = 500 + 20;
-    int dartY = 600 - 10;
+    int dartX = 900 - 10;
+    int dartY = 700 - 10;
 
     bool flyingDart = false;
 
