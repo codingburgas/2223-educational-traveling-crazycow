@@ -7,7 +7,14 @@ void OpenBulgariaGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundBulgaria, 0, 0, WHITE);
 
-	OpenGame(game, textures, font);
+	Texture2D landmarks[4] = {
+		textures.settingsIcon,
+		textures.closeSettingsIcon,
+		textures.leftArrow,
+		textures.rightArrow
+	};
+
+	OpenGame(game.gameCounter[0], 2, landmarks, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -29,7 +36,14 @@ void OpenSpainGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundSpain, 0, 0, WHITE);
 
-	OpenGame(game, textures, font);
+	Texture2D landmarks[4] = {
+		textures.gameLeft,
+		textures.gameRight,
+		textures.leftArrow,
+		textures.rightArrow
+	};
+
+	OpenGame(game.gameCounter[1], 1, landmarks, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -51,7 +65,14 @@ void OpenFranceGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
 
-	OpenGame(game, textures, font);
+	Texture2D landmarks[4] = {
+		textures.gameLeft,
+		textures.gameRight,
+		textures.leftArrow,
+		textures.rightArrow
+	};
+
+	OpenGame(game.gameCounter[2], 1, landmarks, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -73,7 +94,14 @@ void OpenItalyGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundItaly, 0, 0, WHITE);
 
-	OpenGame(game, textures, font);
+	Texture2D landmarks[4] = {
+		textures.gameLeft,
+		textures.gameRight,
+		textures.leftArrow,
+		textures.rightArrow
+	};
+
+	OpenGame(game.gameCounter[3], 1, landmarks, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -95,7 +123,14 @@ void OpenGermanyGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundGermany, 0, 0, WHITE);
 
-	OpenGame(game, textures, font);
+	Texture2D landmarks[4] = {
+		textures.gameLeft,
+		textures.gameRight,
+		textures.leftArrow,
+		textures.rightArrow
+	};
+
+	OpenGame(game.gameCounter[4], 1, landmarks, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -115,7 +150,16 @@ void OpenGermanyGame(GameS& game, AllTextures textures, Font font)
 
 void OpenTurkeyGame(GameS& game, AllTextures textures, Font font)
 {
-	OpenGame(game, textures, font);
+	DrawTexture(textures.quizBackgroundTurkey, 0, 0, WHITE);
+
+	Texture2D landmarks[4] = {
+		textures.gameLeft,
+		textures.gameRight,
+		textures.leftArrow,
+		textures.rightArrow
+	};
+
+	OpenGame(game.gameCounter[5], 1, landmarks, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -137,7 +181,14 @@ void OpenGreeceGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundGreece, 0, 0, WHITE);
 
-	OpenGame(game, textures, font);
+	Texture2D landmarks[4] = {
+		textures.gameLeft,
+		textures.gameRight,
+		textures.leftArrow,
+		textures.rightArrow
+	};
+
+	OpenGame(game.gameCounter[6], 1, landmarks, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -157,7 +208,14 @@ void OpenGreeceGame(GameS& game, AllTextures textures, Font font)
 
 void OpenEnglandGame(GameS& game, AllTextures textures, Font font)
 {
-	OpenGame(game, textures, font);
+	Texture2D landmarks[4] = {
+		textures.gameLeft,
+		textures.gameRight,
+		textures.leftArrow,
+		textures.rightArrow
+	};
+
+	OpenGame(game.gameCounter[7], 1, landmarks, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -177,7 +235,14 @@ void OpenEnglandGame(GameS& game, AllTextures textures, Font font)
 
 void OpenNorwayGame(GameS& game, AllTextures textures, Font font)
 {
-	OpenGame(game, textures, font);
+	Texture2D landmarks[4] = {
+		textures.gameLeft,
+		textures.gameRight,
+		textures.leftArrow,
+		textures.rightArrow
+	};
+
+	OpenGame(game.gameCounter[8], 1, landmarks, game, textures, font);
 
 	if (!game.isGameOpened)
 	{

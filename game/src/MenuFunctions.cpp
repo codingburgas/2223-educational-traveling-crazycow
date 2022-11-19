@@ -187,6 +187,16 @@ void ResetValues(GameS& game, LockedCountries& lockedCountries)
     game.quizCounter[7] = 0;
     game.quizCounter[8] = 0;
 
+    game.gameCounter[0] = 0;
+    game.gameCounter[1] = 0;
+    game.gameCounter[2] = 0;
+    game.gameCounter[3] = 0;
+    game.gameCounter[4] = 0;
+    game.gameCounter[5] = 0;
+    game.gameCounter[6] = 0;
+    game.gameCounter[7] = 0;
+    game.gameCounter[8] = 0;
+
     lockedCountries.isSpainOpen = false;
     lockedCountries.isFranceOpen = false;
     lockedCountries.isItalyOpen = false;

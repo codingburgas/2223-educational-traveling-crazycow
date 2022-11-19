@@ -37,6 +37,16 @@ void SaveData(ofstream& saveData, GameS& game, LockedCountries& lockedCountries)
         saveData << game.quizCounter[7] << endl;
         saveData << game.quizCounter[8] << endl;
 
+        saveData << game.gameCounter[0] << endl;
+        saveData << game.gameCounter[1] << endl;
+        saveData << game.gameCounter[2] << endl;
+        saveData << game.gameCounter[3] << endl;
+        saveData << game.gameCounter[4] << endl;
+        saveData << game.gameCounter[5] << endl;
+        saveData << game.gameCounter[6] << endl;
+        saveData << game.gameCounter[7] << endl;
+        saveData << game.gameCounter[8] << endl;
+
         saveData << lockedCountries.isSpainOpen << endl;
         saveData << lockedCountries.isFranceOpen << endl;
         saveData << lockedCountries.isItalyOpen << endl;
@@ -66,6 +76,16 @@ void GetData(ifstream& getData, GameS& game, LockedCountries& lockedCountries)
         getData >> game.quizCounter[6];
         getData >> game.quizCounter[7];
         getData >> game.quizCounter[8];
+
+        getData >> game.gameCounter[0];
+        getData >> game.gameCounter[1];
+        getData >> game.gameCounter[2];
+        getData >> game.gameCounter[3];
+        getData >> game.gameCounter[4];
+        getData >> game.gameCounter[5];
+        getData >> game.gameCounter[6];
+        getData >> game.gameCounter[7];
+        getData >> game.gameCounter[8];
 
         getData >> lockedCountries.isSpainOpen;
         getData >> lockedCountries.isFranceOpen;

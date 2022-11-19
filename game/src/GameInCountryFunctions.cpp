@@ -290,171 +290,201 @@ void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& 
 	}
 }
 
-void OpenGame(GameS& game, AllTextures textures, Font font)
+void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& game, AllTextures textures, Font font)
 {
+	static vector<int> usedNums;
+	static int randomNums[4] = { 0, 0, 0, 0 };
 	if (!game.gameWarning)
 	{
-		if (!game.isGameOpened)
+		if (gameCounter < 3)
 		{
-			DrawTexture(textures.quizBox, 0, 0, WHITE);
-			DrawTextEx(font, "Game", VecPos(650, 300), 300, 12, BLACK);
-			DrawTextEx(font, "Price - 10", VecPos(846, 620), 40, 6, BLACK);
-			DrawTexture(textures.wheatIcon, 1070, 620, WHITE);
-			if (!game.isArrowPressed)
+			if (!game.isGameOpened)
 			{
-				if (IsMouseInRange(650, 650 + 690, 320, 320 + 250))
+				DrawTexture(textures.quizBox, 0, 0, WHITE);
+				DrawTextEx(font, "Game", VecPos(650, 300), 300, 12, BLACK);
+				DrawTextEx(font, TextFormat("Attempts - %2i/3", gameCounter), VecPos(816, 660), 30, 5, BLACK);
+				DrawTextEx(font, "Price - 10", VecPos(830, 604), 40, 6, BLACK);
+				DrawTexture(textures.wheatIcon, 1050, 608, WHITE);
+				if (!game.isArrowPressed)
 				{
-					DrawTextEx(font, "Game", VecPos(654, 294), 300, 12, BLACK);
-					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+					if (IsMouseInRange(650, 650 + 690, 320, 320 + 250))
 					{
-						PlaySoundMulti(textures.clickSound);
-						if (game.money >= 10)
+						DrawTextEx(font, "Game", VecPos(654, 294), 300, 12, BLACK);
+						if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 						{
-							game.isGameOpened = true;
-							game.money -= 10;
-						}
-						else
-						{
-							game.gameWarning = true;
+							PlaySoundMulti(textures.clickSound);
+							if (game.money >= 10)
+							{
+								game.isGameOpened = true;
+								game.money -= 10;
+
+								for (int i = 0; i < 4; i++)
+								{
+									randomNums[i] = 1 + (rand() % 4);
+									while (find(usedNums.begin(), usedNums.end(), randomNums[i]) != usedNums.end())
+									{
+										randomNums[i] = 1 + (rand() % 4);
+									}
+									usedNums.push_back(randomNums[i]);
+								}
+								usedNums.clear();
+							}
+							else
+							{
+								game.gameWarning = true;
+							}
 						}
 					}
+				}
+				else
+				{
+					game.isArrowPressed = false;
 				}
 			}
 			else
 			{
-				game.isArrowPressed = false;
+				if (!game.gameWin && !game.gameLoose)
+				{
+					DrawTexture(textures.gameBackground, 0, 0, WHITE);
+
+					DrawTexture(landmarks[randomNums[0] - 1], 470, 300, WHITE);
+					DrawTexture(landmarks[randomNums[1] - 1], 740, 300, WHITE);
+					DrawTexture(landmarks[randomNums[2] - 1], 1010, 300, WHITE);
+					DrawTexture(landmarks[randomNums[3] - 1], 1280, 300, WHITE);
+
+					if (!game.flyingDart)
+					{
+						DrawTexture(textures.armStageOne, game.armX, game.armY, WHITE);
+					}
+					else
+					{
+						DrawTexture(textures.armStageTwo, game.armX, game.armY, WHITE);
+					}
+
+					DrawTexture(textures.dart, game.dartX, game.dartY, WHITE);
+
+					if (!game.flyingDart)
+					{
+						MoveArm(game);
+
+						if (IsMouseInRange(game.armX, game.armX + 100, game.armY, game.armY + 300) || IsKeyPressed(KEY_SPACE))
+						{
+							if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_SPACE))
+							{
+								game.flyingDart = true;
+							}
+						}
+					}
+
+					int currentFPS = GetFPS();
+					int dartMove = 0;
+
+					if (currentFPS <= 30)
+					{
+						dartMove = 16;
+					}
+					else if (currentFPS > 30 && currentFPS <= 60)
+					{
+						dartMove = 8;
+					}
+					else
+					{
+						dartMove = 4;
+					}
+
+					if (game.flyingDart)
+					{
+						if (game.dartX >= 400 && game.dartX >= game.armX - 250)
+						{
+							game.dartX -= dartMove;
+						}
+					}
+
+					if (game.flyingDart)
+					{
+						if (IsMissed(randomNums, landmarkPos, game))
+						{
+							DrawTexture(textures.answerBlock, 100, 560, WHITE);
+							DrawTextEx(font, "Ok", VecPos(100 + 100, 560 + 30), 60, 6, BLACK);
+							if (IsMouseInRange(100, 100 + 300, 560, 560 + 120))
+							{
+								DrawTextEx(font, "Ok", VecPos(100 + 102, 560 + 26), 60, 6, BLACK);
+								if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+								{
+									PlaySoundMulti(textures.clickSound);
+									game.flyingDart = false;
+									game.armX = 500;
+									game.armY = 600;
+									game.dartX = game.armX + 20;
+									game.dartY = game.armY - 10;
+									game.gameWin = true;
+								}
+							}
+						}
+						else
+						{
+							DrawTexture(textures.answerBlock, 100, 560, WHITE);
+							DrawTextEx(font, "Ok", VecPos(100 + 100, 560 + 30), 60, 6, BLACK);
+							if (IsMouseInRange(100, 100 + 300, 560, 560 + 120))
+							{
+								DrawTextEx(font, "Ok", VecPos(100 + 102, 560 + 26), 60, 6, BLACK);
+								if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+								{
+									PlaySoundMulti(textures.clickSound);
+									game.flyingDart = false;
+									game.armX = 500;
+									game.armY = 600;
+									game.dartX = game.armX + 20;
+									game.dartY = game.armY - 10;
+									game.gameLoose = true;
+								}
+							}
+						}
+					}
+				}
+				else if (game.gameWin)
+				{
+					DrawTextEx(font, "You hit!", VecPos(650, 300), 200, 12, BLACK);
+					DrawTextEx(font, "You win - 50", VecPos(820, 500), 40, 4, BLACK);
+					DrawTexture(textures.wheatIcon, 1100 - 10, 500, WHITE);
+					DrawTexture(textures.answerBlock, 800, 560, WHITE);
+					DrawTextEx(font, "Done", VecPos(800 + 70, 560 + 30), 60, 6, BLACK);
+					if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
+					{
+						DrawTextEx(font, "Done", VecPos(800 + 72, 560 + 26), 60, 6, BLACK);
+						if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+						{
+							PlaySoundMulti(textures.clickSound);
+							game.money += 50;
+							game.isGameOpened = false;
+							game.gameWin = false;
+							gameCounter++;
+						}
+					}
+				}
+				else
+				{
+					DrawTextEx(font, "Missed", VecPos(650, 300), 200, 12, BLACK);
+					DrawTexture(textures.answerBlock, 800, 560, WHITE);
+					DrawTextEx(font, "Done", VecPos(800 + 70, 560 + 30), 60, 6, BLACK);
+					if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
+					{
+						DrawTextEx(font, "Done", VecPos(800 + 72, 560 + 26), 60, 6, BLACK);
+						if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+						{
+							PlaySoundMulti(textures.clickSound);
+							game.isGameOpened = false;
+							game.gameLoose = false;
+							gameCounter++;
+						}
+					}
+				}
 			}
 		}
 		else
 		{
-			
-			if (!game.gameWin && !game.gameLoose)
-			{
-				DrawTexture(textures.gameBackground,0, 0, RAYWHITE);
-				DrawRectangle(400, 100, 1200, 600, GRAY);
-
-				DrawRectangle(450, 200, 250, 400, WHITE);
-				DrawRectangle(720, 200, 250, 400, WHITE);
-				DrawRectangle(990, 200, 250, 400, WHITE);
-				DrawRectangle(1260, 200, 250, 400, WHITE);
-
-				DrawTexture(textures.armStageOne,game.armX, game.armY, RAYWHITE);
-				DrawTexture(textures.dart,game.dartX, game.dartY, RAYWHITE);
-
-				if (!game.flyingDart)
-				{
-					MoveArm(game, textures, font);
-
-					if (IsMouseInRange(game.armX, game.armX + 100, game.armY, game.armY + 300) || IsKeyPressed(KEY_SPACE))
-					{
-						if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_SPACE))
-						{
-							game.flyingDart = true;
-						}
-					}
-				}
-
-				int currentFPS = GetFPS();
-				int dartMove = 0;
-
-				if (currentFPS <= 30)
-				{
-					dartMove = 16;
-				}
-				else if (currentFPS > 30 && currentFPS <= 60)
-				{
-					dartMove = 8;
-				}
-				else
-				{
-					dartMove = 4;
-				}
-
-				if (game.flyingDart)
-				{
-					if (game.dartX >= 400 && game.dartX >= game.armX - 150)
-					{
-						game.dartX -= dartMove;
-					}
-				}
-
-				if (game.flyingDart)
-				{
-					if (game.dartX >= 450 && game.dartX <= 700 && game.dartY >= 200 && game.dartY <= 600)
-					{
-						DrawTexture(textures.answerBlock, 100, 560, WHITE);
-						DrawTextEx(font, "Ok", VecPos(100 + 100, 560 + 30), 60, 6, BLACK);
-						if (IsMouseInRange(100, 100 + 300, 560, 560 + 120))
-						{
-							DrawTextEx(font, "Ok", VecPos(100 + 102, 560 + 26), 60, 6, BLACK);
-							if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-							{
-								PlaySoundMulti(textures.clickSound);
-								game.flyingDart = false;
-								game.armX = 500;
-								game.armY = 600;
-								game.dartX = game.armX + 20;
-								game.dartY = game.armY - 10;
-								game.gameWin = true;
-							}
-						}
-					}
-					else
-					{
-						DrawTexture(textures.answerBlock, 100, 560, WHITE);
-						DrawTextEx(font, "Ok", VecPos(100 + 100, 560 + 30), 60, 6, BLACK);
-						if (IsMouseInRange(100, 100 + 300, 560, 560 + 120))
-						{
-							DrawTextEx(font, "Ok", VecPos(100 + 102, 560 + 26), 60, 6, BLACK);
-							if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-							{
-								PlaySoundMulti(textures.clickSound);
-								game.flyingDart = false;
-								game.armX = 500;
-								game.armY = 600;
-								game.dartX = game.armX + 20;
-								game.dartY = game.armY - 10;
-								game.gameLoose = true;
-							}
-						}
-					}
-				}
-			}
-			else if(game.gameWin)
-			{
-				DrawTextEx(font, "You hit!", VecPos(650, 300), 200, 12, BLACK);
-				DrawTextEx(font, "You win - 50", VecPos(820, 500), 40, 4, BLACK);
-				DrawTexture(textures.wheatIcon, 1100 - 10, 500, WHITE);
-				DrawTexture(textures.answerBlock, 800, 560, WHITE);
-				DrawTextEx(font, "Done", VecPos(800 + 70, 560 + 30), 60, 6, BLACK);
-				if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
-				{
-					DrawTextEx(font, "Done", VecPos(800 + 72, 560 + 26), 60, 6, BLACK);
-					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-					{
-						PlaySoundMulti(textures.clickSound);
-						game.money += 50;
-						game.isGameOpened = false;
-						game.gameWin = false;
-					}
-				}
-			}
-			else
-			{
-				DrawTextEx(font, "Missed", VecPos(650, 300), 200, 12, BLACK);
-				DrawTexture(textures.answerBlock, 800, 560, WHITE);
-				DrawTextEx(font, "Done", VecPos(800 + 70, 560 + 30), 60, 6, BLACK);
-				if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
-				{
-					DrawTextEx(font, "Done", VecPos(800 + 72, 560 + 26), 60, 6, BLACK);
-					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-					{
-						PlaySoundMulti(textures.clickSound);
-						game.isGameOpened = false;
-						game.gameLoose = false;
-					}
-				}
-			}
+			DrawTextEx(font, "Over", VecPos(660, 280), 300, 12, BLACK);
+			DrawTextEx(font, TextFormat("Attempts - %2i/3", gameCounter), VecPos(816, 660), 30, 5, BLACK);
 		}
 	}
 	else
@@ -477,7 +507,7 @@ void OpenGame(GameS& game, AllTextures textures, Font font)
 	}
 }
 
-void MoveArm(GameS& game, AllTextures textures, Font font)
+void MoveArm(GameS& game)
 {
 	int currentFPS = GetFPS();
 	int armMove = 0;
@@ -497,54 +527,139 @@ void MoveArm(GameS& game, AllTextures textures, Font font)
 
 	if (IsKeyDown(KEY_S) && IsKeyDown(KEY_A))
 	{
-	game.armY += armMove;
-	game.dartY += armMove;
-
-	game.armX -= armMove;
-	game.dartX -= armMove;
+		if (game.armY <= 650)
+		{
+			game.armY += armMove;
+			game.dartY += armMove;
+		}
+		if (game.armX >= 400)
+		{
+			game.armX -= armMove;
+			game.dartX -= armMove;
+		}
 	}
 	else if (IsKeyDown(KEY_S) && IsKeyDown(KEY_D))
 	{
-	game.armY += armMove;
-	game.dartY += armMove;
-
-	game.armX += armMove;
-	game.dartX += armMove;
+		if (game.armY <= 650)
+		{
+			game.armY += armMove;
+			game.dartY += armMove;
+		}
+		if (game.armX <= 1700)
+		{
+			game.armX += armMove;
+			game.dartX += armMove;
+		}
 	}
 	else if (IsKeyDown(KEY_W) && IsKeyDown(KEY_A))
 	{
-	game.armY -= armMove;
-	game.dartY -= armMove;
-
-	game.armX -= armMove;
-	game.dartX -= armMove;
+		if (game.armY >= 260)
+		{
+			game.armY -= armMove;
+			game.dartY -= armMove;
+		}
+		if (game.armX >= 400)
+		{
+			game.armX -= armMove;
+			game.dartX -= armMove;
+		}
 	}
 	else if (IsKeyDown(KEY_W) && IsKeyDown(KEY_D))
 	{
-	game.armY -= armMove;
-	game.dartY -= armMove;
-
-	game.armX += armMove;
-	game.dartX += armMove;
+		if (game.armY >= 260)
+		{
+			game.armY -= armMove;
+			game.dartY -= armMove;
+		}
+		if (game.armX <= 1700)
+		{
+			game.armX += armMove;
+			game.dartX += armMove;
+		}
 	}
-	else if (IsKeyDown(KEY_A))
+	else if (IsKeyDown(KEY_A) && game.armX >= 400)
 	{
 		game.armX -= armMove;
 		game.dartX -= armMove;
 	}
-	else if (IsKeyDown(KEY_D))
+	else if (IsKeyDown(KEY_D) && game.armX <= 1700)
 	{
 		game.armX += armMove;
 		game.dartX += armMove;
 	}
-	else if (IsKeyDown(KEY_W))
+	else if (IsKeyDown(KEY_W) && game.armY >= 260)
 	{
 		game.armY -= armMove;
 		game.dartY -= armMove;
 	}
-	else if (IsKeyDown(KEY_S))
+	else if (IsKeyDown(KEY_S) && game.armY <= 650)
 	{
 		game.armY += armMove;
 		game.dartY += armMove;
+	}
+}
+
+bool IsMissed(int randomNums[4], int landmarkPos, GameS& game)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (randomNums[i] == landmarkPos)
+		{
+			if (IsHit(i + 1, game))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+}
+
+bool IsHit(int landmarkPos, GameS& game)
+{
+	switch (landmarkPos)
+	{
+	case 1:
+		if (game.dartX >= 470 && game.dartX <= 470 + 250 && game.dartY >= 300 && game.dartY <= 700)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		break;
+	case 2:
+		if (game.dartX >= 740 && game.dartX <= 740 + 250 && game.dartY >= 300 && game.dartY <= 700)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		break;
+	case 3:
+		if (game.dartX >= 1010 && game.dartX <= 1010 + 250 && game.dartY >= 300 && game.dartY <= 700)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		break;
+	case 4:
+		if (game.dartX >= 1280 && game.dartX <= 1280 + 250 && game.dartY >= 300 && game.dartY <= 700)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		break;
 	}
 }

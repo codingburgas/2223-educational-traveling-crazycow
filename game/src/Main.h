@@ -71,6 +71,8 @@ struct GameS
     bool flyingDart = false;
 
     int quizCounter[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+    int gameCounter[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 };
 
 struct LockedCountries

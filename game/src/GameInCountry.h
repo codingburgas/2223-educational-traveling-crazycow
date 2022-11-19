@@ -17,6 +17,10 @@ void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& 
 
 // Game -------------------------------------------------------------------------------------------------------------------------------------
 
-void OpenGame(GameS& game, AllTextures textures, Font font);
+void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& game, AllTextures textures, Font font);
 
-void MoveArm(GameS& game, AllTextures textures, Font font);
+void MoveArm(GameS& game);
+
+bool IsMissed(int randomNums[4], int landmarkPos, GameS& game);
+
+bool IsHit(int landmarkPos, GameS& game);
