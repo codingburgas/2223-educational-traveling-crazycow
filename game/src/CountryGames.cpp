@@ -93,6 +93,8 @@ void OpenItalyGame(GameS& game, AllTextures textures, Font font)
 
 void OpenGermanyGame(GameS& game, AllTextures textures, Font font)
 {
+	DrawTexture(textures.quizBackgroundGermany, 0, 0, WHITE);
+
 	OpenGame(game, textures, font);
 
 	if (!game.isGameOpened)
@@ -133,6 +135,8 @@ void OpenTurkeyGame(GameS& game, AllTextures textures, Font font)
 
 void OpenGreeceGame(GameS& game, AllTextures textures, Font font)
 {
+	DrawTexture(textures.quizBackgroundGreece, 0, 0, WHITE);
+
 	OpenGame(game, textures, font);
 
 	if (!game.isGameOpened)

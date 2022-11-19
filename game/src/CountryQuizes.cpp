@@ -108,8 +108,6 @@ void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
 
-	
-
 	const char* questions[10] = {
 			"1",
 			"2",
@@ -161,8 +159,6 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundItaly, 0, 0, WHITE);
 
-	
-
 	const char* questions[10] = {
 				"1",
 				"2",
@@ -213,8 +209,6 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundGermany, 0, 0, WHITE);
-
-	
 
 	const char* questions[10] = {
 				"1",
@@ -314,7 +308,7 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 {
-	
+	DrawTexture(textures.quizBackgroundGreece, 0, 0, WHITE);
 
 	const char* questions[10] = {
 				"1",

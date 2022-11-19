@@ -50,7 +50,7 @@ struct GameS
     bool isArrowPressed = false;
     bool gameWarning = false;
 
-    int money = 20;
+    int money = 600;
     int trueQuestionCounter = 0;
     int questionsNumberCounter = 0;
     int randomQuestion = 0;
@@ -109,6 +109,7 @@ struct AllTextures
     Texture2D quizBackgroundItaly = LoadTexture("../src/assets/Backgrounds/Italy.png");
     Texture2D quizBackgroundSpain = LoadTexture("../src/assets/Backgrounds/Spain.png");
     Texture2D quizBackgroundGermany = LoadTexture("../src/assets/Backgrounds/Germany.png");
+    Texture2D quizBackgroundGreece = LoadTexture("../src/assets/Backgrounds/Greece.png");
 
     Texture2D menuCaravanLeft = LoadTexture("../src/assets/Backgrounds/menuCaravan_one.png");
     Texture2D menuCaravanMiddle = LoadTexture("../src/assets/Backgrounds/menuCaravan_two.png");

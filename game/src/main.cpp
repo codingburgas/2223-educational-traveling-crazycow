@@ -24,12 +24,10 @@ int main()
     GameS game;
     LockedCountries lockedCountries;
 
-
     PlayMusicStream(textures.menuMusic);
     SetMusicVolume(textures.menuMusic, settings.musicVolume);
     SetSoundVolume(textures.clickSound, settings.soundVolume);
 
-    
 
     while (!WindowShouldClose() && !menu.isGameClosed)
     {
@@ -49,10 +47,12 @@ int main()
     }
 
     UnloadAllTextures(textures);
+
     UnloadFont(font);
 
-    StopMusicStream(textures.menuMusic);
+    UnloadMusicStream(textures.menuMusic);
 
     CloseAudioDevice();
+
     CloseWindow();
 }
