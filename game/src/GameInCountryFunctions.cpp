@@ -325,11 +325,12 @@ void OpenGame(GameS& game, AllTextures textures, Font font)
 				game.isArrowPressed = false;
 			}
 		}
-
-		if (game.isGameOpened)
+		else
 		{
+			
 			if (!game.gameWin && !game.gameLoose)
 			{
+				DrawTexture(textures.gameBackground,0, 0, RAYWHITE);
 				DrawRectangle(400, 100, 1200, 600, GRAY);
 
 				DrawRectangle(450, 200, 250, 400, WHITE);
@@ -339,7 +340,6 @@ void OpenGame(GameS& game, AllTextures textures, Font font)
 
 				DrawTexture(textures.armStageOne,game.armX, game.armY, RAYWHITE);
 				DrawTexture(textures.dart,game.dartX, game.dartY, RAYWHITE);
-
 
 				if (!game.flyingDart)
 				{
