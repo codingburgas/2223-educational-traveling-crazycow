@@ -1,11 +1,5 @@
 #include "Main.h"
 
-const int screenWidth = 1920;
-const int screenHeight = 1000;
-
-ofstream saveData;
-ifstream getData;
-
 int main()
 {
     srand(time(NULL));
@@ -21,12 +15,19 @@ int main()
     AllTextures textures;
 
     SettingsS settings;
+
     MenuS menu;
+
     MapS map;
+
     GameS game;
+
     LockedCountries lockedCountries;
 
-    GetData(getData, settings, game, lockedCountries);
+    ofstream saveData;
+    ifstream getData;
+
+    GetData(getData, game, lockedCountries);
 
     PlayMusicStream(textures.menuMusic);
     SetMusicVolume(textures.menuMusic, settings.musicVolume);
@@ -39,7 +40,7 @@ int main()
 
         ClearBackground(WHITE);
 
-            Menu(settings, menu, map, game, lockedCountries, textures, font);
+            Menu(menu, map, game, lockedCountries, textures, font);
 
             Game(settings, menu, map, game, lockedCountries, textures, font);
 
@@ -50,7 +51,7 @@ int main()
         EndDrawing();
     }
 
-    SaveData(saveData, settings, game, lockedCountries);
+    SaveData(saveData, game, lockedCountries);
 
     UnloadAllTextures(textures);
 

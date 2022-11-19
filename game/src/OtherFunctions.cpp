@@ -20,15 +20,12 @@ Vector2 VecPos(int x, int y)
     return pos;
 }
 
-void SaveData(ofstream& saveData, SettingsS& settings, GameS& game, LockedCountries& lockedCountries)
+void SaveData(ofstream& saveData, GameS& game, LockedCountries& lockedCountries)
 {
     saveData.open("../src/assets/SaveData.txt");
 
     if (saveData.is_open())
     {
-        saveData << settings.musicVolume * 100 << endl;
-        saveData << settings.soundVolume * 100 << endl;
-
         saveData << game.money << endl;
         saveData << game.quizCounter[0] << endl;
         saveData << game.quizCounter[1] << endl;
@@ -53,20 +50,12 @@ void SaveData(ofstream& saveData, SettingsS& settings, GameS& game, LockedCountr
     }
 }
 
-void GetData(ifstream& getData, SettingsS& settings, GameS& game, LockedCountries& lockedCountries)
+void GetData(ifstream& getData, GameS& game, LockedCountries& lockedCountries)
 {
     getData.open("../src/assets/SaveData.txt");
 
     if (getData.is_open())
     {
-        float newMusicVolume;
-        getData >> newMusicVolume;
-        settings.musicVolume = newMusicVolume/100;
-
-        float newSoundVolume;
-        getData >> newSoundVolume;
-        settings.soundVolume = newSoundVolume / 100;
-
         getData >> game.money;
         getData >> game.quizCounter[0];
         getData >> game.quizCounter[1];

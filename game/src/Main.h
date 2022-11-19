@@ -11,6 +11,9 @@
 
 using namespace std;
 
+const int screenWidth = 1920;
+const int screenHeight = 1000;
+
 struct SettingsS
 {
     bool areSettingsOpen = false;
@@ -137,7 +140,7 @@ struct AllTextures
 
 // Main Functions ----------------------------------------------------------------------------------------------------------------------
 
-void Menu(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font);
+void Menu(MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font);
 
 void Settings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font);
 
@@ -152,6 +155,6 @@ Vector2 VecPos(int x, int y);
 
 void UnloadAllTextures(AllTextures unloadTextures);
 
-void SaveData(ofstream& saveData, SettingsS& settings, GameS& game, LockedCountries& lockedCountries);
+void SaveData(ofstream& saveData, GameS& game, LockedCountries& lockedCountries);
 
-void GetData(ifstream& getData, SettingsS& settings, GameS& game, LockedCountries& lockedCountries);
+void GetData(ifstream& getData, GameS& game, LockedCountries& lockedCountries);

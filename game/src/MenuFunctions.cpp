@@ -1,7 +1,7 @@
 #include "Main.h"
 #include "Menu.h"
 
-void Menu(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
+void Menu(MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
 {
     if (!menu.newGame)
     {
@@ -11,7 +11,7 @@ void Menu(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountr
 
             DrawMenuBackground(menu, textures);
             StartGame(menu.isMenuOpen, map, textures, font);
-            NewGame(menu.newGame, settings, menu, textures, font);
+            NewGame(menu.newGame, textures, font);
             CloseGame(menu.isGameClosed, textures, font);
         }
     }
@@ -19,7 +19,7 @@ void Menu(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountr
     {
         UpdateMusicStream(textures.menuMusic);
         DrawMenuBackground(menu, textures);
-        NewGameWarning(menu.newGame, settings, game, lockedCountries, textures, font);
+        NewGameWarning(menu.newGame, game, lockedCountries, textures, font);
     }
 }
 
@@ -124,7 +124,7 @@ void CloseGame(bool& isGameClosed, AllTextures textures, Font font)
     }
 }
 
-void NewGame(bool& newGame, SettingsS& settings, MenuS& menu, AllTextures textures, Font font)
+void NewGame(bool& newGame, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 676, 470, WHITE);
     DrawTextEx(font, "New Game", VecPos(736, 506), 80, 4, BLACK);
@@ -139,7 +139,7 @@ void NewGame(bool& newGame, SettingsS& settings, MenuS& menu, AllTextures textur
     }
 }
 
-void NewGameWarning(bool& newGame, SettingsS& settings, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
+void NewGameWarning(bool& newGame, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
 {
     DrawTexture(textures.quizBox, 0, 0, WHITE);
     DrawTextEx(font, "Are you sure?", VecPos(560, 340), 120, 8, BLACK);
@@ -157,7 +157,7 @@ void NewGameWarning(bool& newGame, SettingsS& settings, GameS& game, LockedCount
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
-            ResetValues(settings, game, lockedCountries);
+            ResetValues(game, lockedCountries);
             newGame = false;
         }
     }
@@ -174,11 +174,8 @@ void NewGameWarning(bool& newGame, SettingsS& settings, GameS& game, LockedCount
     }
 }
 
-void ResetValues(SettingsS& settings, GameS& game, LockedCountries& lockedCountries)
+void ResetValues(GameS& game, LockedCountries& lockedCountries)
 {
-    settings.musicVolume = 0.05;
-    settings.soundVolume = 0.15;
-
     game.money = 600;
     game.quizCounter[0] = 0;
     game.quizCounter[1] = 0;
