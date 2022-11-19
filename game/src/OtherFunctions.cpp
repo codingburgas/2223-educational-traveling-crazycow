@@ -131,4 +131,7 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.chain);
     UnloadTexture(unloadTextures.gameRight);
     UnloadTexture(unloadTextures.gameLeft);
+    UnloadTexture(unloadTextures.armStageOne);
+    UnloadTexture(unloadTextures.armStageTwo);
+    UnloadTexture(unloadTextures.dart);
 }

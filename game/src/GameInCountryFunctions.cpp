@@ -337,8 +337,8 @@ void OpenGame(GameS& game, AllTextures textures, Font font)
 				DrawRectangle(990, 200, 250, 400, WHITE);
 				DrawRectangle(1260, 200, 250, 400, WHITE);
 
-				DrawRectangle(game.armX, game.armY, 100, 600, YELLOW);
-				DrawRectangle(game.dartX, game.dartY, 40, 40, RED);
+				DrawTexture(textures.armStageOne,game.armX, game.armY, RAYWHITE);
+				DrawTexture(textures.dart,game.dartX, game.dartY, RAYWHITE);
 
 
 				if (!game.flyingDart)

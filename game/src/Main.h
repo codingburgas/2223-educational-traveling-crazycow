@@ -138,6 +138,9 @@ struct AllTextures
     Texture2D chain = LoadTexture("../src/assets/Others/chain.png");
     Texture2D gameRight = LoadTexture("../src/assets/Others/gameRight.png");
     Texture2D gameLeft = LoadTexture("../src/assets/Others/gameLeft.png");
+    Texture2D armStageOne = LoadTexture("../src/assets/Others/armStageOne.png");
+    Texture2D armStageTwo = LoadTexture("../src/assets/Others/armStageTwo.png");
+    Texture2D dart = LoadTexture("../src/assets/Others/dart.png");
 
     // Sounds and Musics
 
