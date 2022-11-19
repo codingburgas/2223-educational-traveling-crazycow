@@ -101,7 +101,7 @@ void SetFPS(AllTextures textures, Font font)
 
 void ChangeMusicVolume(float& musicVolume, AllTextures textures, Font font)
 {
-    static int showMusicVolume = 5;
+    static int showMusicVolume = musicVolume * 100;
 
     SetMusicVolume(textures.menuMusic, musicVolume);
 
@@ -145,7 +145,7 @@ void ChangeMusicVolume(float& musicVolume, AllTextures textures, Font font)
 
 void ChangeSoundVolume(float& soundVolume, AllTextures textures, Font font)
 {
-    static int showSoundVolume = 15;
+    static int showSoundVolume = soundVolume * 100;
 
     SetSoundVolume(textures.clickSound, soundVolume);
 

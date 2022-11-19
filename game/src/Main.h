@@ -7,6 +7,7 @@
 #include <time.h>
 #include <algorithm>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -23,6 +24,7 @@ struct MenuS
 {
     bool isMenuOpen = true;
     bool isGameClosed = false;
+    bool newGame = false;
 
     int BusX = 0;
     int BusY = 590;
@@ -135,25 +137,11 @@ struct AllTextures
 
 // Main Functions ----------------------------------------------------------------------------------------------------------------------
 
-void Menu(SettingsS& settings, MenuS& menu, MapS& map, AllTextures textures, Font font);
+void Menu(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font);
 
 void Settings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font);
 
 void Game(SettingsS &settings, MenuS &menu, MapS &map, GameS &game, LockedCountries &lockedCountries, AllTextures textures, Font font);
-
-
-
-
-// Menu Functions ---------------------------------------------------------------------------------------------------------------------
-
-void DrawMenuBackground(MenuS& menu, AllTextures textures);
-
-void StartGame(bool& isMenuOpen, MapS& map, AllTextures textures, Font font);
-
-void CloseGame(bool& Close, AllTextures textures, Font font);
-
-
-
 
 
 // Other Functions ----------------------------------------------------------------------------------------------------------------
@@ -163,3 +151,7 @@ bool IsMouseInRange(int x1, int x2, int y1, int y2);
 Vector2 VecPos(int x, int y);
 
 void UnloadAllTextures(AllTextures unloadTextures);
+
+void SaveData(ofstream& saveData, SettingsS& settings, GameS& game, LockedCountries& lockedCountries);
+
+void GetData(ifstream& getData, SettingsS& settings, GameS& game, LockedCountries& lockedCountries);

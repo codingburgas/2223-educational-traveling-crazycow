@@ -1,14 +1,25 @@
 #include "Main.h"
+#include "Menu.h"
 
-void Menu(SettingsS& settings, MenuS& menu, MapS& map, AllTextures textures, Font font)
+void Menu(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
 {
-    if (menu.isMenuOpen)
+    if (!menu.newGame)
+    {
+        if (menu.isMenuOpen)
+        {
+            UpdateMusicStream(textures.menuMusic);
+
+            DrawMenuBackground(menu, textures);
+            StartGame(menu.isMenuOpen, map, textures, font);
+            NewGame(menu.newGame, settings, menu, textures, font);
+            CloseGame(menu.isGameClosed, textures, font);
+        }
+    }
+    else
     {
         UpdateMusicStream(textures.menuMusic);
-
         DrawMenuBackground(menu, textures);
-        StartGame(menu.isMenuOpen, map, textures, font);
-        CloseGame(menu.isGameClosed, textures, font);
+        NewGameWarning(menu.newGame, settings, game, lockedCountries, textures, font);
     }
 }
 
@@ -84,13 +95,10 @@ void DrawMenuBackground(MenuS& menu, AllTextures textures)
 void StartGame(bool& isMenuOpen, MapS& map, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 676, 280, WHITE);
-    Vector2 pos = {814,316};
-    DrawTextEx(font, "Start", pos, 96, 4, BLACK);
+    DrawTextEx(font, "Start", VecPos(814, 316), 96, 4, BLACK);
     if (IsMouseInRange(676, 676 + 480, 280, 280 + 149))
     {
-        pos.x = 816;
-        pos.y = 310;
-        DrawTextEx(font, "Start", pos, 96, 4, BLACK);
+        DrawTextEx(font, "Start", VecPos(816, 310), 96, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
@@ -103,15 +111,91 @@ void StartGame(bool& isMenuOpen, MapS& map, AllTextures textures, Font font)
 
 void CloseGame(bool& isGameClosed, AllTextures textures, Font font)
 {
-    DrawTexture(textures.startBlock, 676, 500, WHITE);
-    DrawTextEx(font, "Exit", VecPos(844, 536), 96, 4, BLACK);
-    if (IsMouseInRange(676, 676 + 480, 500, 500 + 149))
+    DrawTexture(textures.startBlock, 676, 660, WHITE);
+    DrawTextEx(font, "Exit", VecPos(844, 696), 96, 4, BLACK);
+    if (IsMouseInRange(676, 676 + 480, 660, 660 + 149))
     {
-        DrawTextEx(font, "Exit", VecPos(846, 530), 96, 4, BLACK);
+        DrawTextEx(font, "Exit", VecPos(846, 690), 96, 4, BLACK);
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
             isGameClosed = true;
         }
     }
+}
+
+void NewGame(bool& newGame, SettingsS& settings, MenuS& menu, AllTextures textures, Font font)
+{
+    DrawTexture(textures.startBlock, 676, 470, WHITE);
+    DrawTextEx(font, "New Game", VecPos(736, 506), 80, 4, BLACK);
+    if (IsMouseInRange(676, 676 + 480, 470, 470 + 149))
+    {
+        DrawTextEx(font, "New Game", VecPos(738, 502), 80, 4, BLACK);
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            PlaySoundMulti(textures.clickSound);
+            newGame = true;
+        }
+    }
+}
+
+void NewGameWarning(bool& newGame, SettingsS& settings, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
+{
+    DrawTexture(textures.quizBox, 0, 0, WHITE);
+    DrawTextEx(font, "Are you sure?", VecPos(560, 340), 120, 8, BLACK);
+
+    DrawTexture(textures.answerBlock, 540, 520, WHITE);
+    DrawTextEx(font, "Yes", VecPos(540 + 120, 520 + 50), 34, 4, BLACK);
+
+    DrawTexture(textures.answerBlock, 540 + 500, 520, WHITE);
+    DrawTextEx(font, "No", VecPos(540 + 500 + 134, 520 + 50), 34, 4, BLACK);
+
+    if (IsMouseInRange(540, 540 + 300, 520, 520 + 120))
+    {
+        DrawTextEx(font, "Yes", VecPos(540 + 122, 520 + 48), 34, 4, BLACK);
+
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            PlaySoundMulti(textures.clickSound);
+            ResetValues(settings, game, lockedCountries);
+            newGame = false;
+        }
+    }
+
+    if (IsMouseInRange(540 + 500, 540 + 500 + 300, 520, 520 + 120))
+    {
+        DrawTextEx(font, "No", VecPos(540 + 500 + 136, 520 + 48), 34, 4, BLACK);
+
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            PlaySoundMulti(textures.clickSound);
+            newGame = false;
+        }
+    }
+}
+
+void ResetValues(SettingsS& settings, GameS& game, LockedCountries& lockedCountries)
+{
+    settings.musicVolume = 0.05;
+    settings.soundVolume = 0.15;
+
+    game.money = 600;
+    game.quizCounter[0] = 0;
+    game.quizCounter[1] = 0;
+    game.quizCounter[2] = 0;
+    game.quizCounter[3] = 0;
+    game.quizCounter[4] = 0;
+    game.quizCounter[5] = 0;
+    game.quizCounter[6] = 0;
+    game.quizCounter[7] = 0;
+    game.quizCounter[8] = 0;
+
+    lockedCountries.isSpainOpen = false;
+    lockedCountries.isFranceOpen = false;
+    lockedCountries.isItalyOpen = false;
+    lockedCountries.isGermanyOpen = false;
+    lockedCountries.isGreeceOpen = false;
+    lockedCountries.isTurkeyOpen = false;
+    lockedCountries.isUnitedKingdomOpen = false;
+    lockedCountries.isNorwayOpen = false;
 }

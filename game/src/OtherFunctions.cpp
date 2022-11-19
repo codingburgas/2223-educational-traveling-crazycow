@@ -20,6 +20,77 @@ Vector2 VecPos(int x, int y)
     return pos;
 }
 
+void SaveData(ofstream& saveData, SettingsS& settings, GameS& game, LockedCountries& lockedCountries)
+{
+    saveData.open("../src/assets/SaveData.txt");
+
+    if (saveData.is_open())
+    {
+        saveData << settings.musicVolume * 100 << endl;
+        saveData << settings.soundVolume * 100 << endl;
+
+        saveData << game.money << endl;
+        saveData << game.quizCounter[0] << endl;
+        saveData << game.quizCounter[1] << endl;
+        saveData << game.quizCounter[2] << endl;
+        saveData << game.quizCounter[3] << endl;
+        saveData << game.quizCounter[4] << endl;
+        saveData << game.quizCounter[5] << endl;
+        saveData << game.quizCounter[6] << endl;
+        saveData << game.quizCounter[7] << endl;
+        saveData << game.quizCounter[8] << endl;
+
+        saveData << lockedCountries.isSpainOpen << endl;
+        saveData << lockedCountries.isFranceOpen << endl;
+        saveData << lockedCountries.isItalyOpen << endl;
+        saveData << lockedCountries.isGermanyOpen << endl;
+        saveData << lockedCountries.isTurkeyOpen << endl;
+        saveData << lockedCountries.isGreeceOpen << endl;
+        saveData << lockedCountries.isUnitedKingdomOpen << endl;
+        saveData << lockedCountries.isNorwayOpen << endl;
+
+        saveData.close();
+    }
+}
+
+void GetData(ifstream& getData, SettingsS& settings, GameS& game, LockedCountries& lockedCountries)
+{
+    getData.open("../src/assets/SaveData.txt");
+
+    if (getData.is_open())
+    {
+        float newMusicVolume;
+        getData >> newMusicVolume;
+        settings.musicVolume = newMusicVolume/100;
+
+        float newSoundVolume;
+        getData >> newSoundVolume;
+        settings.soundVolume = newSoundVolume / 100;
+
+        getData >> game.money;
+        getData >> game.quizCounter[0];
+        getData >> game.quizCounter[1];
+        getData >> game.quizCounter[2];
+        getData >> game.quizCounter[3];
+        getData >> game.quizCounter[4];
+        getData >> game.quizCounter[5];
+        getData >> game.quizCounter[6];
+        getData >> game.quizCounter[7];
+        getData >> game.quizCounter[8];
+
+        getData >> lockedCountries.isSpainOpen;
+        getData >> lockedCountries.isFranceOpen;
+        getData >> lockedCountries.isItalyOpen;
+        getData >> lockedCountries.isGermanyOpen;
+        getData >> lockedCountries.isTurkeyOpen;
+        getData >> lockedCountries.isGreeceOpen;
+        getData >> lockedCountries.isUnitedKingdomOpen;
+        getData >> lockedCountries.isNorwayOpen;
+
+        getData.close();
+    }
+}
+
 void UnloadAllTextures(AllTextures unloadTextures)
 {
     // Unload Boxes

@@ -3,6 +3,8 @@
 const int screenWidth = 1920;
 const int screenHeight = 1000;
 
+ofstream saveData;
+ifstream getData;
 
 int main()
 {
@@ -24,6 +26,8 @@ int main()
     GameS game;
     LockedCountries lockedCountries;
 
+    GetData(getData, settings, game, lockedCountries);
+
     PlayMusicStream(textures.menuMusic);
     SetMusicVolume(textures.menuMusic, settings.musicVolume);
     SetSoundVolume(textures.clickSound, settings.soundVolume);
@@ -35,7 +39,7 @@ int main()
 
         ClearBackground(WHITE);
 
-            Menu(settings, menu, map, textures, font);
+            Menu(settings, menu, map, game, lockedCountries, textures, font);
 
             Game(settings, menu, map, game, lockedCountries, textures, font);
 
@@ -45,6 +49,8 @@ int main()
 
         EndDrawing();
     }
+
+    SaveData(saveData, settings, game, lockedCountries);
 
     UnloadAllTextures(textures);
 
