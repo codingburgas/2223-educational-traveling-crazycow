@@ -204,6 +204,8 @@ void BackToMenu(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, 
             game.isAnswered = true;
             game.isQuizOpened = false;
             game.gameWarning = false;
+            game.isGameOpened = false;
+            game.trueQuestionCounter = 0;
 
             map.openMap = false;
             map.countryList = false;
@@ -232,6 +234,8 @@ void BackToMap(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, F
             game.isAnswered = true;
             game.isQuizOpened = false;
             game.gameWarning = false;
+            game.isGameOpened = false;
+            game.trueQuestionCounter = 0;
 
             map.openMap = true;
 
