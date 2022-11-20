@@ -216,32 +216,32 @@ void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundGermany, 0, 0, WHITE);
 
 	const char* questions[10] = {
-				"1",
-				"2",
-				"3",
-				"4",
-				"5",
-				"6",
-				"7",
-				"8",
-				"9",
-				"10"
+				"    Which city is the capital \n          of Germany?",
+				"    How many states does \n         Germany have?",
+				"  Which is not a German state?",
+				"  Which is not one of the three \n           city states?",
+				"  Which state surrounds Berlin?",
+				"    What river runs through \n            Cologne?",
+				"Which one is not a German river?",
+				"  Which one is not a German \n            mountain?",
+				"    Which one is the tallest \n      mountain in Germany?",
+				"   How many lakes are there \n           in Germany?"
 	};
 
 	const char* answers[10][4] = {
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"}
+		{"    Berlin", "     Bern", "     Bonn", "   Munchen"},
+		{"       9", "       14", "       16", "       19"},
+		{"    Saarland", "   Burgenland", "    Berlin", "    Hessen"},
+		{"    Bremen", "     Berlin", "   Hamburg", " Brandenburg"},
+		{" Mecklenburg", "  Brandenburg", "Niedersachsen", "   Nordrhein"},
+		{"    Rihne", "    Danube", "     Nile", "     Oder"},
+		{"    Danube", "    Rihne", "    Iskar", "    Weser"},
+		{"   Adelegg", " The Pyrenees", "   Ahlsburg", "   Ahr Hills"},
+		{"  Wetterstein", "Ester Mountains", "    Adelegg", "   Karwendel"},
+		{"     203", "      81", "      78", "      109"}
 	};
 
-	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	int answersPos[10] = { 1, 3, 2, 4, 2, 1, 3, 2, 1, 4 };
 
 	OpenQuiz(questions, answers, answersPos, game.quizCounter[4], game, textures, font);
 

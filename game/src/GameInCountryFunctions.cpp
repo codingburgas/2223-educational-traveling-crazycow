@@ -108,11 +108,11 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 		if (quizCounter < 3)
 		{
 			static vector<int> usedNums;
-			if (game.questionsNumberCounter == 5 && game.isQuizOpened)
+			if (game.questionsNumberCounter == 9 && game.isQuizOpened)
 			{
 				DrawTextEx(font, "Result", VecPos(760, 230), 140, 10, BLACK);
 
-				DrawTextEx(font, TextFormat("     You answered correctly   -   %2i/4", game.trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
+				DrawTextEx(font, TextFormat("     You answered correctly   -   %2i/5", game.trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
 
 				if (game.trueQuestionCounter != 0)
 				{
@@ -142,7 +142,7 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 				}
 			}
 
-			if (game.questionsNumberCounter < 5 && game.isQuizOpened)
+			if (game.questionsNumberCounter < 9 && game.isQuizOpened)
 			{
 				if (game.isAnswered)
 				{
