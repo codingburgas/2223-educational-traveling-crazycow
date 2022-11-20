@@ -33,6 +33,6 @@ git clone https://github.com/codingburgas/2223-educational-traveling-crazycow.gi
 ## 🖥 Team Members
 * **Zhivko Spasov** - *Scrum trainer* 
 * **Ivan Dadakov** - *Back-end developer* 
-* **Samyil Shkvarla** - *Back-end developer* 
+* **Samuil Shkvarla** - *Back-end developer* 
 * **Yoan Todorov** - *QA Engineer* 
 
