@@ -318,32 +318,32 @@ void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundGreece, 0, 0, WHITE);
 
 	const char* questions[10] = {
-				"1",
-				"2",
-				"3",
-				"4",
-				"5",
-				"6",
-				"7",
-				"8",
-				"9",
-				"10"
+				"Which of the following mountains\n      is the highest in Greece?",
+				"   Which large mountain range \n  runs through central Greece?",
+				"What mountain range is nicknamed \n      the 'spine of Greece'?",
+				"    What percentage of Greece \n      is mountainous or hilly?",
+				"  How many islands are there \n            in Greece?",
+				"What connects the southern Greek \n  with the rest of the mainland?",
+				"   Which is the largest island \n            in Greece?",
+				"    Which city is the capital \n            of Greece?",
+				"Which sea is located along the \n    eastern coast of Greece?",
+				"Which large peninsula of Greece \nwas home to Sparta and Corinth?"
 	};
 
 	const char* answers[10][4] = {
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"}
+		{"   Menelaos", "   Taygetos", "    Olympus", "      Etna"},
+		{"  The Pindos", "   The Atlas", "   The Ural", " The Taygetos"},
+		{"    Andes", " Rocky Mounts", "     Alps", "    Pindus"},
+		{"      25%", " less than 10%", "   nearly 50%", "      80%"},
+		{"   nearly 450", "   over 1400", "       65", "       18"},
+		{"Loutraki Bridge", "Straits of Patra", "Corinth Isthmus", "Canals of Attiki"},
+		{"     Crete", "  Pantelleria", "  Samothraki", "   Mytilene"},
+		{"     Assos", "    Athens", "    Lindos", "    Sparta"},
+		{"    Red Sea", "  Arabian Sea", "  Aegean Sea", "   Black Sea"},
+		{"   Thessaly", "  Peloponnese", "    Epirus", "   Macedonia"}
 	};
 
-	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	int answersPos[10] = { 3, 1, 4, 4, 2, 3, 1, 2, 3, 2 };
 
 	OpenQuiz(questions, answers, answersPos, game.quizCounter[6], game, textures, font);
 
