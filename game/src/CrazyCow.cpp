@@ -219,7 +219,7 @@ void FlyingCow(int cowNum, FlyingCows& cows, GameS& game, AllTextures textures)
 	if (!cows.downCows[cowNum])
 	{
 		cows.cowsCounters[cowNum]++;
-		if (cows.cowsCounters[cowNum] >= 200)
+		if (cows.cowsCounters[cowNum] >= 100)
 		{
 			cows.randomNums[cowNum] = 1 + (rand() % 8);
 			cows.cowsCounters[cowNum] = 0;

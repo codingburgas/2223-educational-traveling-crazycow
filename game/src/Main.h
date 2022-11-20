@@ -191,6 +191,7 @@ struct AllTextures
     Texture2D quizBackgroundGreece = LoadTexture("../src/assets/Backgrounds/Greece.png");
     Texture2D quizBackgroundTurkey = LoadTexture("../src/assets/Backgrounds/Turkey.png");
     Texture2D quizBackgroundNorway = LoadTexture("../src/assets/Backgrounds/Norway.png");
+    Texture2D quizBackgroundEngland = LoadTexture("../src/assets/Backgrounds/England.png");
     Texture2D gameBackground = LoadTexture("../src/assets/Backgrounds/gameBackground.png");
 
     Texture2D menuCaravanLeft = LoadTexture("../src/assets/Backgrounds/menuCaravan_one.png");
@@ -208,6 +209,8 @@ struct AllTextures
     Texture2D ItalyLandmark = LoadTexture("../src/assets/Landmarks/ItalyLandmark.png");
     Texture2D SpainLandmark = LoadTexture("../src/assets/Landmarks/SpainLandmark.png");
     Texture2D TurkeyLandmark = LoadTexture("../src/assets/Landmarks/TurkeyLandmark.png");
+    Texture2D NorwayLandmark = LoadTexture("../src/assets/Landmarks/NorwayLandmark.png");
+    Texture2D EnglandLandmark = LoadTexture("../src/assets/Landmarks/UnitedKingdomLandmark.png");
 
     // Others
 
