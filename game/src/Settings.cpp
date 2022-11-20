@@ -23,13 +23,76 @@ void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map,
         {
             PlaySoundMulti(textures.clickSound);
         }
+
         DrawTexture(textures.settingsBox, 5, 50, WHITE);
         DrawTexture(textures.closeSettingsIcon, 450, 50, MAROON);
-        BackToMenu(menu.isMenuOpen, map, cows, game, textures, font);
-        BackToMap(menu.isMenuOpen, map, cows, game, textures, font);
-        SetFPS(textures, font);
-        ChangeMusicVolume(settings.musicVolume, textures, font);
-        ChangeSoundVolume(settings.soundVolume, textures, font);
+
+        switch (settings.pages)
+        {
+        case 1:
+            BackToMenu(menu.isMenuOpen, map, cows, game, textures, font);
+            BackToMap(menu.isMenuOpen, map, cows, game, textures, font);
+
+            SetFPS(textures, font);
+
+            ChangeMusicVolume(settings.musicVolume, textures, font);
+            ChangeSoundVolume(settings.soundVolume, textures, font);
+            break;
+        case 2:
+            DrawTextEx(font, "Controls", VecPos(170, 126), 40, 4, BLACK);
+
+            DrawTextEx(font, "Open/Close Settings -  Escape", VecPos(36, 190), 26, 3, BLACK);
+
+            DrawTextEx(font, "Move Map -   Left/Right Arrow", VecPos(36, 240), 26, 3, BLACK);
+
+            DrawTextEx(font, "Move Arm Up -                W", VecPos(36, 290), 26, 3, BLACK);
+            DrawTextEx(font, "Move Arm Right -             A", VecPos(36, 340), 26, 3, BLACK);
+            DrawTextEx(font, "Move Arm Down -             S", VecPos(36, 390), 26, 3, BLACK);
+            DrawTextEx(font, "Move Arm Left -", VecPos(36, 437), 26, 3, BLACK);
+            DrawTextEx(font, "D", VecPos(424, 437), 26, 3, BLACK);
+
+            DrawTextEx(font, "Shoot -                     Space", VecPos(36, 484), 26, 3, BLACK);
+            break;
+        case 3:
+            DrawTextEx(font, "How to Play?", VecPos(120, 126), 40, 4, BLACK);
+
+            DrawTextEx(font, "Quiz - choose the correct", VecPos(36, 190), 26, 3, BLACK);
+            DrawTextEx(font, "answer, each for 25 wheat.", VecPos(36, 240), 26, 3, BLACK);
+
+            DrawTextEx(font, "Game - guess the missing", VecPos(36, 290), 26, 3, BLACK);
+            DrawTextEx(font, "landmark and hit it.", VecPos(36, 340), 26, 3, BLACK);
+
+            DrawTextEx(font, "CrazyCow Event - for each", VecPos(36, 390), 26, 3, BLACK);
+            DrawTextEx(font, "dropped cow you get 25 wheat.", VecPos(36, 437), 26, 3, BLACK);
+            DrawTextEx(font, "You have 15 darts for 10 cows", VecPos(36, 484), 26, 3, BLACK);
+
+            break;
+        }
+        
+
+        DrawTexture(textures.leftArrow, 30, 70, WHITE);
+        DrawTextEx(font, TextFormat("Page %2i", settings.pages), VecPos(90, 80), 32, 4, BLACK);
+        DrawTexture(textures.rightArrow, 230, 67, WHITE);
+
+        if (IsMouseInRange(30, 30 + 50, 70, 70 + 50))
+        {
+            DrawTexture(textures.leftArrow, 30, 70, LIGHTGRAY);
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && settings.pages > 1)
+            {
+                PlaySoundMulti(textures.clickSound);
+                settings.pages--;
+            }
+        }
+        if (IsMouseInRange(230, 230 + 50, 67, 67 + 50))
+        {
+            DrawTexture(textures.rightArrow, 230, 67, LIGHTGRAY);
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && settings.pages < 3)
+            {
+                PlaySoundMulti(textures.clickSound);
+                settings.pages++;
+            }
+        }
+
         settings.areSettingsOpen = true;
     }
 }

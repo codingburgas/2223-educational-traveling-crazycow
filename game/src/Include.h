@@ -23,6 +23,8 @@ struct SettingsS
 
     float musicVolume = (float)0.05;
     float soundVolume = (float)0.15;
+
+    int pages = 1;
 };
 
 // define structure for the menu
