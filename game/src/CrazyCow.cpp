@@ -77,7 +77,19 @@ void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, 
 
 		if (cows.downCowsCounter == 9 || cows.dartsLeft == 0)
 		{
-			FinishCrazyCow(cows, game, menu, textures, font);
+			if (cows.dartsLeft == 0)
+			{
+				static int count = 0;
+				count++;
+				if (count >= 80)
+				{
+					FinishCrazyCow(cows, game, menu, textures, font);
+				}
+			}
+			else
+			{
+				FinishCrazyCow(cows, game, menu, textures, font);
+			}
 		}
 	}
 }

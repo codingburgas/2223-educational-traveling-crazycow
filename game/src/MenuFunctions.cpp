@@ -180,7 +180,7 @@ void NewGameWarning(bool& newGame, GameS& game, FlyingCows& cows, LockedCountrie
 
 void ResetValues(GameS& game, FlyingCows& cows, LockedCountries& lockedCountries)
 {
-    game.money = 1500;
+    game.money = 0;
 
     for (int i = 0; i < 9; i++)
     {

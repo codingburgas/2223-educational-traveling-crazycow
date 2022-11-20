@@ -291,7 +291,8 @@ void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& 
 	}
 }
 
-void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture2D armOne, Texture2D armTwo, GameS& game, AllTextures textures, Font font)
+void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture2D background, Texture2D armOne, Texture2D armTwo,
+			  GameS& game, AllTextures textures, Font font)
 {
 	static vector<int> usedNums;
 	static int randomNums[4] = { 0, 0, 0, 0 };
@@ -346,8 +347,8 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 			{
 				if (!game.gameWin && !game.gameLoose)
 				{
-					DrawTexture(textures.gameBackground, 0, 0, WHITE);
-
+					DrawTexture(background, 0, 0, WHITE);
+					
 					DrawTexture(landmarks[randomNums[0] - 1], 470, 200, WHITE);
 					DrawTexture(landmarks[randomNums[1] - 1], 740, 200, WHITE);
 					DrawTexture(landmarks[randomNums[2] - 1], 1010, 200, WHITE);
