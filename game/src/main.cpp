@@ -1,4 +1,5 @@
 #include "Main.h"
+#include "CrazyCow.h"
 
 int main()
 {
@@ -24,10 +25,12 @@ int main()
 
     LockedCountries lockedCountries;
 
+    FlyingCows cows;
+
     ofstream saveData;
     ifstream getData;
 
-    GetData(getData, game, lockedCountries);
+    GetData(getData, cows, game, lockedCountries);
 
     PlayMusicStream(textures.menuMusic);
     SetMusicVolume(textures.menuMusic, settings.musicVolume);
@@ -40,18 +43,25 @@ int main()
 
         ClearBackground(WHITE);
 
-            Menu(menu, map, game, lockedCountries, textures, font);
+            Menu(cows, menu, map, game, lockedCountries, textures, font);
 
             Game(settings, menu, map, game, lockedCountries, textures, font);
 
-            Settings(settings, menu, map, game, textures, font);
+            if (!game.isQuizOpened && !game.isGameOpened)
+            {
+                OpenCrazyCow(cows, game, menu, map, textures, font);
+            }
+            
+            CrazyCow(cows, game, menu, textures, font);
+
+            Settings(settings, cows, menu, map, game, textures, font);
         
         DrawFPS(10, 960);
 
         EndDrawing();
     }
 
-    SaveData(saveData, game, lockedCountries);
+    SaveData(saveData, cows, game, lockedCountries);
 
     UnloadAllTextures(textures);
 

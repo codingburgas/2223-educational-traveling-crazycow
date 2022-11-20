@@ -112,7 +112,7 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 			if (!game.isQuizOpened)
 			{
 				DrawTextEx(font, "Quiz", VecPos(660, 280), 300, 12, BLACK);
-				DrawTextEx(font, "Price - 10", VecPos(830, 604), 40, 6, BLACK);
+				DrawTextEx(font, "Price - 50", VecPos(830, 604), 40, 6, BLACK);
 				DrawTexture(textures.wheatIcon, 1050, 608, WHITE);
 				DrawTextEx(font, TextFormat("Attempts - %2i/3", quizCounter), VecPos(816, 660), 30, 5, BLACK);
 				if (IsMouseInRange(660, 660 + 570, 280, 280 + 280))
@@ -121,10 +121,10 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 					{
 						PlaySoundMulti(textures.clickSound);
-						if (game.money >= 10)
+						if (game.money >= 50)
 						{
 							game.isQuizOpened = true;
-							game.money -= 10;
+							game.money -= 50;
 							game.questionsNumberCounter = 0;
 							usedNums.clear();
 						}
@@ -136,15 +136,15 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 				}
 			}
 
-			if (game.questionsNumberCounter == 10 && game.isQuizOpened)
+			if (game.questionsNumberCounter == 4 && game.isQuizOpened)
 			{
 				DrawTextEx(font, "Result", VecPos(760, 230), 140, 10, BLACK);
 
-				DrawTextEx(font, TextFormat("     You answered correctly   -   %2i/5", game.trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
+				DrawTextEx(font, TextFormat("     You answered correctly   -   %2i/4", game.trueQuestionCounter), VecPos(540, 400), 40, 4, BLACK);
 
 				if (game.trueQuestionCounter != 0)
 				{
-					DrawTextEx(font, TextFormat("     From this Quiz you gain   -   %2i ", game.trueQuestionCounter * 20), VecPos(540, 500), 40, 4, BLACK);
+					DrawTextEx(font, TextFormat("     From this Quiz you gain   -   %2i ", game.trueQuestionCounter * 25), VecPos(540, 500), 40, 4, BLACK);
 					DrawTexture(textures.wheatIcon, 1300, 500, WHITE);
 				}
 				else
@@ -164,13 +164,13 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 						PlaySoundMulti(textures.clickSound);
 						quizCounter++;
 						game.isQuizOpened = false;
-						game.money += game.trueQuestionCounter * 20;
+						game.money += game.trueQuestionCounter * 25;
 						game.trueQuestionCounter = 0;
 					}
 				}
 			}
 
-			if (game.questionsNumberCounter < 10 && game.isQuizOpened)
+			if (game.questionsNumberCounter < 4 && game.isQuizOpened)
 			{
 				if (game.isAnswered)
 				{
@@ -298,12 +298,12 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& 
 	{
 		if (gameCounter < 3)
 		{
+			DrawTexture(textures.quizBox, 0, 0, WHITE);
 			if (!game.isGameOpened)
 			{
-				DrawTexture(textures.quizBox, 0, 0, WHITE);
 				DrawTextEx(font, "Game", VecPos(650, 300), 300, 12, BLACK);
 				DrawTextEx(font, TextFormat("Attempts - %2i/3", gameCounter), VecPos(816, 660), 30, 5, BLACK);
-				DrawTextEx(font, "Price - 10", VecPos(830, 604), 40, 6, BLACK);
+				DrawTextEx(font, "Price - 25", VecPos(830, 604), 40, 6, BLACK);
 				DrawTexture(textures.wheatIcon, 1050, 608, WHITE);
 				if (!game.isArrowPressed)
 				{
@@ -313,10 +313,10 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& 
 						if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 						{
 							PlaySoundMulti(textures.clickSound);
-							if (game.money >= 10)
+							if (game.money >= 25)
 							{
 								game.isGameOpened = true;
-								game.money -= 10;
+								game.money -= 25;
 
 								for (int i = 0; i < 4; i++)
 								{

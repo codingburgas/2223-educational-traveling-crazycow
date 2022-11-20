@@ -216,17 +216,20 @@ void DrawCountry(const char* name, float x, float y, float lengthX, float lenght
 
         if (map.countryWarning)
         {
-            OpenWarning(saveLockedCountry, map.countryWarning, money, textures, font);
+            OpenWarning(saveLockedCountry, money, map, textures, font);
         }
     }
 }
 
-void OpenWarning(bool* saveLockedCountry, bool& isWarningOpen, int& money, AllTextures textures, Font font)
+void OpenWarning(bool* saveLockedCountry, int& money, MapS& map, AllTextures textures, Font font)
 {
     if (!notEnoughMoney)
     {
         DrawTexture(textures.quizBox, 0, 0, WHITE);
-        DrawTextEx(font, "Are you sure?", VecPos(560, 340), 120, 8, BLACK);
+        DrawTextEx(font, "Are you sure?", VecPos(560, 260), 120, 8, BLACK);
+
+        DrawTextEx(font, "Price - 200", VecPos(810, 420), 40, 6, BLACK);
+        DrawTexture(textures.wheatIcon, 1060, 420, WHITE);
 
         DrawTexture(textures.answerBlock, 540, 520, WHITE);
         DrawTextEx(font, "Yes", VecPos(540 + 120, 520 + 50), 34, 4, BLACK);
@@ -245,7 +248,8 @@ void OpenWarning(bool* saveLockedCountry, bool& isWarningOpen, int& money, AllTe
                     PlaySoundMulti(textures.clickSound);
                     *saveLockedCountry = true;
                     money -= 200;
-                    isWarningOpen = false;
+                    map.unlockedCountries++;
+                    map.countryWarning = false;
                 }
                 else
                 {
@@ -262,7 +266,7 @@ void OpenWarning(bool* saveLockedCountry, bool& isWarningOpen, int& money, AllTe
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                isWarningOpen = false;
+                map.countryWarning = false;
             }
         }
     }
@@ -280,7 +284,7 @@ void OpenWarning(bool* saveLockedCountry, bool& isWarningOpen, int& money, AllTe
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);
-                isWarningOpen = false;
+                map.countryWarning = false;
             }
         }
     }

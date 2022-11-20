@@ -1,7 +1,8 @@
 #include "Main.h"
 #include "Menu.h"
+#include "CrazyCow.h"
 
-void Menu(MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
+void Menu(FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
 {
     if (!menu.newGame)
     {
@@ -10,16 +11,19 @@ void Menu(MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries,
             UpdateMusicStream(textures.menuMusic);
 
             DrawMenuBackground(menu, textures);
-            StartGame(menu.isMenuOpen, map, textures, font);
-            NewGame(menu.newGame, textures, font);
-            CloseGame(menu.isGameClosed, textures, font);
+            if (!cows.isCCOpen)
+            {
+                StartGame(menu.isMenuOpen, map, textures, font);
+                NewGame(menu.newGame, textures, font);
+                CloseGame(menu.isGameClosed, textures, font);
+            }
         }
     }
     else
     {
         UpdateMusicStream(textures.menuMusic);
         DrawMenuBackground(menu, textures);
-        NewGameWarning(menu.newGame, game, lockedCountries, textures, font);
+        NewGameWarning(menu.newGame, game, cows, lockedCountries, textures, font);
     }
 }
 
@@ -139,7 +143,7 @@ void NewGame(bool& newGame, AllTextures textures, Font font)
     }
 }
 
-void NewGameWarning(bool& newGame, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
+void NewGameWarning(bool& newGame, GameS& game, FlyingCows& cows, LockedCountries& lockedCountries, AllTextures textures, Font font)
 {
     DrawTexture(textures.quizBox, 0, 0, WHITE);
     DrawTextEx(font, "Are you sure?", VecPos(560, 340), 120, 8, BLACK);
@@ -157,7 +161,7 @@ void NewGameWarning(bool& newGame, GameS& game, LockedCountries& lockedCountries
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
-            ResetValues(game, lockedCountries);
+            ResetValues(game, cows, lockedCountries);
             newGame = false;
         }
     }
@@ -174,28 +178,19 @@ void NewGameWarning(bool& newGame, GameS& game, LockedCountries& lockedCountries
     }
 }
 
-void ResetValues(GameS& game, LockedCountries& lockedCountries)
+void ResetValues(GameS& game, FlyingCows& cows, LockedCountries& lockedCountries)
 {
-    game.money = 600;
-    game.quizCounter[0] = 0;
-    game.quizCounter[1] = 0;
-    game.quizCounter[2] = 0;
-    game.quizCounter[3] = 0;
-    game.quizCounter[4] = 0;
-    game.quizCounter[5] = 0;
-    game.quizCounter[6] = 0;
-    game.quizCounter[7] = 0;
-    game.quizCounter[8] = 0;
+    game.money = 100;
 
-    game.gameCounter[0] = 0;
-    game.gameCounter[1] = 0;
-    game.gameCounter[2] = 0;
-    game.gameCounter[3] = 0;
-    game.gameCounter[4] = 0;
-    game.gameCounter[5] = 0;
-    game.gameCounter[6] = 0;
-    game.gameCounter[7] = 0;
-    game.gameCounter[8] = 0;
+    for (int i = 0; i < 9; i++)
+    {
+        game.quizCounter[i] = 0;
+    }
+
+    for (int i = 0; i < 9; i++)
+    {
+        game.gameCounter[i] = 0;
+    }
 
     lockedCountries.isSpainOpen = false;
     lockedCountries.isFranceOpen = false;
@@ -205,4 +200,22 @@ void ResetValues(GameS& game, LockedCountries& lockedCountries)
     lockedCountries.isTurkeyOpen = false;
     lockedCountries.isUnitedKingdomOpen = false;
     lockedCountries.isNorwayOpen = false;
+
+    cows.isCCOver = false;
+
+    for (int i = 0; i < 10; i++)
+    {
+        cows.cowsX[i] = 1 + (rand() % 1900);
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        cows.cowsY[i] = 1 + (rand() % 500);
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        cows.downCows[i] = false;
+    }
+    cows.downCowsCounter = 0;
+    cows.CCWarning = false;
+
 }

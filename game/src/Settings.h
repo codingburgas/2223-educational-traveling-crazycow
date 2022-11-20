@@ -1,16 +1,16 @@
 #pragma once
 #include "Main.h"
 
-void OpenSettings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font);
+void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font);
 
 
 void CloseSetting(SettingsS& settings, AllTextures textures);
 
 
-void BackToMenu(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, Font font);
+void BackToMenu(bool& isMenuOpen, MapS& map, FlyingCows& cows, GameS& game, AllTextures textures, Font font);
 
 
-void BackToMap(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, Font font);
+void BackToMap(bool& isMenuOpen, MapS& map, FlyingCows& cows, GameS& game, AllTextures textures, Font font);
 
 
 void SetFPS(AllTextures textures, Font font);

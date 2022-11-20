@@ -20,32 +20,23 @@ Vector2 VecPos(int x, int y)
     return pos;
 }
 
-void SaveData(ofstream& saveData, GameS& game, LockedCountries& lockedCountries)
+void SaveData(ofstream& saveData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries)
 {
     saveData.open("../src/assets/SaveData.txt");
 
     if (saveData.is_open())
     {
         saveData << game.money << endl;
-        saveData << game.quizCounter[0] << endl;
-        saveData << game.quizCounter[1] << endl;
-        saveData << game.quizCounter[2] << endl;
-        saveData << game.quizCounter[3] << endl;
-        saveData << game.quizCounter[4] << endl;
-        saveData << game.quizCounter[5] << endl;
-        saveData << game.quizCounter[6] << endl;
-        saveData << game.quizCounter[7] << endl;
-        saveData << game.quizCounter[8] << endl;
 
-        saveData << game.gameCounter[0] << endl;
-        saveData << game.gameCounter[1] << endl;
-        saveData << game.gameCounter[2] << endl;
-        saveData << game.gameCounter[3] << endl;
-        saveData << game.gameCounter[4] << endl;
-        saveData << game.gameCounter[5] << endl;
-        saveData << game.gameCounter[6] << endl;
-        saveData << game.gameCounter[7] << endl;
-        saveData << game.gameCounter[8] << endl;
+        for (int i = 0; i < 9; i++)
+        {
+            saveData << game.quizCounter[i] << endl;
+        }
+
+        for (int i = 0; i < 9; i++)
+        {
+            saveData << game.gameCounter[i] << endl;
+        }
 
         saveData << lockedCountries.isSpainOpen << endl;
         saveData << lockedCountries.isFranceOpen << endl;
@@ -56,36 +47,29 @@ void SaveData(ofstream& saveData, GameS& game, LockedCountries& lockedCountries)
         saveData << lockedCountries.isUnitedKingdomOpen << endl;
         saveData << lockedCountries.isNorwayOpen << endl;
 
+        saveData << cows.isCCOver << endl;
+
         saveData.close();
     }
 }
 
-void GetData(ifstream& getData, GameS& game, LockedCountries& lockedCountries)
+void GetData(ifstream& getData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries)
 {
     getData.open("../src/assets/SaveData.txt");
 
     if (getData.is_open())
     {
         getData >> game.money;
-        getData >> game.quizCounter[0];
-        getData >> game.quizCounter[1];
-        getData >> game.quizCounter[2];
-        getData >> game.quizCounter[3];
-        getData >> game.quizCounter[4];
-        getData >> game.quizCounter[5];
-        getData >> game.quizCounter[6];
-        getData >> game.quizCounter[7];
-        getData >> game.quizCounter[8];
 
-        getData >> game.gameCounter[0];
-        getData >> game.gameCounter[1];
-        getData >> game.gameCounter[2];
-        getData >> game.gameCounter[3];
-        getData >> game.gameCounter[4];
-        getData >> game.gameCounter[5];
-        getData >> game.gameCounter[6];
-        getData >> game.gameCounter[7];
-        getData >> game.gameCounter[8];
+        for (int i = 0; i < 9; i++)
+        {
+            getData >> game.quizCounter[i];
+        }
+
+        for (int i = 0; i < 9; i++)
+        {
+            getData >> game.gameCounter[i];
+        }
 
         getData >> lockedCountries.isSpainOpen;
         getData >> lockedCountries.isFranceOpen;
@@ -95,6 +79,8 @@ void GetData(ifstream& getData, GameS& game, LockedCountries& lockedCountries)
         getData >> lockedCountries.isGreeceOpen;
         getData >> lockedCountries.isUnitedKingdomOpen;
         getData >> lockedCountries.isNorwayOpen;
+
+        getData >> cows.isCCOver;
 
         getData.close();
     }
@@ -145,6 +131,8 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.menuCaravanMiddle);
     UnloadTexture(unloadTextures.menuCaravanRight);
 
+    UnloadTexture(unloadTextures.crazyCowBG);
+
     //Landmarks
 
     UnloadTexture(unloadTextures.BulgariaLandmark);
@@ -166,4 +154,9 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.armStageOne);
     UnloadTexture(unloadTextures.armStageTwo);
     UnloadTexture(unloadTextures.dart);
+    UnloadTexture(unloadTextures.flyingCowRight);
+    UnloadTexture(unloadTextures.flyingCowLeft);
+
+    UnloadTexture(unloadTextures.fallenCowLeft);
+    UnloadTexture(unloadTextures.fallenCowRight);
 }

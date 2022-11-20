@@ -1,18 +1,18 @@
 #include "Main.h"
 #include "Settings.h"
 
-void Settings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)
+void Settings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)
 {
     DrawTexture(textures.settingsIcon, 5, 5, WHITE);
     if (IsMouseInRange(5, 45, 5, 45))
     {
         DrawTexture(textures.settingsIcon, 5, 5, GRAY);
     }
-    OpenSettings(settings, menu, map, game, textures, font);
+    OpenSettings(settings, cows, menu, map, game, textures, font);
     CloseSetting(settings, textures);
 }
 
-void OpenSettings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)
+void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)
 {
     if (settings.areSettingsOpen || (IsMouseInRange(0, 40, 0, 40) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) || IsKeyPressed(KEY_ESCAPE))
     {
@@ -22,8 +22,8 @@ void OpenSettings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllT
         }
         DrawTexture(textures.settingsBox, 5, 50, WHITE);
         DrawTexture(textures.closeSettingsIcon, 450, 50, MAROON);
-        BackToMenu(menu.isMenuOpen, map, game, textures, font);
-        BackToMap(menu.isMenuOpen, map, game, textures, font);
+        BackToMenu(menu.isMenuOpen, map, cows, game, textures, font);
+        BackToMap(menu.isMenuOpen, map, cows, game, textures, font);
         SetFPS(textures, font);
         ChangeMusicVolume(settings.musicVolume, textures, font);
         ChangeSoundVolume(settings.soundVolume, textures, font);
@@ -187,7 +187,7 @@ void ChangeSoundVolume(float& soundVolume, AllTextures textures, Font font)
     }
 }
 
-void BackToMenu(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, Font font)
+void BackToMenu(bool& isMenuOpen, MapS& map, FlyingCows& cows, GameS& game, AllTextures textures, Font font)
 {
     DrawTexture(textures.taskBox, 35, 440, WHITE);
     Vector2 pos = {58,468};
@@ -213,11 +213,14 @@ void BackToMenu(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, 
 
             game.randomQuestion = 0;
             game.questionsNumberCounter = 0;
+
+            cows.CCWarning = false;
+            cows.isCCOpen = false;
         }
     }
 }
 
-void BackToMap(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, Font font)
+void BackToMap(bool& isMenuOpen, MapS& map, FlyingCows& cows, GameS& game, AllTextures textures, Font font)
 {
     DrawTexture(textures.taskBox, 255, 440, WHITE);
     Vector2 pos = {287,468};
@@ -242,6 +245,9 @@ void BackToMap(bool& isMenuOpen, MapS& map, GameS& game, AllTextures textures, F
             game.randomQuestion = 0;
             game.questionsNumberCounter = 0;
             map.countryNumber = 0;
+
+            cows.CCWarning = false;
+            cows.isCCOpen = false;
         }
     }
 }

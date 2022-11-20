@@ -17,4 +17,4 @@ void DrawCountry(const char* name, float x, float y, float lengthX, float lenght
 void OpenCountries(bool& areSettingsOpen, int& money, MapS& map, AllTextures textures, Font font, LockedCountries& lockedCountries);
 
 
-void OpenWarning(bool* saveLockedCountry, bool& isWarningOpen, int& money, AllTextures textures, Font font);
+void OpenWarning(bool* saveLockedCountry, int& money, MapS& map, AllTextures textures, Font font);

@@ -99,6 +99,7 @@ void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
+				game.isArrowPressed = true;
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -149,6 +150,7 @@ void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
+				game.isArrowPressed = true;
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -200,6 +202,7 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
+				game.isArrowPressed = true;
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -251,6 +254,7 @@ void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
+				game.isArrowPressed = true;
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -301,6 +305,7 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
+				game.isArrowPressed = true;
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -351,6 +356,7 @@ void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
+				game.isArrowPressed = true;
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -401,6 +407,7 @@ void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
+				game.isArrowPressed = true;
 				game.openQuiz = false;
 				game.openGame = true;
 			}
@@ -451,6 +458,7 @@ void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
 				PlaySoundMulti(textures.clickSound);
+				game.isArrowPressed = true;
 				game.openQuiz = false;
 				game.openGame = true;
 			}

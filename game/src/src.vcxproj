@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClCompile Include="CountryGames.cpp" />
     <ClCompile Include="CountryQuizes.cpp" />
+    <ClCompile Include="CrazyCow.cpp" />
     <ClCompile Include="GameInCountryFunctions.cpp" />
     <ClCompile Include="GameInMapFunctions.cpp" />
     <ClCompile Include="main.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CrazyCow.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="GameInCountry.h" />
     <ClInclude Include="GameInMap.h" />

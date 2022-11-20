@@ -43,6 +43,8 @@ struct MapS
     int countryNumber = 0;
     int countryHover = 0;
     int mapLocation = 0;
+
+    int unlockedCountries = 1;
 };
 
 struct GameS
@@ -57,7 +59,7 @@ struct GameS
     bool gameWin = false;
     bool gameLoose = false;
 
-    int money = 600;
+    int money = 100;
     int trueQuestionCounter = 0;
     int questionsNumberCounter = 0;
     int randomQuestion = 0;
@@ -86,6 +88,63 @@ struct LockedCountries
     bool isTurkeyOpen = false;
     bool isUnitedKingdomOpen = false;
     bool isNorwayOpen = false;
+};
+
+struct FlyingCows
+{
+    int cowsX[10] = {
+        1 + (rand() % 1900),
+        1 + (rand() % 1900),
+        1 + (rand() % 1900),
+        1 + (rand() % 1900),
+        1 + (rand() % 1900),
+        1 + (rand() % 1900),
+        1 + (rand() % 1900),
+        1 + (rand() % 1900),
+        1 + (rand() % 1900),
+        1 + (rand() % 1900)
+    };
+
+    int cowsY[10] = {
+        1 + (rand() % 500),
+        1 + (rand() % 500),
+        1 + (rand() % 500),
+        1 + (rand() % 500),
+        1 + (rand() % 500),
+        1 + (rand() % 500),
+        1 + (rand() % 500),
+        1 + (rand() % 500),
+        1 + (rand() % 500),
+        1 + (rand() % 500)
+
+    };
+
+    int randomNums[10] = {
+        1 + (rand() % 8),
+        1 + (rand() % 8),
+        1 + (rand() % 8),
+        1 + (rand() % 8),
+        1 + (rand() % 8),
+        1 + (rand() % 8),
+        1 + (rand() % 8),
+        1 + (rand() % 8),
+        1 + (rand() % 8),
+        1 + (rand() % 8)
+    };
+
+    int cowsCounters[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+    int downCowsCounter = 0;
+
+    bool downCows[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+    bool cowDir[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    
+    bool isCCOpen = false;
+
+    bool isCCOver = false;
+
+    bool CCWarning = false;
 };
 
 struct AllTextures 
@@ -134,6 +193,8 @@ struct AllTextures
     Texture2D menuCaravanMiddle = LoadTexture("../src/assets/Backgrounds/menuCaravan_two.png");
     Texture2D menuCaravanRight = LoadTexture("../src/assets/Backgrounds/menuCaravan_three.png");
 
+    Texture2D crazyCowBG = LoadTexture("../src/assets/Backgrounds/CrazyCowBG.png");
+
     // Landmarks
 
     Texture2D BulgariaLandmark = LoadTexture("../src/assets/Landmarks/BulgariaLandmark.png");
@@ -155,6 +216,11 @@ struct AllTextures
     Texture2D armStageOne = LoadTexture("../src/assets/Others/armStageOne.png");
     Texture2D armStageTwo = LoadTexture("../src/assets/Others/armStageTwo.png");
     Texture2D dart = LoadTexture("../src/assets/Others/dart.png");
+    Texture2D flyingCowRight = LoadTexture("../src/assets/Others/FlyingCowRight.png");
+    Texture2D flyingCowLeft = LoadTexture("../src/assets/Others/FlyingCowLeft.png");
+
+    Texture2D fallenCowRight = LoadTexture("../src/assets/Others/FallenCowRight.png");
+    Texture2D fallenCowLeft = LoadTexture("../src/assets/Others/FallenCowLeft.png");
 
     // Sounds and Musics
 
@@ -167,9 +233,9 @@ struct AllTextures
 
 // Main Functions ----------------------------------------------------------------------------------------------------------------------
 
-void Menu(MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font);
+void Menu(FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font);
 
-void Settings(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font);
+void Settings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font);
 
 void Game(SettingsS &settings, MenuS &menu, MapS &map, GameS &game, LockedCountries &lockedCountries, AllTextures textures, Font font);
 
@@ -182,6 +248,6 @@ Vector2 VecPos(int x, int y);
 
 void UnloadAllTextures(AllTextures unloadTextures);
 
-void SaveData(ofstream& saveData, GameS& game, LockedCountries& lockedCountries);
+void SaveData(ofstream& saveData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries);
 
-void GetData(ifstream& getData, GameS& game, LockedCountries& lockedCountries);
+void GetData(ifstream& getData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries);
