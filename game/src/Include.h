@@ -11,9 +11,11 @@
 
 using namespace std;
 
+// set the height and width of the screen
 const int screenWidth = 1920;
 const int screenHeight = 1000;
 
+// define structure for settigns
 struct SettingsS
 {
     bool areSettingsOpen = false;
@@ -23,6 +25,7 @@ struct SettingsS
     float soundVolume = (float)0.15;
 };
 
+// define structure for the menu
 struct MenuS
 {
     bool isMenuOpen = true;
@@ -34,6 +37,7 @@ struct MenuS
     int BGX = 0;
 };
 
+// define structure for the map
 struct MapS
 {
     bool openMap = false;
@@ -48,6 +52,7 @@ struct MapS
     int unlockedCountries = 1;
 };
 
+// define structure for game
 struct GameS
 {
     bool isQuizOpened = false;
@@ -78,6 +83,7 @@ struct GameS
     int gameCounter[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 };
 
+// define structure for the locked countries
 struct LockedCountries
 {
     bool isBulgariaOpen = true;
@@ -91,6 +97,7 @@ struct LockedCountries
     bool isNorwayOpen = false;
 };
 
+// define structure about CrazyCow event
 struct FlyingCows
 {
     int cowsX[10] = {
@@ -150,6 +157,8 @@ struct FlyingCows
     bool CCWarning = false;
 };
 
+
+// define structure for loading all the textures used
 struct AllTextures 
 {
     // Boxes
@@ -258,21 +267,29 @@ struct AllTextures
 
 // Main Functions ----------------------------------------------------------------------------------------------------------------------
 
+// Menu main function. Creats game menu. Calls all menu functions
 void Menu(FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font);
 
+// Settings main function. Creats game settings. Calls all settings functions.
 void Settings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font);
 
+// Game main function. Calls all game functions.
 void Game(SettingsS &settings, MenuS &menu, MapS &map, GameS &game, LockedCountries &lockedCountries, AllTextures textures, Font font);
 
 
 // Other Functions ----------------------------------------------------------------------------------------------------------------
 
+// checks ig the mouse is in a specific range
 bool IsMouseInRange(int x1, int x2, int y1, int y2);
 
+// making a vector2s type structure variable for setting a position
 Vector2 VecPos(float x, float y);
 
+// Unloads all the textures used
 void UnloadAllTextures(AllTextures unloadTextures);
 
+// Saves game progress after closing the game and continue the game after you run it again.
 void SaveData(ofstream& saveData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries);
 
+// Get the data saved before for future uses
 void GetData(ifstream& getData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries);

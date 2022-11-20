@@ -422,16 +422,16 @@ void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundNorway, 0, 0, WHITE);
 
 	const char* questions[10] = {
-				"   What is the name of the\n  highest mountain in Norway?",
-				"    What is the name of the\n  oldest existing city in Norway?",
-				"   What is the name of the\n   longest river in Norway?",
-				"   What is the name of the\n  largest glacier in Norway?",
-				"   What is the northernmost\n   city of mainland Norway?",
+				"    What is the name of the\n  highest mountain in Norway?",
+				"    What is the name of the\n oldest existing city in Norway?",
+				"    What is the name of the\n    longest river in Norway?",
+				"    What is the name of the\n   largest glacier in Norway?",
+				"    What is the northernmost\n     city of mainland Norway?",
 				"   After Svalbard, what is the\n    largest island in Norway?",
-				"   What is the name of the \n   deepest lake in Norway?",
-				"   What is the capital of Norway?",
-				"   Norway is the world’s third\n     largest exporter of...",
-				"   What is the population\n         of Norway?"
+				"    What is the name of the \n    deepest lake in Norway?",
+				"    Which city is the capital\n            of Norway?",
+				"   Norway is the world's third\n       largest exporter of...",
+				"     What is the population\n           of Norway?"
 	};
 
 	const char* answers[10][4] = {
@@ -441,7 +441,7 @@ void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 		{"     Olav V", "   Svartisen", "  Sognebreen", " Jostedalsbren"},
 		{"  Hammerfest", " Longyearbyen", "   Nordkapp", "     Bodoe"},
 		{"    Helgoey", "      Hitra", "    Hinnoey", "      Senja"},
-		{"Seljordsvatnet", "  Femunden", "Hornindalsvatn", "     Mjoesa"},
+		{"Seljordsvatnet", "   Femunden", "Hornindalsvatn", "    Mjoesa"},
 		{"   Helsinki", "      Oslo", "   Trondheim", "     Berlin"},
 		{"       Oil", "      Wood", "   Furniture", "      Iron"},
 		{"    4,660,539", "    12,351,752", "     807,413", "    37,961,664"}

@@ -1,6 +1,12 @@
 #pragma once
 #include "Include.h"
 
+// --Open Quizes--
+// Opens the quiz for the country selected
+
+// --Open Games--
+// Opens the game for the country selected
+
 void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font);
 
 void OpenBulgariaGame(GameS& game, AllTextures textures, Font font);

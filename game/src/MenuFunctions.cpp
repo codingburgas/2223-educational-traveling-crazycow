@@ -180,11 +180,7 @@ void NewGameWarning(bool& newGame, GameS& game, FlyingCows& cows, LockedCountrie
 
 void ResetValues(GameS& game, FlyingCows& cows, LockedCountries& lockedCountries)
 {
-<<<<<<< Updated upstream
-    game.money = 2000;
-=======
-    game.money = 250;
->>>>>>> Stashed changes
+    game.money = 150;
 
     for (int i = 0; i < 9; i++)
     {

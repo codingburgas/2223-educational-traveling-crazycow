@@ -108,7 +108,7 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 		if (quizCounter < 3)
 		{
 			static vector<int> usedNums;
-			if (game.questionsNumberCounter == 9 && game.isQuizOpened)
+			if (game.questionsNumberCounter == 5 && game.isQuizOpened)
 			{
 				DrawTextEx(font, "Result", VecPos(760, 230), 140, 10, BLACK);
 
@@ -142,7 +142,7 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 				}
 			}
 
-			if (game.questionsNumberCounter < 9 && game.isQuizOpened)
+			if (game.questionsNumberCounter < 5 && game.isQuizOpened)
 			{
 				if (game.isAnswered)
 				{
