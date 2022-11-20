@@ -154,6 +154,8 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.gameLeft);
     UnloadTexture(unloadTextures.armStageOne);
     UnloadTexture(unloadTextures.armStageTwo);
+    UnloadTexture(unloadTextures.norwayArmS1);
+    UnloadTexture(unloadTextures.norwayArmS2);
     UnloadTexture(unloadTextures.dart);
     UnloadTexture(unloadTextures.flyingCowRight);
     UnloadTexture(unloadTextures.flyingCowLeft);

@@ -440,6 +440,11 @@ void FinishCrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures text
 			cows.isCCOver = true;
 			menu.isMenuOpen = true;
 			game.money += 250;
+
+			game.armX = 900;
+			game.armY = 700;
+			game.dartX = game.armX - 10;
+			game.dartY = game.armY - 10;
 		}
 	}
 }

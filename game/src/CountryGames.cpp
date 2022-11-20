@@ -14,7 +14,7 @@ void OpenBulgariaGame(GameS& game, AllTextures textures, Font font)
 		textures.ItalyLandmark
 	};
 
-	OpenGame(game.gameCounter[0], 1, landmarks, game, textures, font);
+	OpenGame(game.gameCounter[0], 1, landmarks, textures.armStageOne, textures.armStageTwo, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -43,7 +43,7 @@ void OpenSpainGame(GameS& game, AllTextures textures, Font font)
 		textures.TurkeyLandmark
 	};
 
-	OpenGame(game.gameCounter[1], 1, landmarks, game, textures, font);
+	OpenGame(game.gameCounter[1], 1, landmarks, textures.armStageOne, textures.armStageTwo, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -72,7 +72,7 @@ void OpenFranceGame(GameS& game, AllTextures textures, Font font)
 		textures.SpainLandmark
 	};
 
-	OpenGame(game.gameCounter[2], 1, landmarks, game, textures, font);
+	OpenGame(game.gameCounter[2], 1, landmarks, textures.armStageOne, textures.armStageTwo, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -101,7 +101,7 @@ void OpenItalyGame(GameS& game, AllTextures textures, Font font)
 		textures.TurkeyLandmark
 	};
 
-	OpenGame(game.gameCounter[3], 1, landmarks, game, textures, font);
+	OpenGame(game.gameCounter[3], 1, landmarks, textures.armStageOne, textures.armStageTwo, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -130,7 +130,7 @@ void OpenGermanyGame(GameS& game, AllTextures textures, Font font)
 		textures.TurkeyLandmark
 	};
 
-	OpenGame(game.gameCounter[4], 1, landmarks, game, textures, font);
+	OpenGame(game.gameCounter[4], 1, landmarks, textures.armStageOne, textures.armStageTwo, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -159,7 +159,7 @@ void OpenTurkeyGame(GameS& game, AllTextures textures, Font font)
 		textures.FranceLandmark,
 	};
 
-	OpenGame(game.gameCounter[5], 1, landmarks, game, textures, font);
+	OpenGame(game.gameCounter[5], 1, landmarks, textures.armStageOne, textures.armStageTwo, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -188,7 +188,7 @@ void OpenGreeceGame(GameS& game, AllTextures textures, Font font)
 		textures.BulgariaLandmark,
 	};
 
-	OpenGame(game.gameCounter[6], 1, landmarks, game, textures, font);
+	OpenGame(game.gameCounter[6], 1, landmarks, textures.armStageOne, textures.armStageTwo, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -215,7 +215,7 @@ void OpenEnglandGame(GameS& game, AllTextures textures, Font font)
 		textures.rightArrow
 	};
 
-	OpenGame(game.gameCounter[7], 1, landmarks, game, textures, font);
+	OpenGame(game.gameCounter[7], 1, landmarks, textures.armStageOne, textures.armStageTwo, game, textures, font);
 
 	if (!game.isGameOpened)
 	{
@@ -244,7 +244,7 @@ void OpenNorwayGame(GameS& game, AllTextures textures, Font font)
 		textures.rightArrow
 	};
 
-	OpenGame(game.gameCounter[8], 1, landmarks, game, textures, font);
+	OpenGame(game.gameCounter[8], 1, landmarks, textures.norwayArmS1, textures.norwayArmS2, game, textures, font);
 
 	if (!game.isGameOpened)
 	{

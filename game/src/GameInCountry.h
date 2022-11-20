@@ -17,7 +17,7 @@ void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& 
 
 // Game -------------------------------------------------------------------------------------------------------------------------------------
 
-void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& game, AllTextures textures, Font font);
+void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture2D armOne, Texture2D armTwo, GameS& game, AllTextures textures, Font font);
 
 void MoveArm(GameS& game);
 

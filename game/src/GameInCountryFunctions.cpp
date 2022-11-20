@@ -108,35 +108,7 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 		if (quizCounter < 3)
 		{
 			static vector<int> usedNums;
-			DrawTexture(textures.quizBox, 0, 0, WHITE);
-			if (!game.isQuizOpened)
-			{
-				DrawTextEx(font, "Quiz", VecPos(660, 280), 300, 12, BLACK);
-				DrawTextEx(font, "Price - 50", VecPos(830, 604), 40, 6, BLACK);
-				DrawTexture(textures.wheatIcon, 1050, 608, WHITE);
-				DrawTextEx(font, TextFormat("Attempts - %2i/3", quizCounter), VecPos(816, 660), 30, 5, BLACK);
-				if (IsMouseInRange(660, 660 + 570, 280, 280 + 280))
-				{
-					DrawTextEx(font, "Quiz", VecPos(664, 274), 300, 12, BLACK);
-					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-					{
-						PlaySoundMulti(textures.clickSound);
-						if (game.money >= 50)
-						{
-							game.isQuizOpened = true;
-							game.money -= 50;
-							game.questionsNumberCounter = 0;
-							usedNums.clear();
-						}
-						else
-						{
-							game.gameWarning = true;
-						}
-					}
-				}
-			}
-
-			if (game.questionsNumberCounter == 4 && game.isQuizOpened)
+			if (game.questionsNumberCounter == 5 && game.isQuizOpened)
 			{
 				DrawTextEx(font, "Result", VecPos(760, 230), 140, 10, BLACK);
 
@@ -170,7 +142,7 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 				}
 			}
 
-			if (game.questionsNumberCounter < 4 && game.isQuizOpened)
+			if (game.questionsNumberCounter < 5 && game.isQuizOpened)
 			{
 				if (game.isAnswered)
 				{
@@ -215,6 +187,35 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 				case 10:
 					AnswerPosition(tPos[9], questions[9], answers[9], game, textures, font);
 					break;
+				}
+			}
+
+			
+			if (!game.isQuizOpened)
+			{
+				DrawTexture(textures.quizBox, 0, 0, WHITE);
+				DrawTextEx(font, "Quiz", VecPos(660, 280), 300, 12, BLACK);
+				DrawTextEx(font, "Price - 50", VecPos(830, 604), 40, 6, BLACK);
+				DrawTexture(textures.wheatIcon, 1050, 608, WHITE);
+				DrawTextEx(font, TextFormat("Attempts - %2i/3", quizCounter), VecPos(816, 660), 30, 5, BLACK);
+				if (IsMouseInRange(660, 660 + 570, 280, 280 + 280))
+				{
+					DrawTextEx(font, "Quiz", VecPos(664, 274), 300, 12, BLACK);
+					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+					{
+						PlaySoundMulti(textures.clickSound);
+						if (game.money >= 50)
+						{
+							game.isQuizOpened = true;
+							game.money -= 50;
+							game.questionsNumberCounter = 0;
+							usedNums.clear();
+						}
+						else
+						{
+							game.gameWarning = true;
+						}
+					}
 				}
 			}
 		}
@@ -290,7 +291,7 @@ void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& 
 	}
 }
 
-void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& game, AllTextures textures, Font font)
+void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture2D armOne, Texture2D armTwo, GameS& game, AllTextures textures, Font font)
 {
 	static vector<int> usedNums;
 	static int randomNums[4] = { 0, 0, 0, 0 };
@@ -354,11 +355,11 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], GameS& 
 
 					if (!game.flyingDart)
 					{
-						DrawTexture(textures.armStageOne, game.armX, game.armY, WHITE);
+						DrawTexture(armOne, game.armX, game.armY, WHITE);
 					}
 					else
 					{
-						DrawTexture(textures.armStageTwo, game.armX, game.armY, WHITE);
+						DrawTexture(armTwo, game.armX, game.armY, WHITE);
 					}
 
 					DrawTexture(textures.dart, game.dartX, game.dartY, WHITE);

@@ -59,7 +59,7 @@ struct GameS
     bool gameWin = false;
     bool gameLoose = false;
 
-    int money = 100;
+    int money = 150;
     int trueQuestionCounter = 0;
     int questionsNumberCounter = 0;
     int randomQuestion = 0;
@@ -216,6 +216,8 @@ struct AllTextures
     Texture2D gameLeft = LoadTexture("../src/assets/Others/gameLeft.png");
     Texture2D armStageOne = LoadTexture("../src/assets/Others/armStageOne.png");
     Texture2D armStageTwo = LoadTexture("../src/assets/Others/armStageTwo.png");
+    Texture2D norwayArmS2 = LoadTexture("../src/assets/Others/NorwayArmS2.png");
+    Texture2D norwayArmS1 = LoadTexture("../src/assets/Others/NorwayArmS1.png");
     Texture2D dart = LoadTexture("../src/assets/Others/dart.png");
     Texture2D flyingCowRight = LoadTexture("../src/assets/Others/FlyingCowRight.png");
     Texture2D flyingCowLeft = LoadTexture("../src/assets/Others/FlyingCowLeft.png");
