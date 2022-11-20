@@ -134,7 +134,7 @@ void UnloadAllTextures(AllTextures unloadTextures)
 
     UnloadTexture(unloadTextures.crazyCowBG);
 
-    //Landmarks
+    // Unload Landmarks
 
     UnloadTexture(unloadTextures.BulgariaLandmark);
     UnloadTexture(unloadTextures.FranceLandmark);
@@ -157,6 +157,7 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.norwayArmS1);
     UnloadTexture(unloadTextures.norwayArmS2);
     UnloadTexture(unloadTextures.dart);
+    UnloadTexture(unloadTextures.miniDart);
     UnloadTexture(unloadTextures.flyingCowRight);
     UnloadTexture(unloadTextures.flyingCowLeft);
 

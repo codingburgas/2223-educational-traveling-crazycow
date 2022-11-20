@@ -217,5 +217,5 @@ void ResetValues(GameS& game, FlyingCows& cows, LockedCountries& lockedCountries
     }
     cows.downCowsCounter = 0;
     cows.CCWarning = false;
-
+    cows.dartsLeft = 15;
 }

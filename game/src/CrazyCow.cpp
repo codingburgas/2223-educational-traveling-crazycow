@@ -9,7 +9,10 @@ void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, 
 
 		DrawTexture(textures.crazyCowBG, 0, 0, WHITE);
 
-		for (int i = 0; i < 9; i++)
+		DrawTextEx(font, TextFormat("%2i", cows.dartsLeft), VecPos(1800, 5), 32, 4, BLACK);
+		DrawTexture(textures.miniDart, 1836, 5, WHITE);
+
+		for (int i = 0; i < 10; i++)
 		{
 			FlyingCow(i, cows, game, textures);
 		}
@@ -17,23 +20,29 @@ void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, 
 		if (!game.flyingDart)
 		{
 			DrawTexture(textures.armStageOne, game.armX, game.armY, WHITE);
+			if (cows.dartsLeft > 0)
+			{
+				MoveArmCC(game);
+
+				if (IsMouseInRange(game.armX, game.armX + 100, game.armY, game.armY + 300) || IsKeyPressed(KEY_SPACE))
+				{
+					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_SPACE))
+					{
+						game.flyingDart = true;
+						cows.dartsLeft--;
+					}
+				}
+			}
 		}
 		else
 		{
+			MoveArmCC(game);
 			DrawTexture(textures.armStageTwo, game.armX, game.armY, WHITE);
 		}
 
 		DrawTexture(textures.dart, game.dartX, game.dartY, WHITE);
 
-		MoveArmCC(game);
-
-		if (IsMouseInRange(game.armX, game.armX + 100, game.armY, game.armY + 300) || IsKeyPressed(KEY_SPACE))
-		{
-			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_SPACE))
-			{
-				game.flyingDart = true;
-			}
-		}
+		
 
 
 		int currentFPS = GetFPS();
@@ -66,7 +75,7 @@ void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, 
 			}
 		}
 
-		if (cows.downCowsCounter == 9)
+		if (cows.downCowsCounter == 9 || cows.dartsLeft == 0)
 		{
 			FinishCrazyCow(cows, game, menu, textures, font);
 		}
@@ -172,15 +181,15 @@ void FlyingCow(int cowNum, FlyingCows& cows, GameS& game, AllTextures textures)
 
 	if (currentFPS <= 30)
 	{
-		cowMove = 8;
+		cowMove = 12;
 	}
 	else if (currentFPS > 30 && currentFPS <= 60)
 	{
-		cowMove = 4;
+		cowMove = 6;
 	}
 	else
 	{
-		cowMove = 2;
+		cowMove = 3;
 	}
 
 	if (!cows.downCows[cowNum])
@@ -210,7 +219,7 @@ void FlyingCow(int cowNum, FlyingCows& cows, GameS& game, AllTextures textures)
 	if (!cows.downCows[cowNum])
 	{
 		cows.cowsCounters[cowNum]++;
-		if (cows.cowsCounters[cowNum] >= 400)
+		if (cows.cowsCounters[cowNum] >= 200)
 		{
 			cows.randomNums[cowNum] = 1 + (rand() % 8);
 			cows.cowsCounters[cowNum] = 0;
@@ -425,7 +434,7 @@ void FinishCrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures text
 	DrawTexture(textures.quizBox, 0, 0, WHITE);
 
 	DrawTextEx(font, "Good Job!", VecPos(580, 300), 160, 8, BLACK);
-	DrawTextEx(font, "You win - 250", VecPos(810, 500), 40, 4, BLACK);
+	DrawTextEx(font, TextFormat("You win - %2i", cows.downCowsCounter * 25), VecPos(810, 500), 40, 4, BLACK);
 	DrawTexture(textures.wheatIcon, 1100 - 10, 500, WHITE);
 
 	DrawTexture(textures.answerBlock, 800, 560, WHITE);
@@ -439,7 +448,7 @@ void FinishCrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures text
 			cows.isCCOpen = false;
 			cows.isCCOver = true;
 			menu.isMenuOpen = true;
-			game.money += 250;
+			game.money += cows.downCowsCounter * 25;
 
 			game.armX = 900;
 			game.armY = 700;

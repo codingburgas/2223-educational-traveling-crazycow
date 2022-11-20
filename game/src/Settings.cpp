@@ -10,6 +10,9 @@ void Settings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, Gam
     }
     OpenSettings(settings, cows, menu, map, game, textures, font);
     CloseSetting(settings, textures);
+
+    DrawTextEx(font, TextFormat("%2i", game.money), VecPos(1810, 55), 32, 4, BLACK);
+    DrawTexture(textures.wheatIcon, 1920 - 36, 55, WHITE);
 }
 
 void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)

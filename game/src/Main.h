@@ -137,6 +137,8 @@ struct FlyingCows
 
     int downCowsCounter = 0;
 
+    int dartsLeft = 15;
+
     bool downCows[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
     bool cowDir[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -220,6 +222,7 @@ struct AllTextures
     Texture2D norwayArmS2 = LoadTexture("../src/assets/Others/NorwayArmS2.png");
     Texture2D norwayArmS1 = LoadTexture("../src/assets/Others/NorwayArmS1.png");
     Texture2D dart = LoadTexture("../src/assets/Others/dart.png");
+    Texture2D miniDart = LoadTexture("../src/assets/Others/MiniDart.png");
     Texture2D flyingCowRight = LoadTexture("../src/assets/Others/FlyingCowRight.png");
     Texture2D flyingCowLeft = LoadTexture("../src/assets/Others/FlyingCowLeft.png");
 

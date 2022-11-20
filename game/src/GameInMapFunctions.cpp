@@ -16,10 +16,6 @@ void Game(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountr
         OpenTheMap(settings.areSettingsOpen, map, textures);
         OpenCountries(settings.areSettingsOpen, game.money, map, textures, font, lockedCountries);
     }
-
-        DrawTextEx(font, TextFormat("%2i", game.money), VecPos(1810, 55), 32, 4, BLACK);
-        DrawTexture(textures.wheatIcon, 1920 - 36, 55, WHITE);
-    
 }
 
 void OpenTheMap(bool& areSettingsOpen, MapS& map, AllTextures textures)
