@@ -68,7 +68,7 @@ void OpenFranceGame(GameS& game, AllTextures textures, Font font)
 	Texture2D landmarks[4] = {
 		textures.FranceLandmark,
 		textures.ItalyLandmark,
-		textures.GreeceLandmark,
+		textures.NorwayLandmark,
 		textures.SpainLandmark
 	};
 
@@ -126,7 +126,7 @@ void OpenGermanyGame(GameS& game, AllTextures textures, Font font)
 	Texture2D landmarks[4] = {
 		textures.GermanyLandmark,
 		textures.GreeceLandmark,
-		textures.FranceLandmark,
+		textures.EnglandLandmark,
 		textures.TurkeyLandmark
 	};
 
@@ -211,10 +211,10 @@ void OpenEnglandGame(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundEngland, 0, 0, WHITE);
 
 	Texture2D landmarks[4] = {
-		textures.gameLeft,
-		textures.gameRight,
-		textures.leftArrow,
-		textures.rightArrow
+		textures.EnglandLandmark,
+		textures.NorwayLandmark,
+		textures.ItalyLandmark,
+		textures.BulgariaLandmark
 	};
 
 	OpenGame(game.gameCounter[7], 1, landmarks, textures.armStageOne, textures.armStageTwo, game, textures, font);
@@ -240,10 +240,10 @@ void OpenNorwayGame(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundNorway, 0, 0, WHITE);
 
 	Texture2D landmarks[4] = {
-		textures.gameLeft,
-		textures.gameRight,
-		textures.leftArrow,
-		textures.rightArrow
+		textures.NorwayLandmark,
+		textures.FranceLandmark,
+		textures.GreeceLandmark,
+		textures.GermanyLandmark
 	};
 
 	OpenGame(game.gameCounter[8], 1, landmarks, textures.norwayArmS1, textures.norwayArmS2, game, textures, font);
