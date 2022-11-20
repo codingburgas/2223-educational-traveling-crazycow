@@ -403,7 +403,7 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 
 					if (game.flyingDart)
 					{
-						if (IsMissed(randomNums, landmarkPos, game))
+						if (!IsMissed(randomNums, landmarkPos, game))
 						{
 							DrawTexture(textures.answerBlock, 5, 876, WHITE);
 							DrawTextEx(font, "Ok", VecPos(5 + 100, 876 + 30), 60, 6, BLACK);
@@ -608,14 +608,15 @@ bool IsMissed(int randomNums[4], int landmarkPos, GameS& game)
 		{
 			if (IsHit(i + 1, game))
 			{
-				return true;
+				return false;
 			}
 			else
 			{
-				return false;
+				return true;
 			}
 		}
 	}
+	return true;
 }
 
 bool IsHit(int landmarkPos, GameS& game)
@@ -662,5 +663,7 @@ bool IsHit(int landmarkPos, GameS& game)
 			return false;
 		}
 		break;
+	default:
+		return false;
 	}
 }

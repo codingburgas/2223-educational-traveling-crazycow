@@ -177,9 +177,7 @@ void ChooseCountry(bool& areSettingsOpen, int& money, MapS& map, AllTextures tex
     DrawCountry("Norway", 255, 826, 279, 79, 9, map, areSettingsOpen, money, lockedCountries.isNorwayOpen, textures, font);
 }
 
-bool notEnoughMoney = false;
-
-void DrawCountry(const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, MapS& map,
+void DrawCountry(const char* name, int x, int y, int lengthX, int lenghtY, int countryNum, MapS& map,
     bool& areSettingsOpen, int& money, bool& lockedCountry, AllTextures textures, Font font)
 {
     static bool* saveLockedCountry;
@@ -210,7 +208,7 @@ void DrawCountry(const char* name, float x, float y, float lengthX, float lenght
                 PlaySoundMulti(textures.clickSound);
                 map.countryWarning = true;
                 saveLockedCountry = &lockedCountry;
-                notEnoughMoney = false;
+                map.notEnoughMoney = false;
             }
         }
 
@@ -223,7 +221,7 @@ void DrawCountry(const char* name, float x, float y, float lengthX, float lenght
 
 void OpenWarning(bool* saveLockedCountry, int& money, MapS& map, AllTextures textures, Font font)
 {
-    if (!notEnoughMoney)
+    if (!map.notEnoughMoney)
     {
         DrawTexture(textures.quizBox, 0, 0, WHITE);
         DrawTextEx(font, "Are you sure?", VecPos(560, 260), 120, 8, BLACK);
@@ -254,7 +252,7 @@ void OpenWarning(bool* saveLockedCountry, int& money, MapS& map, AllTextures tex
                 else
                 {
                     PlaySoundMulti(textures.clickSound);
-                    notEnoughMoney = true;
+                    map.notEnoughMoney = true;
                 }
             }
         }

@@ -99,7 +99,7 @@ void SetFPS(AllTextures textures, Font font)
     }
 }
 
-void ChangeMusicVolume(float& musicVolume, AllTextures textures, Font font)
+void ChangeMusicVolume(double& musicVolume, AllTextures textures, Font font)
 {
     static int showMusicVolume = musicVolume * 100;
 
@@ -143,7 +143,7 @@ void ChangeMusicVolume(float& musicVolume, AllTextures textures, Font font)
     }
 }
 
-void ChangeSoundVolume(float& soundVolume, AllTextures textures, Font font)
+void ChangeSoundVolume(double& soundVolume, AllTextures textures, Font font)
 {
     static int showSoundVolume = soundVolume * 100;
 

@@ -19,8 +19,8 @@ struct SettingsS
     bool areSettingsOpen = false;
     bool isEscapeReleased = false;
 
-    float musicVolume = 0.05;
-    float soundVolume = 0.15;
+    double musicVolume = 0.05;
+    double soundVolume = 0.15;
 };
 
 struct MenuS
@@ -39,6 +39,7 @@ struct MapS
     bool openMap = false;
     bool countryList = false;
     bool countryWarning = false;
+    bool notEnoughMoney = false;
 
     int countryNumber = 0;
     int countryHover = 0;
@@ -247,7 +248,7 @@ void Game(SettingsS &settings, MenuS &menu, MapS &map, GameS &game, LockedCountr
 
 bool IsMouseInRange(int x1, int x2, int y1, int y2);
 
-Vector2 VecPos(int x, int y);
+Vector2 VecPos(float x, float y);
 
 void UnloadAllTextures(AllTextures unloadTextures);
 
