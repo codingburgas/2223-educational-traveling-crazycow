@@ -371,32 +371,32 @@ void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundEngland, 0, 0, WHITE);
 
 	const char* questions[10] = {
-				"1",
-				"2",
-				"3",
-				"4",
-				"5",
-				"6",
-				"7",
-				"8",
-				"9",
-				"10"
+				"  Which is the largest country \n            of the UK?",
+				"  Which is the smallest country \n            of the UK?",
+				"    How many seas border the \n         United Kingdom?",
+				"  What is the highest mountain \n           in the UK?",
+				"   What is the largest natural \n         lake in the UK?",
+				"  What is the longest canal in \n              the UK?",
+				"   What is the highest mountain \n             in Wales?",
+				" What was the previous capital \n            of England?",
+				"How many administrative counties \n       are there in England?",
+				"     Which city is the capital \n            of England?"
 	};
 
 	const char* answers[10][4] = {
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"}
+		{"     Wales", "    England", "    Scotland", " North Ireland"},
+		{" North Ireland", "    Scotland", "     Wales", "    England"},
+		{"        1", "        2", "        3", "        4"},
+		{"  Schiehallion", " Sgurr Fhuaran", "   Ben Nevis", "   Waun Fach"},
+		{"Coniston Water", "Bassenthwaite", "   Ullswater", "  Windermere"},
+		{"  Grand Union", " Oxford Canal", "Lee Navigation", "Lancaster Cana"},
+		{" Garnedd Ugain", "   Snowdon", "    Skiddaw", "  Glyder Fawr"},
+		{"    Oxford", "    Bristol", "  Winchester", "  Birmingham"},
+		{"       20", "       24", "       27", "       31"},
+		{"    London", "  Manchester", "     York", "   Liverpool"}
 	};
 
-	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	int answersPos[10] = { 2, 1, 4, 3, 4, 1, 2, 3, 3, 1 };
 
 	OpenQuiz(questions, answers, answersPos, game.quizCounter[7], game, textures, font);
 
