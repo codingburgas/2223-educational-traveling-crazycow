@@ -316,7 +316,8 @@ void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& 
 	}
 }
 
-//Draws mini game background. Displays mini game frames randomly. Takes you hay to start your attempt. After you finish your attempt it gives you hay if you choose the right frame. After the third attempt closes the mini game.
+// Draws mini game background. Displays mini game frames randomly. Takes you hay to start your attempt.
+// After you finish your attempt it gives you hay if you choose the right frame. After the third attempt closes the mini game.
 
 void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture2D background, Texture2D armOne, Texture2D armTwo,
 			  GameS& game, AllTextures textures, Font font)
@@ -396,7 +397,7 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 					{
 						MoveArm(game);
 
-						if (IsMouseInRange(game.armX, game.armX + 100, game.armY, game.armY + 300) || IsKeyPressed(KEY_SPACE))
+						if (IsKeyPressed(KEY_SPACE))
 						{
 							if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_SPACE))
 							{
@@ -423,7 +424,7 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 
 					if (game.flyingDart)
 					{
-						if (game.dartX >= 400 && game.dartX >= game.armX - 250)
+						if (game.dartX >= 400 && game.dartX >= game.armX + 300 - 250)
 						{
 							game.dartX -= dartMove;
 						}
@@ -442,10 +443,10 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 								{
 									PlaySoundMulti(textures.clickSound);
 									game.flyingDart = false;
-									game.armX = 900;
+									game.armX = 600;
 									game.armY = 700;
-									game.dartX = game.armX - 10;
-									game.dartY = game.armY - 10;
+									game.dartX = game.armX + 300;
+									game.dartY = game.armY;
 									game.gameWin = true;
 								}
 							}
@@ -461,10 +462,10 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 								{
 									PlaySoundMulti(textures.clickSound);
 									game.flyingDart = false;
-									game.armX = 900;
+									game.armX = 600;
 									game.armY = 700;
-									game.dartX = game.armX - 10;
-									game.dartY = game.armY - 10;
+									game.dartX = game.armX + 300;
+									game.dartY = game.armY;
 									game.gameLoose = true;
 								}
 							}
@@ -563,7 +564,7 @@ void MoveArm(GameS& game)
 			game.armY += armMove;
 			game.dartY += armMove;
 		}
-		if (game.armX >= 400)
+		if (game.armX + 300 >= 400)
 		{
 			game.armX -= armMove;
 			game.dartX -= armMove;
@@ -576,7 +577,7 @@ void MoveArm(GameS& game)
 			game.armY += armMove;
 			game.dartY += armMove;
 		}
-		if (game.armX <= 1700)
+		if (game.armX + 300 <= 1700)
 		{
 			game.armX += armMove;
 			game.dartX += armMove;
@@ -589,7 +590,7 @@ void MoveArm(GameS& game)
 			game.armY -= armMove;
 			game.dartY -= armMove;
 		}
-		if (game.armX >= 400)
+		if (game.armX + 300 >= 400)
 		{
 			game.armX -= armMove;
 			game.dartX -= armMove;
@@ -602,18 +603,18 @@ void MoveArm(GameS& game)
 			game.armY -= armMove;
 			game.dartY -= armMove;
 		}
-		if (game.armX <= 1700)
+		if (game.armX + 300 <= 1700)
 		{
 			game.armX += armMove;
 			game.dartX += armMove;
 		}
 	}
-	else if (IsKeyDown(KEY_A) && game.armX >= 400)
+	else if (IsKeyDown(KEY_A) && game.armX + 300 >= 400)
 	{
 		game.armX -= armMove;
 		game.dartX -= armMove;
 	}
-	else if (IsKeyDown(KEY_D) && game.armX <= 1700)
+	else if (IsKeyDown(KEY_D) && game.armX + 300 <= 1700)
 	{
 		game.armX += armMove;
 		game.dartX += armMove;

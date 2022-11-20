@@ -26,7 +26,7 @@ void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, 
 			{
 				MoveArmCC(game);
 
-				if (IsMouseInRange(game.armX, game.armX + 100, game.armY, game.armY + 300) || IsKeyPressed(KEY_SPACE))
+				if (IsKeyPressed(KEY_SPACE))
 				{
 					if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_SPACE))
 					{
@@ -65,15 +65,15 @@ void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, 
 
 		if (game.flyingDart)
 		{
-			if (game.dartX >= 0 && game.dartX >= game.armX - 250)
+			if (game.dartX >= 0 && game.dartX >= game.armX + 300 - 250)
 			{
 				game.dartX -= dartMove;
 			}
 			else
 			{
 				game.flyingDart = false;
-				game.dartX = game.armX - 10;
-				game.dartY = game.armY - 10;
+				game.dartX = game.armX + 300;
+				game.dartY = game.armY;
 			}
 		}
 
@@ -81,9 +81,8 @@ void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, 
 		{
 			if (cows.dartsLeft == 0)
 			{
-				static int count = 0;
-				count++;
-				if (count >= 80)
+				cows.finishCCDelay++;
+				if (cows.finishCCDelay >= 80)
 				{
 					FinishCrazyCow(cows, game, menu, textures, font);
 				}
@@ -223,13 +222,27 @@ void FlyingCow(int cowNum, FlyingCows& cows, GameS& game, AllTextures textures)
 	}
 	else
 	{
-		if (cows.cowDir[cowNum])
+		if (cows.cowsY[cowNum] <= 660)
 		{
-			DrawTexture(textures.fallenCowRight, cows.cowsX[cowNum], cows.cowsY[cowNum], WHITE);
+			if (cows.cowDir[cowNum])
+			{
+				DrawTexture(textures.fallingCowRight, cows.cowsX[cowNum], cows.cowsY[cowNum], WHITE);
+			}
+			else
+			{
+				DrawTexture(textures.fallingCowLeft, cows.cowsX[cowNum], cows.cowsY[cowNum], WHITE);
+			}
 		}
 		else
 		{
-			DrawTexture(textures.fallenCowLeft, cows.cowsX[cowNum], cows.cowsY[cowNum], WHITE);
+			if (cows.cowDir[cowNum])
+			{
+				DrawTexture(textures.fallenCowRight, cows.cowsX[cowNum], cows.cowsY[cowNum], WHITE);
+			}
+			else
+			{
+				DrawTexture(textures.fallenCowLeft, cows.cowsX[cowNum], cows.cowsY[cowNum], WHITE);
+			}
 		}
 	}
 	
@@ -354,7 +367,7 @@ void FlyingCow(int cowNum, FlyingCows& cows, GameS& game, AllTextures textures)
 
 void HitCow(int cowNum, FlyingCows& cows, GameS& game)
 {
-	if (game.flyingDart && game.dartX <= game.armX - 230)
+	if (game.flyingDart && game.dartX <= game.armX + 300 - 230)
 	{
 		if (game.dartX >= cows.cowsX[cowNum] && game.dartX <= cows.cowsX[cowNum] + 100 &&
 			game.dartY + 10 >= cows.cowsY[cowNum] && game.dartY + 10 <= cows.cowsY[cowNum] + 150)
@@ -390,6 +403,8 @@ void OpenCrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, MapS& map, AllText
 		}
 		else
 		{
+			UpdateMusicStream(textures.menuMusic);
+
 			DrawTexture(textures.crazyCowBG, 0, 0, WHITE);
 			DrawTexture(textures.quizBox, 0, 0, WHITE);
 			DrawTextEx(font, "Are you sure?", VecPos(560, 290), 120, 8, BLACK);
@@ -473,13 +488,15 @@ void FinishCrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures text
 			PlaySoundMulti(textures.clickSound);
 			cows.isCCOpen = false;
 			cows.isCCOver = true;
+			cows.finishCCDelay = 0;
+
 			menu.isMenuOpen = true;
 			game.money += cows.downCowsCounter * 25;
 
-			game.armX = 900;
+			game.armX = 600;
 			game.armY = 700;
-			game.dartX = game.armX - 10;
-			game.dartY = game.armY - 10;
+			game.dartX = game.armX + 300;
+			game.dartY = game.armY;
 		}
 	}
 }

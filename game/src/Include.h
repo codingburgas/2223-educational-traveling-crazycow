@@ -72,11 +72,11 @@ struct GameS
     int questionsNumberCounter = 0;
     int randomQuestion = 0;
 
-    int armX = 900;
+    int armX = 600;
     int armY = 700;
 
-    int dartX = 900 - 10;
-    int dartY = 700 - 10;
+    int dartX = 900;
+    int dartY = 700;
 
     bool flyingDart = false;
 
@@ -147,6 +147,8 @@ struct FlyingCows
     int downCowsCounter = 0;
 
     int dartsLeft = 15;
+
+    int finishCCDelay = 0;
 
     bool downCows[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
@@ -254,6 +256,9 @@ struct AllTextures
     Texture2D miniDart = LoadTexture("../src/assets/Others/MiniDart.png");
     Texture2D flyingCowRight = LoadTexture("../src/assets/Others/FlyingCowRight.png");
     Texture2D flyingCowLeft = LoadTexture("../src/assets/Others/FlyingCowLeft.png");
+
+    Texture2D fallingCowRight = LoadTexture("../src/assets/Others/FallingCowRight.png");
+    Texture2D fallingCowLeft = LoadTexture("../src/assets/Others/FallingCowLeft.png");
 
     Texture2D fallenCowRight = LoadTexture("../src/assets/Others/FallenCowRight.png");
     Texture2D fallenCowLeft = LoadTexture("../src/assets/Others/FallenCowLeft.png");

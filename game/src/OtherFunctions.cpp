@@ -185,6 +185,9 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.flyingCowRight);
     UnloadTexture(unloadTextures.flyingCowLeft);
 
+    UnloadTexture(unloadTextures.fallingCowLeft);
+    UnloadTexture(unloadTextures.fallingCowRight);
+
     UnloadTexture(unloadTextures.fallenCowLeft);
     UnloadTexture(unloadTextures.fallenCowRight);
 }

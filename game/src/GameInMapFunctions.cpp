@@ -122,11 +122,11 @@ void MoveMap(int& mapLocation, AllTextures textures)
     }
     else if (currentFPS <= 30)
     {
-        mapMove = (int)mapFrameTime + 16;
+        mapMove = (int)mapFrameTime + 12;
     }
     else
     {
-        mapMove = (int)mapFrameTime + 8;
+        mapMove = (int)mapFrameTime + 6;
     }
 
     DrawTexture(textures.rightArrow, 1920 - 50, 0, WHITE);
