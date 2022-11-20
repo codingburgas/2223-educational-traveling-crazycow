@@ -183,6 +183,8 @@ struct AllTextures
 
     Texture2D background = LoadTexture("../src/assets/Backgrounds/Background.png");
 
+    //Quiz
+
     Texture2D quizBackgroundBulgaria = LoadTexture("../src/assets/Backgrounds/Bulgaria.png");
     Texture2D quizBackgroundFrance = LoadTexture("../src/assets/Backgrounds/France.png");
     Texture2D quizBackgroundItaly = LoadTexture("../src/assets/Backgrounds/Italy.png");
@@ -192,7 +194,20 @@ struct AllTextures
     Texture2D quizBackgroundTurkey = LoadTexture("../src/assets/Backgrounds/Turkey.png");
     Texture2D quizBackgroundNorway = LoadTexture("../src/assets/Backgrounds/Norway.png");
     Texture2D quizBackgroundEngland = LoadTexture("../src/assets/Backgrounds/England.png");
-    Texture2D gameBackground = LoadTexture("../src/assets/Backgrounds/gameBackground.png");
+
+
+    //Game
+
+    Texture2D gameBackgroundBulgaria = LoadTexture("../src/assets/Backgrounds/BulgariaGame.png");
+    Texture2D gameBackgroundFrance = LoadTexture("../src/assets/Backgrounds/FranceGame.png");
+    Texture2D gameBackgroundItaly = LoadTexture("../src/assets/Backgrounds/ItalyGame.png");
+    Texture2D gameBackgroundSpain = LoadTexture("../src/assets/Backgrounds/SpainGame.png");
+    Texture2D gameBackgroundGermany = LoadTexture("../src/assets/Backgrounds/GermanyGame.png");
+    Texture2D gameBackgroundGreece = LoadTexture("../src/assets/Backgrounds/GreeceGame.png");
+    Texture2D gameBackgroundTurkey = LoadTexture("../src/assets/Backgrounds/TurkeyGame.png");
+    Texture2D gameBackgroundNorway = LoadTexture("../src/assets/Backgrounds/NorwayGame.png");
+    Texture2D gameBackgroundEngland = LoadTexture("../src/assets/Backgrounds/EnglandGame.png");
+
 
     Texture2D menuCaravanLeft = LoadTexture("../src/assets/Backgrounds/menuCaravan_one.png");
     Texture2D menuCaravanMiddle = LoadTexture("../src/assets/Backgrounds/menuCaravan_two.png");

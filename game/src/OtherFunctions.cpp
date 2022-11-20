@@ -118,6 +118,8 @@ void UnloadAllTextures(AllTextures unloadTextures)
 
     UnloadTexture(unloadTextures.background);
 
+    //Quiz
+
     UnloadTexture(unloadTextures.quizBackgroundBulgaria);
     UnloadTexture(unloadTextures.quizBackgroundFrance);
     UnloadTexture(unloadTextures.quizBackgroundItaly);
@@ -127,7 +129,18 @@ void UnloadAllTextures(AllTextures unloadTextures)
     UnloadTexture(unloadTextures.quizBackgroundTurkey);
     UnloadTexture(unloadTextures.quizBackgroundNorway);
     UnloadTexture(unloadTextures.quizBackgroundEngland);
-    UnloadTexture(unloadTextures.gameBackground);
+    
+    //Game
+
+    UnloadTexture(unloadTextures.gameBackgroundBulgaria);
+    UnloadTexture(unloadTextures.gameBackgroundFrance);
+    UnloadTexture(unloadTextures.gameBackgroundItaly);
+    UnloadTexture(unloadTextures.gameBackgroundSpain);
+    UnloadTexture(unloadTextures.gameBackgroundGermany);
+    UnloadTexture(unloadTextures.gameBackgroundGreece);
+    UnloadTexture(unloadTextures.gameBackgroundTurkey);
+    UnloadTexture(unloadTextures.gameBackgroundNorway);
+    UnloadTexture(unloadTextures.gameBackgroundEngland);
 
     UnloadTexture(unloadTextures.menuCaravanLeft);
     UnloadTexture(unloadTextures.menuCaravanMiddle);
