@@ -2,6 +2,8 @@
 #include "Menu.h"
 #include "CrazyCow.h"
 
+//Menu main function.Creats game menu.Calls all menu functions
+
 void Menu(FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
 {
     if (!menu.newGame)
@@ -26,6 +28,8 @@ void Menu(FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, LockedCountries
         NewGameWarning(menu.newGame, game, cows, lockedCountries, textures, font);
     }
 }
+
+//Creates game menu background animation
 
 void DrawMenuBackground(MenuS& menu, AllTextures textures)
 {   
@@ -96,6 +100,9 @@ void DrawMenuBackground(MenuS& menu, AllTextures textures)
     frameTime = GetFrameTime();
 }
 
+
+//Creates a button that takes the player to the game. 
+
 void StartGame(bool& isMenuOpen, MapS& map, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 696, 230, WHITE);
@@ -113,6 +120,9 @@ void StartGame(bool& isMenuOpen, MapS& map, AllTextures textures, Font font)
     }
 }
 
+
+//Creates a button that takes the player out of the game
+
 void CloseGame(bool& isGameClosed, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 696, 610, WHITE);
@@ -128,6 +138,8 @@ void CloseGame(bool& isGameClosed, AllTextures textures, Font font)
     }
 }
 
+//Creates a button that reset the game. The game start from the beginning 
+
 void NewGame(bool& newGame, AllTextures textures, Font font)
 {
     DrawTexture(textures.startBlock, 696, 420, WHITE);
@@ -142,6 +154,8 @@ void NewGame(bool& newGame, AllTextures textures, Font font)
         }
     }
 }
+
+//Displays a box to make sure if you want to restart the game
 
 void NewGameWarning(bool& newGame, GameS& game, FlyingCows& cows, LockedCountries& lockedCountries, AllTextures textures, Font font)
 {
@@ -177,6 +191,8 @@ void NewGameWarning(bool& newGame, GameS& game, FlyingCows& cows, LockedCountrie
         }
     }
 }
+
+//Player progress is reset. All values are returned to default.
 
 void ResetValues(GameS& game, FlyingCows& cows, LockedCountries& lockedCountries)
 {

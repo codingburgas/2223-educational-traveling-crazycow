@@ -2,6 +2,7 @@
 #include "OpenCountry.h"
 #include "GameInCountry.h"
 
+//Set game frames and starts the mini game for Bulgaria
 
 void OpenBulgariaGame(GameS& game, AllTextures textures, Font font)
 {
@@ -32,6 +33,8 @@ void OpenBulgariaGame(GameS& game, AllTextures textures, Font font)
 	}
 }
 
+//Set game frames and starts the mini game for Spain
+
 void OpenSpainGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundSpain, 0, 0, WHITE);
@@ -60,6 +63,8 @@ void OpenSpainGame(GameS& game, AllTextures textures, Font font)
 		}
 	}
 }
+
+//Set game frames and starts the mini game for France
 
 void OpenFranceGame(GameS& game, AllTextures textures, Font font)
 {
@@ -90,6 +95,8 @@ void OpenFranceGame(GameS& game, AllTextures textures, Font font)
 	}
 }
 
+//Set game frames and starts the mini game for Italy
+
 void OpenItalyGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundItaly, 0, 0, WHITE);
@@ -118,6 +125,8 @@ void OpenItalyGame(GameS& game, AllTextures textures, Font font)
 		}
 	}
 }
+
+//Set game frames and starts the mini game for Germany
 
 void OpenGermanyGame(GameS& game, AllTextures textures, Font font)
 {
@@ -148,6 +157,8 @@ void OpenGermanyGame(GameS& game, AllTextures textures, Font font)
 	}
 }
 
+//Set game frames and starts the mini game for Turkey
+
 void OpenTurkeyGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundTurkey, 0, 0, WHITE);
@@ -176,6 +187,8 @@ void OpenTurkeyGame(GameS& game, AllTextures textures, Font font)
 		}
 	}
 }
+
+//Set game frames and starts the mini game for Greece
 
 void OpenGreeceGame(GameS& game, AllTextures textures, Font font)
 {
@@ -206,6 +219,8 @@ void OpenGreeceGame(GameS& game, AllTextures textures, Font font)
 	}
 }
 
+//Set game frames and starts the mini game for England
+
 void OpenEnglandGame(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundEngland, 0, 0, WHITE);
@@ -234,6 +249,8 @@ void OpenEnglandGame(GameS& game, AllTextures textures, Font font)
 		}
 	}
 }
+
+//Set game frames and starts the mini game for Norway
 
 void OpenNorwayGame(GameS& game, AllTextures textures, Font font)
 {

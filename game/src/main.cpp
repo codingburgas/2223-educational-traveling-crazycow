@@ -5,13 +5,24 @@ int main()
 {
     srand((unsigned int)time(NULL));
 
-    InitWindow(screenWidth, screenHeight, "CrazyCow"); // initializing a window
-    InitAudioDevice(); // initializing an audio defice
-    SetExitKey(KEY_BACKSPACE); // set a EXIT key default value
+    // initializing a window
 
-    SetTargetFPS(60); // set a FPS default value
+    InitWindow(screenWidth, screenHeight, "CrazyCow"); 
+
+    // initializing an audio defice
+
+    InitAudioDevice(); 
+
+    // set a EXIT key default value
+
+    SetExitKey(KEY_BACKSPACE); 
+
+    // set a FPS default value
+
+    SetTargetFPS(60); 
     
-    // Makeing the main structure type variable of the game ---------------------------------
+    // Makeing the main structure type variable of the game
+
     Font font = LoadFont("../src/assets/Others/pixantiqua.png");
 
     AllTextures textures;
@@ -31,20 +42,33 @@ int main()
     ofstream saveData;
     ifstream getData;
 
-    // ----------------------------------------------------------------------------------------
+    // gets the data used before
 
-    GetData(getData, cows, game, lockedCountries);                      // gets the data used before
+    GetData(getData, cows, game, lockedCountries);  
 
-    PlayMusicStream(textures.menuMusic);                                     // Play the music stream
-    SetMusicVolume(textures.menuMusic, settings.musicVolume);                 // sets the music a default value
-    SetSoundVolume(textures.clickSound, settings.soundVolume);               // sets the sound a default value
+    // Play the music stream
 
+    PlayMusicStream(textures.menuMusic);  
 
-    while (!WindowShouldClose() && !menu.isGameClosed)                     // loop while the window is closed
+    // sets the music a default value
+
+    SetMusicVolume(textures.menuMusic, settings.musicVolume);   
+
+    // sets the sound a default value
+
+    SetSoundVolume(textures.clickSound, settings.soundVolume);               
+
+    // loop while the window is closed
+
+    while (!WindowShouldClose() && !menu.isGameClosed)                    
     {
-        BeginDrawing();                                                    // start drawing
+        // start drawing
 
-        ClearBackground(WHITE);                                             // clears the background
+        BeginDrawing();        
+        
+        // clears the background
+
+        ClearBackground(WHITE);                                             
 
             Menu(cows, menu, map, game, lockedCountries, textures, font);
 
@@ -58,21 +82,37 @@ int main()
             CrazyCow(cows, game, menu, textures, font);
 
             Settings(settings, cows, menu, map, game, textures, font);
-        
-        DrawFPS(10, 960);                                                   // draws the FPS
 
-        EndDrawing();                                                      // stop drawing
+        // draws the FPS
+
+        DrawFPS(10, 960);
+                                                   
+        // stop drawing
+
+        EndDrawing();                                                      
     }
 
-    SaveData(saveData, cows, game, lockedCountries);              // saves the data that is changed
+    // saves the data that is changed
 
-    UnloadAllTextures(textures);                                    // unload all textures
+    SaveData(saveData, cows, game, lockedCountries); 
 
-    UnloadFont(font);                                               // unload the font
+    // unload all textures
 
-    UnloadMusicStream(textures.menuMusic);                          // unload the music stream
+    UnloadAllTextures(textures);       
 
-    CloseAudioDevice();                                             // close the audio device
+    // unload the font
 
-    CloseWindow();                                                  // close the window
+    UnloadFont(font);           
+
+    // unload the music stream
+
+    UnloadMusicStream(textures.menuMusic);   
+
+    // close the audio device
+
+    CloseAudioDevice();         
+
+    // close the window
+
+    CloseWindow();  
 }

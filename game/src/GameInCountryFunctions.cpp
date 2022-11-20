@@ -2,6 +2,8 @@
 #include "GameInCountry.h"
 #include "OpenCountry.h"
 
+//After country is chosen country game and quiz section is opened. Draws mini game and quiz background. Displays questions, answers and game textures randomly.
+
 void OpenCountry(int& countryNumber, GameS& game, AllTextures textures, Font font)
 {
 	switch (countryNumber)
@@ -9,26 +11,31 @@ void OpenCountry(int& countryNumber, GameS& game, AllTextures textures, Font fon
 	case 1:
 		if (game.openQuiz)
 		{
+			// Bulgaria Quiz
 			OpenBulgariaQuiz(game, textures, font);
 		}
 		if (game.openGame)
 		{
+			// Bulgaria Game
 			OpenBulgariaGame(game, textures, font);
 		}
 		break;
 	case 2:
 		if (game.openQuiz)
 		{
+			// Spain Quiz
 			OpenSpainQuiz(game, textures, font);
 		}
 		if (game.openGame)
 		{
+			//Spain Game
 			OpenSpainGame(game, textures, font);
 		}
 		break;
 	case 3:
 		if (game.openQuiz)
 		{
+			// France Quiz
 			OpenFranceQuiz(game, textures, font);
 		}
 		if (game.openGame)
@@ -39,60 +46,72 @@ void OpenCountry(int& countryNumber, GameS& game, AllTextures textures, Font fon
 	case 4:
 		if (game.openQuiz)
 		{
+			// Italy Quiz
 			OpenItalyQuiz(game, textures, font);
 		}
 		if (game.openGame)
 		{
+			// Italy Game
 			OpenItalyGame(game, textures, font);
 		}
 		break;
 	case 5:
 		if (game.openQuiz)
 		{
+			// Germany Quiz
 			OpenGermanyQuiz(game, textures, font);
 		}
 		if (game.openGame)
 		{
+			// Germany Game
 			OpenGermanyGame(game, textures, font);
 		}
 		break;
 	case 6:
 		if (game.openQuiz)
 		{
+			// Turkey Quiz
 			OpenTurkeyQuiz(game, textures, font);
 		}
 		if (game.openGame)
 		{
+			// Turkey Game
 			OpenTurkeyGame(game, textures, font);
 		}
 		break;
 	case 7:
 		if (game.openQuiz)
 		{
+			// Greece Quiz
 			OpenGreeceQuiz(game, textures, font);
 		}
 		if (game.openGame)
 		{
+			// Greece Game
 			OpenGreeceGame(game, textures, font);
 		}
 		break;
 	case 8:
 		if (game.openQuiz)
 		{
+			// England Quiz
 			OpenEnglandQuiz(game, textures, font);
 		}
 		if (game.openGame)
 		{
+			// England Game
 			OpenEnglandGame(game, textures, font);
 		}
 		break;
 	case 9:
 		if (game.openQuiz)
 		{
+			// Norway Quiz
 			OpenNorwayQuiz(game, textures, font);
 		}
 		if (game.openGame)
 		{
+			// Norway Game
 			OpenNorwayGame(game, textures, font);
 		}
 		break;
@@ -100,6 +119,8 @@ void OpenCountry(int& countryNumber, GameS& game, AllTextures textures, Font fon
 		countryNumber = 0;
 	}
 }
+
+//Draws quiz background. Displays questions and answers randomly. Takes you hay to start your attempt. After you finish your attempt it gives you hay based on how many right answers you have. After the third attempt closes the quiz.
 
 void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int& quizCounter, GameS& game, AllTextures textures, Font font)
 {
@@ -245,6 +266,8 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 	}
 }
 
+//Sets randomly answer position
+
 void AnswerPosition(int tPos, const char* question, const char** answers, GameS& game, AllTextures textures, Font font)
 {
 	DrawTextEx(font, question, VecPos(560, 260), 50, 5, BLACK);
@@ -266,6 +289,8 @@ void AnswerPosition(int tPos, const char* question, const char** answers, GameS&
 	Answer(tPos, 3, 540, 440 + 140, answers, game, textures, font);
 	Answer(tPos, 4, 540 + 500, 440 + 140, answers, game, textures, font);
 }
+
+// Checks if you answered correctly
 
 void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& game, AllTextures textures, Font font)
 {
@@ -290,6 +315,8 @@ void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& 
 		}
 	}
 }
+
+//Draws mini game background. Displays mini game frames randomly. Takes you hay to start your attempt. After you finish your attempt it gives you hay if you choose the right frame. After the third attempt closes the mini game.
 
 void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture2D background, Texture2D armOne, Texture2D armTwo,
 			  GameS& game, AllTextures textures, Font font)
@@ -509,6 +536,8 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 	}
 }
 
+// When mini game is opened displays an arm that holds dart that can move up, down, right and left and when space pressed throw the dart.
+
 void MoveArm(GameS& game)
 {
 	int currentFPS = GetFPS();
@@ -601,6 +630,8 @@ void MoveArm(GameS& game)
 	}
 }
 
+// Checks if you missed the frame
+
 bool IsMissed(int randomNums[4], int landmarkPos, GameS& game)
 {
 	for (int i = 0; i < 4; i++)
@@ -619,6 +650,8 @@ bool IsMissed(int randomNums[4], int landmarkPos, GameS& game)
 	}
 	return true;
 }
+
+//Checks if you hited the right frame
 
 bool IsHit(int landmarkPos, GameS& game)
 {

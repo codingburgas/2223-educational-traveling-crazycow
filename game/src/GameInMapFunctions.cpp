@@ -2,6 +2,8 @@
 #include "GameInMap.h"
 #include "GameInCountry.h"
 
+//Game main function. Calls all game functions.
+
 void Game(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountries& lockedCountries, AllTextures textures, Font font)
 
 {
@@ -17,6 +19,8 @@ void Game(SettingsS& settings, MenuS& menu, MapS& map, GameS& game, LockedCountr
         OpenCountries(settings.areSettingsOpen, game.money, map, textures, font, lockedCountries);
     }
 }
+
+//Opens  map section and draws Europe map.
 
 void OpenTheMap(bool& areSettingsOpen, MapS& map, AllTextures textures)
 {
@@ -78,6 +82,8 @@ void OpenTheMap(bool& areSettingsOpen, MapS& map, AllTextures textures)
     }
 }
 
+// Displays list with all countires
+
 void OpenCountries(bool& areSettingsOpen, int& money, MapS& map, AllTextures textures, Font font, LockedCountries& lockedCountries)
 {
     if (map.countryList)
@@ -101,6 +107,8 @@ void OpenCountries(bool& areSettingsOpen, int& money, MapS& map, AllTextures tex
         }
     }
 }
+
+//Makes the map movable when the list of countries is opened.
 
 void MoveMap(int& mapLocation, AllTextures textures)
 {
@@ -152,6 +160,8 @@ void MoveMap(int& mapLocation, AllTextures textures)
     mapFrameTime = GetFrameTime();
 }
 
+//Creates expandable list of countries and hover the country on the map if your mouse is over its name.
+
 void ChooseCountry(bool& areSettingsOpen, int& money, MapS& map, AllTextures textures, Font font, LockedCountries& lockedCountries)
 {
     DrawCountry("Bulgaria", 249, 36, 298, 86, 1, map, areSettingsOpen, money, lockedCountries.isBulgariaOpen, textures, font);
@@ -172,6 +182,8 @@ void ChooseCountry(bool& areSettingsOpen, int& money, MapS& map, AllTextures tex
 
     DrawCountry("Norway", 255, 826, 279, 79, 9, map, areSettingsOpen, money, lockedCountries.isNorwayOpen, textures, font);
 }
+
+// Dispalys all countries locked in the list
 
 void DrawCountry(const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, MapS& map,
     bool& areSettingsOpen, int& money, bool& lockedCountry, AllTextures textures, Font font)
@@ -214,6 +226,8 @@ void DrawCountry(const char* name, float x, float y, float lengthX, float lenght
         }
     }
 }
+
+//Dispalys warning when you try to open country and checks if you have enought money. 
 
 void OpenWarning(bool* saveLockedCountry, int& money, MapS& map, AllTextures textures, Font font)
 {

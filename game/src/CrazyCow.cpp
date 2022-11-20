@@ -1,6 +1,8 @@
 #include "Include.h"
 #include "CrazyCow.h"
 
+//Creates event after you have not enough money to continue the game.Display background, hand with dartand targets.When all targets are down you earn hay.
+
 void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, Font font)
 {
 	if (cows.isCCOpen)
@@ -94,6 +96,8 @@ void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, 
 	}
 }
 
+//When event game is opened displays an arm that holds dart that can move up, down, rightand leftand when space pressed throw the dart.
+
 void MoveArmCC(GameS& game)
 {
 	int currentFPS = GetFPS();
@@ -185,6 +189,8 @@ void MoveArmCC(GameS& game)
 		game.dartY += armMove;
 	}
 }
+
+//Displays flying cows that move in random directions on the map.
 
 void FlyingCow(int cowNum, FlyingCows& cows, GameS& game, AllTextures textures)
 {
@@ -344,6 +350,8 @@ void FlyingCow(int cowNum, FlyingCows& cows, GameS& game, AllTextures textures)
 	}
 }
 
+//Check if you hit cow. Hitted cows fall down.
+
 void HitCow(int cowNum, FlyingCows& cows, GameS& game)
 {
 	if (game.flyingDart && game.dartX <= game.armX - 230)
@@ -356,6 +364,8 @@ void HitCow(int cowNum, FlyingCows& cows, GameS& game)
 		}
 	}
 }
+
+//Checks if you don't have enough hay and display a button to start crazy cow event.
 
 void OpenCrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, MapS& map, AllTextures textures, Font font)
 {
@@ -418,6 +428,8 @@ void OpenCrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, MapS& map, AllText
 	}
 }
 
+// Cheks if you have no options to earn money.
+
 bool NeedMoney(GameS& game, int unlockedCountries)
 {
 	static int count = 0;
@@ -440,6 +452,8 @@ bool NeedMoney(GameS& game, int unlockedCountries)
 		return false;
 	}
 }
+
+//Calculates how many coes you hitted and give you hay for every hitted cow. Close crazy cow event.
 
 void FinishCrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, Font font)
 {

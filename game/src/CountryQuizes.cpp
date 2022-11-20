@@ -2,6 +2,8 @@
 #include "OpenCountry.h"
 #include "GameInCountry.h"
 
+// Set Bulgaria questions and answers
+
 void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundBulgaria, 0, 0, WHITE);
@@ -53,6 +55,8 @@ void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font)
 		}
 	}
 }
+
+// Set Spain questions and answers
 
 void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 {
@@ -107,6 +111,8 @@ void OpenSpainQuiz(GameS& game, AllTextures textures, Font font)
 	}
 }
 
+// Set France questions and answers
+
 void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
@@ -160,6 +166,7 @@ void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 	}
 }
 
+// Set Italy questions and answers
 
 void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 {
@@ -212,6 +219,7 @@ void OpenItalyQuiz(GameS& game, AllTextures textures, Font font)
 	}
 }
 
+// Set Germany questions and answers
 
 void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 {
@@ -264,6 +272,8 @@ void OpenGermanyQuiz(GameS& game, AllTextures textures, Font font)
 	}
 }
 
+// Set Turkey questions and answers
+
 void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundTurkey, 0, 0, WHITE);
@@ -314,6 +324,8 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 		}
 	}
 }
+
+// Set Greece questions and answers
 
 void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 {
@@ -366,6 +378,8 @@ void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 	}
 }
 
+// Set England questions and answers
+
 void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 {
 	DrawTexture(textures.quizBackgroundEngland, 0, 0, WHITE);
@@ -416,6 +430,8 @@ void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 		}
 	}
 }
+
+// Set Norway questions and answers
 
 void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 {

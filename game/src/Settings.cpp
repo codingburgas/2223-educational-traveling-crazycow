@@ -1,6 +1,8 @@
 #include "Include.h"
 #include "Settings.h"
 
+//Settings main function. Creats game settings. Calls all settings functions.
+
 void Settings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)
 {
     DrawTexture(textures.settingsIcon, 5, 5, WHITE);
@@ -15,6 +17,8 @@ void Settings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, Gam
     DrawTexture(textures.wheatIcon, 1920 - 36, 55, WHITE);
 }
 
+//Creates a button that opens the settings menu.
+
 void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)
 {
     if (settings.areSettingsOpen || (IsMouseInRange(0, 40, 0, 40) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) || IsKeyPressed(KEY_ESCAPE))
@@ -26,6 +30,8 @@ void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map,
 
         DrawTexture(textures.settingsBox, 5, 50, WHITE);
         DrawTexture(textures.closeSettingsIcon, 450, 50, MAROON);
+
+        // Creates box for game rules and displays them when page is changed.
 
         switch (settings.pages)
         {
@@ -97,6 +103,8 @@ void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map,
     }
 }
 
+//Creates a button that closes the settings menu.
+
 void CloseSetting(SettingsS &settings, AllTextures textures)
 {
     if (settings.areSettingsOpen)
@@ -126,6 +134,8 @@ void CloseSetting(SettingsS &settings, AllTextures textures)
         }
     }
 }
+
+//Creates a box that allows the player to change the FPS
 
 void SetFPS(AllTextures textures, Font font)
 {
@@ -164,6 +174,8 @@ void SetFPS(AllTextures textures, Font font)
         }
     }
 }
+
+//Creates a box that allows the player to change the FPS the music volume.
 
 void ChangeMusicVolume(float& musicVolume, AllTextures textures, Font font)
 {
@@ -209,6 +221,8 @@ void ChangeMusicVolume(float& musicVolume, AllTextures textures, Font font)
     }
 }
 
+//Creates a box that allows the player to change the FPS the sound volume.
+
 void ChangeSoundVolume(float& soundVolume, AllTextures textures, Font font)
 {
     static int showSoundVolume = (int)(abs(soundVolume) * 100);
@@ -253,6 +267,9 @@ void ChangeSoundVolume(float& soundVolume, AllTextures textures, Font font)
     }
 }
 
+//Creates a button that takes the player to the game menu.
+
+
 void BackToMenu(bool& isMenuOpen, MapS& map, FlyingCows& cows, GameS& game, AllTextures textures, Font font)
 {
     DrawTexture(textures.taskBox, 35, 440, WHITE);
@@ -285,6 +302,8 @@ void BackToMenu(bool& isMenuOpen, MapS& map, FlyingCows& cows, GameS& game, AllT
         }
     }
 }
+
+//Creates a button that takes the player to the game map. 
 
 void BackToMap(bool& isMenuOpen, MapS& map, FlyingCows& cows, GameS& game, AllTextures textures, Font font)
 {

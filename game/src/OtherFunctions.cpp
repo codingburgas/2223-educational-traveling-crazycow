@@ -1,5 +1,7 @@
 #include "Include.h"
 
+// Check mouse collision
+
 bool IsMouseInRange(int x1, int x2, int y1, int y2)
 {
     if (GetMouseX() >= x1 && GetMouseX() <= x2 && GetMouseY() >= y1 && GetMouseY() <= y2)
@@ -19,6 +21,8 @@ Vector2 VecPos(float x, float y)
     pos.y = y;
     return pos;
 }
+
+//Saves game progress after closing the game and continue the game after you run it again.
 
 void SaveData(ofstream& saveData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries)
 {
@@ -53,6 +57,8 @@ void SaveData(ofstream& saveData, FlyingCows& cows, GameS& game, LockedCountries
     }
 }
 
+// Gets player progress
+
 void GetData(ifstream& getData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries)
 {
     getData.open("../src/assets/SaveData.txt");
@@ -85,6 +91,8 @@ void GetData(ifstream& getData, FlyingCows& cows, GameS& game, LockedCountries& 
         getData.close();
     }
 }
+
+//Unload all textures
 
 void UnloadAllTextures(AllTextures unloadTextures)
 {
