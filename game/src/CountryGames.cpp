@@ -235,6 +235,8 @@ void OpenEnglandGame(GameS& game, AllTextures textures, Font font)
 
 void OpenNorwayGame(GameS& game, AllTextures textures, Font font)
 {
+	DrawTexture(textures.quizBackgroundNorway, 0, 0, WHITE);
+
 	Texture2D landmarks[4] = {
 		textures.gameLeft,
 		textures.gameRight,

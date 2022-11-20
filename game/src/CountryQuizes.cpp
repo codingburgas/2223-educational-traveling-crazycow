@@ -417,7 +417,7 @@ void OpenEnglandQuiz(GameS& game, AllTextures textures, Font font)
 
 void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 {
-	
+	DrawTexture(textures.quizBackgroundNorway, 0, 0, WHITE);
 
 	const char* questions[10] = {
 				"1",
