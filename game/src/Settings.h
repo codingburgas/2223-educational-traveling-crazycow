@@ -1,5 +1,5 @@
 #pragma once
-#include "Main.h"
+#include "Include.h"
 
 void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font);
 

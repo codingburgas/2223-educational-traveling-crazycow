@@ -1,4 +1,4 @@
-#include "Main.h"
+#include "Include.h"
 #include "Menu.h"
 #include "CrazyCow.h"
 
@@ -180,7 +180,7 @@ void NewGameWarning(bool& newGame, GameS& game, FlyingCows& cows, LockedCountrie
 
 void ResetValues(GameS& game, FlyingCows& cows, LockedCountries& lockedCountries)
 {
-    game.money = 0;
+    game.money = 1000;
 
     for (int i = 0; i < 9; i++)
     {

@@ -1,5 +1,5 @@
 #pragma once
-#include "Main.h"
+#include "Include.h"
 
 void OpenBulgariaQuiz(GameS& game, AllTextures textures, Font font);
 

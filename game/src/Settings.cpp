@@ -1,4 +1,4 @@
-#include "Main.h"
+#include "Include.h"
 #include "Settings.h"
 
 void Settings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, AllTextures textures, Font font)

@@ -1,4 +1,4 @@
-#include "Main.h"
+#include "Include.h"
 #include "OpenCountry.h"
 #include "GameInCountry.h"
 
@@ -112,32 +112,34 @@ void OpenFranceQuiz(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundFrance, 0, 0, WHITE);
 
 	const char* questions[10] = {
-			"1",
-			"2",
-			"3",
-			"4",
-			"5",
-			"6",
-			"7",
-			"8",
-			"9",
-			"10"
+
+				" With which of these countries\n  does France share a border?",
+				"  How many countries share a \n   border with France in total?",
+				"     The Alps form a natural \n   border between France and:",
+				" What is the capital of France?",
+				"   What animal is the Symbol \n            of France?",
+				"    Which river does not flow \n         through France?",
+				"Which river flows through Paris?",
+				"    The Pyrenees mountains \n     separate France from: ",
+				"Just how big is France, anyway?",
+				"      Which town is famous \n          for its wine?"
 	};
 
 	const char* answers[10][4] = {
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"}
+
+		{"    Germany", "      Italy", "  Switzerland", "   All above"},
+		{"        6", "        8", "        7", "       10"},
+		{"    Germany", "      Spain", "      Italy", "     Belgium"},
+		{"      Paris", "      Lyon", "     Berlin", "     Madrid"},
+		{"    Cardinal", "      Lion", "       Pig", "    Rooster"},
+		{"      Rhine", "      Loire", "       Po", "      Rhone"},
+		{"      Rhine", "      Rhone", "     Escaut", "      Seine"},
+		{"    Germany", "      Spain", "      Italy", "  Switzerland"},
+		{"  643 801 km2", "  343 801 km2", "  863 801 km2", "  583 801 km2"},
+		{"     Reims", "    Le Havre", "     Nantes", "    Bordeaux"}
 	};
 
-	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	int answersPos[10] = { 4, 2, 3, 1, 4, 3, 4, 2, 1, 4 };
 
 	OpenQuiz(questions, answers, answersPos, game.quizCounter[2], game, textures, font);
 
