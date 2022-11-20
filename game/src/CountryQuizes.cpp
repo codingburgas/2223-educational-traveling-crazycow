@@ -270,13 +270,13 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 				"       What is the capital\n           of Turkey?",
 				"       What is the largest\n    minority group in Turkey?",
 				"       What is the name of\n      the bi-continental city?",
-				"	  Which one of the following\n rivers flows only through Turkey?",
-				"     Which one of the following\n countries does not border Turkey?",
+				"    Which one of the following\nrivers flows only through Turkey?",
+				"    Which one of the following\ncountries does not border Turkey?",
 				"        The biggest island\n           of Turkey is?",
-				"     Which one of the following\n     seas is NOT around Turkey?",
+				"    Which one of the following\n    seas isn't around Turkey?",
 				"        The biggest lake of\n             Turkey is?",
-				"       The highest mountain\n            of Turkey is?",
-				"     Which city is in the European\n          part of Turkey?"
+				"      The highest mountain\n           of Turkey is?",
+				"  Which city is in the European\n          part of Turkey?"
 	};
 
 	const char* answers[10][4] = {
@@ -287,9 +287,9 @@ void OpenTurkeyQuiz(GameS& game, AllTextures textures, Font font)
 		{"    Georgia", "      Iraq", "      Iran", "     Russia"},
 		{"   Buyukada", "    Gokceada ", "   Heybeliada", "    Bozcaada"},
 		{"  Caspian sea", "     Aegean", " Mediterranean", "   Black sea"},
-		{"     Egirdir", "     Beysehir", "      Tuz", "      Van"},
+		{"     Egirdir", "    Beysehir", "      Tuz", "      Van"},
 		{"   Cilo Dagi", "   Agri Dagi", "     Uludag", "   Aydos Dagi"},
-		{"    Trabzon", "     Edirne", "      Izmir", "      Bursa"}
+		{"    Trabzon", "     Edirne", "      Izmir", "     Bursa"}
 	};
 
 	int answersPos[10] = { 4, 3, 1, 3, 4, 2, 1, 4, 2, 2 };
@@ -318,7 +318,7 @@ void OpenGreeceQuiz(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundGreece, 0, 0, WHITE);
 
 	const char* questions[10] = {
-				"Which of the following mountains\n      is the highest in Greece?",
+				"Which of the following mountains\n     is the highest in Greece?",
 				"   Which large mountain range \n  runs through central Greece?",
 				"What mountain range is nicknamed \n      the 'spine of Greece'?",
 				"    What percentage of Greece \n      is mountainous or hilly?",
