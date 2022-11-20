@@ -34,22 +34,22 @@ void DrawMenuBackground(MenuS& menu, AllTextures textures)
     static float frameTime = 0; 
     static bool framePosition = false;
     int updateVertical;
-    int updateFrameTime = frameTime * 200;
+    int updateFrameTime = (int)(frameTime * 200);
 
     DrawTexture(textures.background, menu.BGX, 0, WHITE);
     DrawTexture(textures.background, menu.BGX + 1920, 0, WHITE);
 
     if (currentFPS > 60)
     {
-        updateVertical = frameTime + 90;
+        updateVertical = (int)(frameTime + 90);
     }
     else if (currentFPS <= 30)
     {
-        updateVertical = frameTime + 20;
+        updateVertical = (int)(frameTime + 20);
     }
     else
     {
-        updateVertical = frameTime + 40;
+        updateVertical = (int)(frameTime + 40);
     }
 
     counter++;

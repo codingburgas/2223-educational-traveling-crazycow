@@ -19,8 +19,8 @@ struct SettingsS
     bool areSettingsOpen = false;
     bool isEscapeReleased = false;
 
-    double musicVolume = 0.05;
-    double soundVolume = 0.15;
+    float musicVolume = (float)0.05;
+    float soundVolume = (float)0.15;
 };
 
 struct MenuS

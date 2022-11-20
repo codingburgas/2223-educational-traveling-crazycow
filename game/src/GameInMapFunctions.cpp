@@ -114,15 +114,15 @@ void MoveMap(int& mapLocation, AllTextures textures)
 
     if (currentFPS > 60)
     {
-        mapMove = mapFrameTime + 3;
+        mapMove = (int)mapFrameTime + 3;
     }
     else if (currentFPS <= 30)
     {
-        mapMove = mapFrameTime + 16;
+        mapMove = (int)mapFrameTime + 16;
     }
     else
     {
-        mapMove = mapFrameTime + 8;
+        mapMove = (int)mapFrameTime + 8;
     }
 
     DrawTexture(textures.rightArrow, 1920 - 50, 0, WHITE);
@@ -177,7 +177,7 @@ void ChooseCountry(bool& areSettingsOpen, int& money, MapS& map, AllTextures tex
     DrawCountry("Norway", 255, 826, 279, 79, 9, map, areSettingsOpen, money, lockedCountries.isNorwayOpen, textures, font);
 }
 
-void DrawCountry(const char* name, int x, int y, int lengthX, int lenghtY, int countryNum, MapS& map,
+void DrawCountry(const char* name, float x, float y, float lengthX, float lenghtY, int countryNum, MapS& map,
     bool& areSettingsOpen, int& money, bool& lockedCountry, AllTextures textures, Font font)
 {
     static bool* saveLockedCountry;
@@ -186,7 +186,7 @@ void DrawCountry(const char* name, int x, int y, int lengthX, int lenghtY, int c
 
     if (lockedCountry)
     {
-        if (IsMouseInRange(x, x + lengthX, y, y + lenghtY) && !areSettingsOpen && !map.countryWarning)
+        if (IsMouseInRange((int)x, (int)(x + lengthX), (int)y, (int)(y + lenghtY)) && !areSettingsOpen && !map.countryWarning)
         {
             map.countryHover = countryNum;
             DrawTextEx(font, name, VecPos(x + 2, y - 4), 80, 6, BLACK);
@@ -199,10 +199,10 @@ void DrawCountry(const char* name, int x, int y, int lengthX, int lenghtY, int c
     }
     else
     {
-        DrawTexture(textures.chain, 5, y + 12, WHITE);
-        if (IsMouseInRange(376, 376 + 70, y + 10, y + 90) && !areSettingsOpen && !map.countryWarning)
+        DrawTexture(textures.chain, 5, (int)y + 12, WHITE);
+        if (IsMouseInRange(376, 376 + 70, (int)y + 10, (int)y + 90) && !areSettingsOpen && !map.countryWarning)
         {
-            DrawTexture(textures.chain, 5, y + 12, LIGHTGRAY);
+            DrawTexture(textures.chain, 5,(int)y + 12, LIGHTGRAY);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
             {
                 PlaySoundMulti(textures.clickSound);

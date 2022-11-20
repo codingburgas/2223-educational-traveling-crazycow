@@ -3,7 +3,7 @@
 
 int main()
 {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
 
     InitWindow(screenWidth, screenHeight, "CrazyCow");
     InitAudioDevice();

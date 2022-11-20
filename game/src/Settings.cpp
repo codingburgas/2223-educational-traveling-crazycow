@@ -99,9 +99,9 @@ void SetFPS(AllTextures textures, Font font)
     }
 }
 
-void ChangeMusicVolume(double& musicVolume, AllTextures textures, Font font)
+void ChangeMusicVolume(float& musicVolume, AllTextures textures, Font font)
 {
-    static int showMusicVolume = musicVolume * 100;
+    static int showMusicVolume = (int)(abs(musicVolume) * 100);
 
     SetMusicVolume(textures.menuMusic, musicVolume);
 
@@ -119,7 +119,7 @@ void ChangeMusicVolume(double& musicVolume, AllTextures textures, Font font)
             if (musicVolume >= 0.05)
             {
                 PlaySoundMulti(textures.clickSound);
-                musicVolume -= 0.05;
+                musicVolume -= (float)0.05;
                 showMusicVolume -= 5;
             }
             else
@@ -137,15 +137,15 @@ void ChangeMusicVolume(double& musicVolume, AllTextures textures, Font font)
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && musicVolume < 1.0)
         {
             PlaySoundMulti(textures.clickSound);
-            musicVolume += 0.05;
+            musicVolume += (float)0.05;
             showMusicVolume += 5;
         }
     }
 }
 
-void ChangeSoundVolume(double& soundVolume, AllTextures textures, Font font)
+void ChangeSoundVolume(float& soundVolume, AllTextures textures, Font font)
 {
-    static int showSoundVolume = soundVolume * 100;
+    static int showSoundVolume = (int)(abs(soundVolume) * 100);
 
     SetSoundVolume(textures.clickSound, soundVolume);
 
@@ -163,7 +163,7 @@ void ChangeSoundVolume(double& soundVolume, AllTextures textures, Font font)
             if (soundVolume >= 0.05)
             {
                 PlaySoundMulti(textures.clickSound);
-                soundVolume -= 0.05;
+                soundVolume -= (float)0.05;
                 showSoundVolume -= 5;
             }
             else
@@ -181,7 +181,7 @@ void ChangeSoundVolume(double& soundVolume, AllTextures textures, Font font)
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && soundVolume < 1.0)
         {
             PlaySoundMulti(textures.clickSound);
-            soundVolume += 0.05;
+            soundVolume += (float)0.05;
             showSoundVolume += 5;
         }
     }

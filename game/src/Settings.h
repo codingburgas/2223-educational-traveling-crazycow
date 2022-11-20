@@ -16,7 +16,7 @@ void BackToMap(bool& isMenuOpen, MapS& map, FlyingCows& cows, GameS& game, AllTe
 void SetFPS(AllTextures textures, Font font);
 
 
-void ChangeMusicVolume(double& musicVolume, AllTextures textures, Font font);
+void ChangeMusicVolume(float& musicVolume, AllTextures textures, Font font);
 
 
-void ChangeSoundVolume(double& soundVolume, AllTextures textures, Font font);
+void ChangeSoundVolume(float& soundVolume, AllTextures textures, Font font);

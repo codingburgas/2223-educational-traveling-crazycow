@@ -271,7 +271,7 @@ void Answer(int tPos, int tPosVal, int x1, int y1, const char** answers, GameS& 
 {
 	if (IsMouseInRange(x1, x1 + 300, y1, y1 + 120))
 	{
-		DrawTextEx(font, answers[tPosVal - 1], VecPos(x1 + 22, y1 + 47), 34, 4, BLACK);
+		DrawTextEx(font, answers[tPosVal - 1], VecPos((float)(x1 + 22), (float)(y1 + 47)), 34, 4, BLACK);
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			if (tPos == tPosVal)
