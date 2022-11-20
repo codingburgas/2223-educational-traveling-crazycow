@@ -422,32 +422,32 @@ void OpenNorwayQuiz(GameS& game, AllTextures textures, Font font)
 	DrawTexture(textures.quizBackgroundNorway, 0, 0, WHITE);
 
 	const char* questions[10] = {
-				"1",
-				"2",
-				"3",
-				"4",
-				"5",
-				"6",
-				"7",
-				"8",
-				"9",
-				"10"
+				"   What is the name of the\n  highest mountain in Norway?",
+				"    What is the name of the\n  oldest existing city in Norway?",
+				"   What is the name of the\n   longest river in Norway?",
+				"   What is the name of the\n  largest glacier in Norway?",
+				"   What is the northernmost\n   city of mainland Norway?",
+				"   After Svalbard, what is the\n    largest island in Norway?",
+				"   What is the name of the \n   deepest lake in Norway?",
+				"   What is the capital of Norway?",
+				"   Norway is the world’s third\n     largest exporter of...",
+				"   What is the population\n         of Norway?"
 	};
 
 	const char* answers[10][4] = {
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"},
-		{"1", "2", "3", "4"}
+		{" Galdhoepiggen", "   Bloksberg", "   Glittertind", "   Snoehetta"},
+		{"      Oslo", "     Bergen", "   Trondheim", "   Toensberg"},
+		{"     Laagen", "     Glomma", "   Akerselva", "     Rauma"},
+		{"     Olav V", "   Svartisen", "  Sognebreen", " Jostedalsbren"},
+		{"  Hammerfest", " Longyearbyen", "   Nordkapp", "     Bodoe"},
+		{"    Helgoey", "      Hitra", "    Hinnoey", "      Senja"},
+		{"Seljordsvatnet", "  Femunden", "Hornindalsvatn", "     Mjoesa"},
+		{"   Helsinki", "      Oslo", "   Trondheim", "     Berlin"},
+		{"       Oil", "      Wood", "   Furniture", "      Iron"},
+		{"    4,660,539", "    12,351,752", "     807,413", "    37,961,664"}
 	};
 
-	int answersPos[10] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	int answersPos[10] = { 1, 4, 2, 4, 1, 3, 3, 2, 1, 1 };
 
 	OpenQuiz(questions, answers, answersPos, game.quizCounter[8], game, textures, font);
 
