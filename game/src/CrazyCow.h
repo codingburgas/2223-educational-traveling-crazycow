@@ -1,9 +1,6 @@
 #pragma once
 #include "Include.h"
 
-// Creates event after you have not enough money to continue the game. Display background, hand with dart and targets. When all targets are down you earn hay.
-void CrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, AllTextures textures, Font font);
-
 // Moves the arm on CrazyCow even
 void MoveArmCC(GameS& game);
 

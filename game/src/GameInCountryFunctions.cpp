@@ -159,6 +159,7 @@ void OpenQuiz(const char** questions, const char* answers[10][4], int* tPos, int
 						game.isQuizOpened = false;
 						game.money += game.trueQuestionCounter * 25;
 						game.trueQuestionCounter = 0;
+						game.isDonePressed = true;
 					}
 				}
 			}
@@ -445,8 +446,8 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 									game.flyingDart = false;
 									game.armX = 600;
 									game.armY = 700;
-									game.dartX = game.armX + 300;
-									game.dartY = game.armY;
+									game.dartX = game.armX + 294;
+									game.dartY = game.armY - 4;
 									game.gameWin = true;
 								}
 							}
@@ -464,8 +465,8 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 									game.flyingDart = false;
 									game.armX = 600;
 									game.armY = 700;
-									game.dartX = game.armX + 300;
-									game.dartY = game.armY;
+									game.dartX = game.armX + 294;
+									game.dartY = game.armY - 4;
 									game.gameLoose = true;
 								}
 							}
@@ -489,6 +490,7 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 							game.isGameOpened = false;
 							game.gameWin = false;
 							gameCounter++;
+							game.isDonePressed = true;
 						}
 					}
 				}
@@ -506,6 +508,7 @@ void OpenGame(int& gameCounter, int landmarkPos, Texture2D landmarks[4], Texture
 							game.isGameOpened = false;
 							game.gameLoose = false;
 							gameCounter++;
+							game.isDonePressed = true;
 						}
 					}
 				}
@@ -564,7 +567,7 @@ void MoveArm(GameS& game)
 			game.armY += armMove;
 			game.dartY += armMove;
 		}
-		if (game.armX + 300 >= 400)
+		if (game.armX + 294 >= 400)
 		{
 			game.armX -= armMove;
 			game.dartX -= armMove;
@@ -577,7 +580,7 @@ void MoveArm(GameS& game)
 			game.armY += armMove;
 			game.dartY += armMove;
 		}
-		if (game.armX + 300 <= 1700)
+		if (game.armX + 294 <= 1700)
 		{
 			game.armX += armMove;
 			game.dartX += armMove;
@@ -590,7 +593,7 @@ void MoveArm(GameS& game)
 			game.armY -= armMove;
 			game.dartY -= armMove;
 		}
-		if (game.armX + 300 >= 400)
+		if (game.armX + 294 >= 400)
 		{
 			game.armX -= armMove;
 			game.dartX -= armMove;
@@ -603,18 +606,18 @@ void MoveArm(GameS& game)
 			game.armY -= armMove;
 			game.dartY -= armMove;
 		}
-		if (game.armX + 300 <= 1700)
+		if (game.armX + 294 <= 1700)
 		{
 			game.armX += armMove;
 			game.dartX += armMove;
 		}
 	}
-	else if (IsKeyDown(KEY_A) && game.armX + 300 >= 400)
+	else if (IsKeyDown(KEY_A) && game.armX + 294 >= 400)
 	{
 		game.armX -= armMove;
 		game.dartX -= armMove;
 	}
-	else if (IsKeyDown(KEY_D) && game.armX + 300 <= 1700)
+	else if (IsKeyDown(KEY_D) && game.armX + 294 <= 1700)
 	{
 		game.armX += armMove;
 		game.dartX += armMove;

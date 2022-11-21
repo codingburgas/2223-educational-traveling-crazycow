@@ -44,7 +44,7 @@ int main()
 
     // gets the data used before
 
-    GetData(getData, cows, game, lockedCountries);  
+    GetData(getData, cows, map, game, lockedCountries);  
 
     // Play the music stream
 
@@ -74,12 +74,9 @@ int main()
 
             Game(settings, menu, map, game, lockedCountries, textures, font);
 
-            if (!game.isQuizOpened && !game.isGameOpened)
-            {
-                OpenCrazyCow(cows, game, menu, map, textures, font);
-            }
-            
-            CrazyCow(cows, game, menu, textures, font);
+            CrazyCow(cows, map, game, menu, textures, font);
+
+            FinishTheGame(map, menu, game, textures, font);
 
             Settings(settings, cows, menu, map, game, textures, font);
 
@@ -94,7 +91,7 @@ int main()
 
     // saves the data that is changed
 
-    SaveData(saveData, cows, game, lockedCountries); 
+    SaveData(saveData, cows, map, game, lockedCountries); 
 
     // unload all textures
 

@@ -25,7 +25,7 @@ void Menu(FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, LockedCountries
     {
         UpdateMusicStream(textures.menuMusic);
         DrawMenuBackground(menu, textures);
-        NewGameWarning(menu.newGame, game, cows, lockedCountries, textures, font);
+        NewGameWarning(menu.newGame, map, game, cows, lockedCountries, textures, font);
     }
 }
 
@@ -157,7 +157,7 @@ void NewGame(bool& newGame, AllTextures textures, Font font)
 
 //Displays a box to make sure if you want to restart the game
 
-void NewGameWarning(bool& newGame, GameS& game, FlyingCows& cows, LockedCountries& lockedCountries, AllTextures textures, Font font)
+void NewGameWarning(bool& newGame, MapS& map, GameS& game, FlyingCows& cows, LockedCountries& lockedCountries, AllTextures textures, Font font)
 {
     DrawTexture(textures.quizBox, 0, 0, WHITE);
     DrawTextEx(font, "Are you sure?", VecPos(560, 340), 120, 8, BLACK);
@@ -175,7 +175,7 @@ void NewGameWarning(bool& newGame, GameS& game, FlyingCows& cows, LockedCountrie
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             PlaySoundMulti(textures.clickSound);
-            ResetValues(game, cows, lockedCountries);
+            ResetValues(map, game, cows, lockedCountries);
             newGame = false;
         }
     }
@@ -194,7 +194,7 @@ void NewGameWarning(bool& newGame, GameS& game, FlyingCows& cows, LockedCountrie
 
 //Player progress is reset. All values are returned to default.
 
-void ResetValues(GameS& game, FlyingCows& cows, LockedCountries& lockedCountries)
+void ResetValues(MapS& map, GameS& game, FlyingCows& cows, LockedCountries& lockedCountries)
 {
     game.money = 150;
 
@@ -217,7 +217,7 @@ void ResetValues(GameS& game, FlyingCows& cows, LockedCountries& lockedCountries
     lockedCountries.isUnitedKingdomOpen = false;
     lockedCountries.isNorwayOpen = false;
 
-    cows.isCCOver = false;
+    cows.isCCOver = 0;
 
     for (int i = 0; i < 10; i++)
     {
@@ -233,5 +233,11 @@ void ResetValues(GameS& game, FlyingCows& cows, LockedCountries& lockedCountries
     }
     cows.downCowsCounter = 0;
     cows.CCWarning = false;
-    cows.dartsLeft = 15;
+    cows.dartsLeft = 20;
+
+    game.isGameOver = false;
+
+    game.finishGame = false;
+
+    map.unlockedCountries = 1;
 }

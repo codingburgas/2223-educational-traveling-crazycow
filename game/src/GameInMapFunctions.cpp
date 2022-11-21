@@ -245,7 +245,7 @@ void OpenWarning(bool* saveLockedCountry, int& money, MapS& map, AllTextures tex
         DrawTexture(textures.answerBlock, 540 + 500, 520, WHITE);
         DrawTextEx(font, "No", VecPos(540 + 500 + 134, 520 + 50), 34, 4, BLACK);
 
-        if (IsMouseInRange(540, 540 + 300, 520, 520 + 120))
+        if (IsMouseInRange(540, 530 + 300, 520, 520 + 120))
         {
             DrawTextEx(font, "Yes", VecPos(540 + 122, 520 + 48), 34, 4, BLACK);
 
@@ -258,6 +258,7 @@ void OpenWarning(bool* saveLockedCountry, int& money, MapS& map, AllTextures tex
                     money -= 200;
                     map.unlockedCountries++;
                     map.countryWarning = false;
+                    map.isOkPressed = true;
                 }
                 else
                 {
@@ -286,7 +287,7 @@ void OpenWarning(bool* saveLockedCountry, int& money, MapS& map, AllTextures tex
 
         DrawTexture(textures.answerBlock, 800, 560, WHITE);
         DrawTextEx(font, "Ok", VecPos(800 + 100, 560 + 30), 60, 6, BLACK);
-        if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
+        if (IsMouseInRange(840, 840 + 300, 560, 560 + 120))
         {
             DrawTextEx(font, "Ok", VecPos(800 + 102, 560 + 26), 60, 6, BLACK);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))

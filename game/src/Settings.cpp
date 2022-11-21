@@ -52,10 +52,10 @@ void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map,
             DrawTextEx(font, "Move Map -   Left/Right Arrow", VecPos(36, 240), 26, 3, BLACK);
 
             DrawTextEx(font, "Move Arm Up -                W", VecPos(36, 290), 26, 3, BLACK);
-            DrawTextEx(font, "Move Arm Right -             A", VecPos(36, 340), 26, 3, BLACK);
+            DrawTextEx(font, "Move Arm Left -", VecPos(36, 340), 26, 3, BLACK);
+            DrawTextEx(font, "A", VecPos(424, 340), 26, 3, BLACK);
             DrawTextEx(font, "Move Arm Down -             S", VecPos(36, 390), 26, 3, BLACK);
-            DrawTextEx(font, "Move Arm Left -", VecPos(36, 437), 26, 3, BLACK);
-            DrawTextEx(font, "D", VecPos(424, 437), 26, 3, BLACK);
+            DrawTextEx(font, "Move Arm Right -             D", VecPos(36, 437), 26, 3, BLACK);
 
             DrawTextEx(font, "Shoot -                     Space", VecPos(36, 484), 26, 3, BLACK);
             break;
@@ -70,7 +70,7 @@ void OpenSettings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map,
 
             DrawTextEx(font, "CrazyCow Event - for each", VecPos(36, 390), 26, 3, BLACK);
             DrawTextEx(font, "dropped cow you get 25 wheat.", VecPos(36, 437), 26, 3, BLACK);
-            DrawTextEx(font, "You have 15 darts for 10 cows", VecPos(36, 484), 26, 3, BLACK);
+            DrawTextEx(font, "You have 20 darts for 10 cows", VecPos(36, 484), 26, 3, BLACK);
 
             break;
         }

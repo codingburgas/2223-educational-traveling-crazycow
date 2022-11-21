@@ -24,7 +24,7 @@ Vector2 VecPos(float x, float y)
 
 //Saves game progress after closing the game and continue the game after you run it again.
 
-void SaveData(ofstream& saveData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries)
+void SaveData(ofstream& saveData, FlyingCows& cows, MapS& map, GameS& game, LockedCountries& lockedCountries)
 {
     saveData.open("../src/assets/SaveData.txt");
 
@@ -53,13 +53,19 @@ void SaveData(ofstream& saveData, FlyingCows& cows, GameS& game, LockedCountries
 
         saveData << cows.isCCOver << endl;
 
+        saveData << game.isGameOver << endl;
+
+        saveData << game.finishGame << endl;
+
+        saveData << map.unlockedCountries << endl;
+
         saveData.close();
     }
 }
 
 // Gets player progress
 
-void GetData(ifstream& getData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries)
+void GetData(ifstream& getData, FlyingCows& cows, MapS& map, GameS& game, LockedCountries& lockedCountries)
 {
     getData.open("../src/assets/SaveData.txt");
 
@@ -88,7 +94,49 @@ void GetData(ifstream& getData, FlyingCows& cows, GameS& game, LockedCountries& 
 
         getData >> cows.isCCOver;
 
+        getData >> game.isGameOver;
+
+        getData >> game.finishGame;
+
+        getData >> map.unlockedCountries;
+
         getData.close();
+    }
+}
+
+void FinishTheGame(MapS& map, MenuS& menu, GameS& game, AllTextures textures, Font font)
+{
+    if (map.unlockedCountries == 9 && !game.finishGame)
+    {
+        if (!map.isOkPressed)
+        {
+            map.openMap = false;
+            menu.isMenuOpen = false;
+            DrawTexture(textures.crazyCowBG, 0, 0, WHITE);
+
+            DrawTexture(textures.quizBox, 0, 0, WHITE);
+            DrawTextEx(font, "Congratulations!", VecPos(510, 284), 120, 8, BLACK);
+            DrawTextEx(font, "You unlocked all ", VecPos(650, 400), 70, 8, BLACK);
+            DrawTextEx(font, "countries! ", VecPos(780, 470), 70, 8, BLACK);
+
+            DrawTexture(textures.answerBlock, 800, 560, WHITE);
+            DrawTextEx(font, "Ok", VecPos(800 + 100, 560 + 30), 60, 6, BLACK);
+            if (IsMouseInRange(800, 800 + 300, 560, 560 + 120))
+            {
+                DrawTextEx(font, "Ok", VecPos(800 + 102, 560 + 26), 60, 6, BLACK);
+                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+                {
+                    PlaySoundMulti(textures.clickSound);
+                    menu.isMenuOpen = true;
+                    game.finishGame = true;
+                }
+            }
+        }
+        else
+        {
+            map.isOkPressed = false;
+        }
+        
     }
 }
 

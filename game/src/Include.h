@@ -46,6 +46,7 @@ struct MapS
     bool countryList = false;
     bool countryWarning = false;
     bool notEnoughMoney = false;
+    bool isOkPressed = false;
 
     int countryNumber = 0;
     int countryHover = 0;
@@ -66,6 +67,9 @@ struct GameS
     bool gameWarning = false;
     bool gameWin = false;
     bool gameLoose = false;
+    bool isGameOver = false;
+    bool isDonePressed = false;
+    bool finishGame = false;
 
     int money = 150;
     int trueQuestionCounter = 0;
@@ -75,8 +79,8 @@ struct GameS
     int armX = 600;
     int armY = 700;
 
-    int dartX = 900;
-    int dartY = 700;
+    int dartX = 600 + 294;
+    int dartY = 700 - 4;
 
     bool flyingDart = false;
 
@@ -146,17 +150,17 @@ struct FlyingCows
 
     int downCowsCounter = 0;
 
-    int dartsLeft = 15;
+    int dartsLeft = 20;
 
     int finishCCDelay = 0;
+
+    int isCCOver = 0;
 
     bool downCows[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
     bool cowDir[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     
     bool isCCOpen = false;
-
-    bool isCCOver = false;
 
     bool CCWarning = false;
 };
@@ -283,6 +287,12 @@ void Settings(SettingsS& settings, FlyingCows& cows, MenuS& menu, MapS& map, Gam
 // Game main function. Calls all game functions.
 void Game(SettingsS &settings, MenuS &menu, MapS &map, GameS &game, LockedCountries &lockedCountries, AllTextures textures, Font font);
 
+// Creates event after you have not enough money to continue the game. Display background, hand with dart and targets. When all targets are down you earn hay.
+void CrazyCow(FlyingCows& cows, MapS& map, GameS& game, MenuS& menu, AllTextures textures, Font font);
+
+// Draws a message that says congratulations when the player unlock all countries
+void FinishTheGame(MapS& map, MenuS& menu, GameS& game, AllTextures textures, Font font);
+
 
 // Other Functions ----------------------------------------------------------------------------------------------------------------
 
@@ -296,7 +306,7 @@ Vector2 VecPos(float x, float y);
 void UnloadAllTextures(AllTextures unloadTextures);
 
 // Saves game progress after closing the game and continue the game after you run it again.
-void SaveData(ofstream& saveData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries);
+void SaveData(ofstream& saveData, FlyingCows& cows, MapS& map, GameS& game, LockedCountries& lockedCountries);
 
 // Get the data saved before for future uses
-void GetData(ifstream& getData, FlyingCows& cows, GameS& game, LockedCountries& lockedCountries);
+void GetData(ifstream& getData, FlyingCows& cows, MapS& map, GameS& game, LockedCountries& lockedCountries);
