@@ -12,8 +12,6 @@ void CrazyCow(FlyingCows& cows, MapS& map, GameS& game, MenuS& menu, AllTextures
 
 	if (cows.isCCOpen)
 	{
-		UpdateMusicStream(textures.menuMusic);
-
 		DrawTexture(textures.crazyCowBG, 0, 0, WHITE);
 
 		DrawTextEx(font, TextFormat("%2i", cows.dartsLeft), VecPos(1800, 5), 32, 4, BLACK);
@@ -398,8 +396,6 @@ void OpenCrazyCow(FlyingCows& cows, GameS& game, MenuS& menu, MapS& map, AllText
 		}
 		else
 		{
-			UpdateMusicStream(textures.menuMusic);
-
 			DrawTexture(textures.crazyCowBG, 0, 0, WHITE);
 			DrawTexture(textures.quizBox, 0, 0, WHITE);
 			DrawTextEx(font, "Are you sure?", VecPos(560, 300), 120, 8, BLACK);

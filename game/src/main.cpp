@@ -80,6 +80,8 @@ int main()
 
             Settings(settings, cows, menu, map, game, textures, font);
 
+            UpdateMusicStream(textures.menuMusic);
+
         // draws the FPS
 
         DrawFPS(10, 960);

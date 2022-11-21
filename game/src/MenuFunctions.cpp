@@ -10,8 +10,6 @@ void Menu(FlyingCows& cows, MenuS& menu, MapS& map, GameS& game, LockedCountries
     {
         if (menu.isMenuOpen)
         {
-            UpdateMusicStream(textures.menuMusic);
-
             DrawMenuBackground(menu, textures);
             if (!cows.isCCOpen)
             {
